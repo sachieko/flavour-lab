@@ -1,3 +1,11 @@
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS orders CASCADE;
+DROP TABLE IF EXISTS items CASCADE;
+DROP TABLE IF EXISTS discounts CASCADE;
+DROP TABLE IF EXISTS order_details CASCADE;
+DROP TABLE IF EXISTS options CASCADE;
+DROP TABLE IF EXISTS option_details CASCADE;
+
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
@@ -11,19 +19,18 @@ CREATE TABLE users (
 
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users(id),
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
 
   submit_time TIMESTAMP DEFAULT NOW(),
   started_time TIMESTAMP,
   estimated_time TIMESTAMP,
   completed_time TIMESTAMP,
   name VARCHAR(100) NOT NULL,
-  phone VARCHAR NOT NULL,
+  phone VARCHAR(15) NOT NULL,
   note TEXT,
   tax NUMERIC(5, 2),
   tip NUMERIC(5, 2),
-
-  discount_id INTEGER REFERENCES discounts(id)
+  discount NUMERIC(5, 2)
 );
 
 CREATE TABLE items (
@@ -31,12 +38,12 @@ CREATE TABLE items (
   name VARCHAR(100) NOT NULL,
   price NUMERIC(5, 2) NOT NULL,
   description TEXT,
-  picture_url VARCHAR(255),
+  picture_url VARCHAR(255) DEFAULT 'https://i.imgur.com/luWEgOJ.jpg',
   is_available BOOLEAN DEFAULT TRUE,
   removed BOOLEAN DEFAULT FALSE
 );
 
-CREATE TABLE discounts ( -- this table is only for stretch goals
+CREATE TABLE discounts ( -- this table is only for stretch goals but comes before order details
   id SERIAL PRIMARY KEY,
   code VARCHAR(6) UNIQUE NOT NULL,
   percentage NUMERIC(3, 2),
@@ -49,7 +56,8 @@ CREATE TABLE order_details (
   item_id INTEGER NOT NULL REFERENCES items(id) ON DELETE CASCADE,
   quantity SMALLINT NOT NULL DEFAULT 1,
   price NUMERIC(5, 2) NOT NULL,
-  note TEXT
+  note TEXT,
+  discount_id INTEGER REFERENCES discounts(id) ON DELETE CASCADE
 );
 -- The following tables are stretch goals and may not be used in the current implementation.
 CREATE TABLE options (
