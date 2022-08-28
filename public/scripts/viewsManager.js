@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 $(() => {
 
   const $main = $('#main-content');
@@ -8,10 +9,10 @@ $(() => {
     $app.detach();
 
     switch (item) {
-      case item='app':
-        $app.appendTo($main);
+    case item = 'app':
+      $app.appendTo($main);
       break;
     }
-  }
+  };
 
 });
