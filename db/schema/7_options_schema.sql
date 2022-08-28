@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS options CASCADE;
+-- Stretch goal
+CREATE TABLE options (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+
+  removed BOOLEAN DEFAULT FALSE
+);

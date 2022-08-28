@@ -1,0 +1,2 @@
+-- Stretch goal
+-- Discounts table seeds
