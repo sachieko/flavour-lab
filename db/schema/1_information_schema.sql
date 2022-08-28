@@ -33,8 +33,16 @@ CREATE TABLE orders (
   discount NUMERIC(5, 2)
 );
 
+CREATE TABLE categories (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) UNIQUE NOT NULL,
+  removed BOOLEAN DEFAULT FALSE
+);
+
 CREATE TABLE items (
   id SERIAL PRIMARY KEY,
+  category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
+
   name VARCHAR(100) NOT NULL,
   price NUMERIC(5, 2) NOT NULL,
   description TEXT,
