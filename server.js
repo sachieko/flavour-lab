@@ -38,6 +38,18 @@ const usersRoutes = require('./routes/users');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
+
+//
+app.get('/api/items', (req, res) => {
+  //make db call here
+  const databaseResponse = {
+    item1: {name: 'chimken', price: 20},
+    item2: {name: 'grapes', price: 0.05},
+    item3: {name: 'tacos', price: 1000},
+  };
+  res.send(databaseResponse);
+});
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
