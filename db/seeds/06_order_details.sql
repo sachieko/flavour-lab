@@ -1,0 +1,2 @@
+-- order_details Table seeds
+-- create fake data later, MVP goal
