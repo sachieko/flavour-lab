@@ -1,6 +1,22 @@
-// See: https://sass-lang.com/
+/* ==========================================================================
+   GLOBAL LAYOUT
+   ========================================================================== */
+
+
+   @import '_variables';
+
 
 body,
 html {
   margin: 0;
+}
+
+body {
+  background: $primary-background-color;
+  display: flex;
+}
+
+/* Desktop and larger styles */
+@media only screen and (min-width: 1024px) {
+
 }
