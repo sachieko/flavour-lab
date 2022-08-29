@@ -22,6 +22,7 @@ app.use(
     isSass: false, // false => scss, true => sass
   })
 );
+app.use('/images', express.static('public/images'));
 app.use(express.static('public'));
 
 // Separated Routes for each Resource
