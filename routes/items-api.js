@@ -1,13 +1,10 @@
 const express = require('express');
 const router  = express.Router();
-const db = require('../db/connection');
+const userQueries = require('../db/queries/items');
 
 router.get('/', (req, res) => {
-  //make db call here
-
-  db.query('SELECT * FROM items')
-    .then(data => {
-      const items = data.rows;
+  userQueries.getItems()
+    .then(items => {
       res.json(items);
     })
     .catch(err => {
