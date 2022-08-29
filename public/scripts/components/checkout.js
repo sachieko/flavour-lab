@@ -1,6 +1,7 @@
+/* eslint-disable no-undef */
 $(() => {
   const $checkoutForm = $(
-  `<form id="checkoutForm">
+    `<form id="checkoutForm">
     Name: <input type=text name="name"></input>
     Phone: <input type=text name="phone"></input>
     <button>Submit</button>
