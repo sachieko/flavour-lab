@@ -5,3 +5,18 @@
 
    @import '_variables';
 
+   .menu {
+    display: flex;
+    flex-direction: column;
+
+    article {
+      display: flex;
+      flex-direction: row;
+
+      img {
+        width: 6em;
+        height: 6em;
+        background-size: cover;
+      }
+    }
+  }

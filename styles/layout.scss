@@ -14,6 +14,7 @@ html {
 body {
   background: $primary-background-color;
   display: flex;
+  flex-direction: column;
 }
 
 /* Desktop and larger styles */
