@@ -4,3 +4,9 @@ const getItems = function() {
   let url = "/api/items";
   return $.get({url});
 };
+
+const getCart = function() {
+  console.log('getting cart...');
+  let url = "/cart";
+  return $.get({url});
+ }

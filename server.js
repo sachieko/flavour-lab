@@ -50,6 +50,11 @@ app.get('/api/items', (req, res) => {
   res.send(databaseResponse);
 });
 
+app.get('/cart', (req, res) => {
+  const cartItems = [{name: 'item1', price: 10.00}];
+  res.send(cartItems);
+});
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
