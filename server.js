@@ -9,7 +9,7 @@ const morgan = require('morgan');
 const PORT = process.env.PORT || 8080;
 const app = express();
 
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -31,6 +31,7 @@ app.use(express.static('public'));
 const userApiRoutes = require('./routes/users-api');
 const usersRoutes = require('./routes/users');
 const itemApiRoutes = require('./routes/items-api');
+const smsApiRoutes = require('./routes/sms-api');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -38,6 +39,7 @@ const itemApiRoutes = require('./routes/items-api');
 app.use('/api/users', userApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/api/items', itemApiRoutes);
+app.use('/api/sms', smsApiRoutes);
 
 // Note: mount other resources here, using the same pattern above
 
@@ -45,9 +47,9 @@ app.use('/api/items', itemApiRoutes);
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
   res.render('index');
-});
+});*/
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

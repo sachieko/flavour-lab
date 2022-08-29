@@ -2,5 +2,9 @@
 /* eslint-disable no-undef */
 const getItems = function() {
   let url = "/api/items";
-  return $.get({url});
+  return $.get(url);
+};
+const sendText = function(data) {
+  let url = "/api/sms";
+  return $.post(url, data);
 };
