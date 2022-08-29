@@ -2,6 +2,7 @@ const express = require('express');
 const router  = express.Router();
 const accountSid = process.env.TWILIO_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
+const smsServiceSID = process.env.SMS_SERVICE_SID;
 const client = require('twilio')(accountSid, authToken);
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
@@ -13,7 +14,7 @@ router.post('/', (req, res) => {
   client.messages
     .create({
       body: `Hello ${name}, ${date}`,
-      messagingServiceSid: 'MG4eb433bb980dbf399424222f574c569e',
+      messagingServiceSid: smsServiceSID,
       to: phone
     })
     .then(message => {
