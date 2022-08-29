@@ -8,6 +8,7 @@ $(() => {
   window.viewsManager.show = function(item) {
     $app.detach();
     $checkoutForm.detach();
+    $myOrders.detach();
 
     switch (item) {
     case item = 'app':
@@ -15,6 +16,9 @@ $(() => {
       break;
     case item = 'checkout':
       $checkoutForm.appendTo($main);
+      break;
+    case item = 'orders':
+      $myOrders.appendTo($main);
       break;
     }
   };
