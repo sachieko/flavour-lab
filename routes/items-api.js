@@ -5,7 +5,7 @@ const userQueries = require('../db/queries/items');
 router.get('/', (req, res) => {
   userQueries.getItems()
     .then(items => {
-      res.json([items]);
+      res.json(items);
     })
     .catch(err => {
       res
