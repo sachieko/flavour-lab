@@ -17,22 +17,16 @@ body {
   flex-direction: column;
   font-size: $text-size;
   font-family: $primary-font;
-  // font-weight: 500;
 
   h2 {
     font-size: $h2-size;
     font-weight: bold;
-    margin-bottom: 18px;
+    margin-bottom: 2.2vh;
   }
 
   h5 {
     font-size: $h5-size;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 0.5em;
   }
-}
-
-/* Desktop and larger styles */
-@media only screen and (min-width: 1024px) {
-
 }
