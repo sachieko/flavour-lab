@@ -19,8 +19,8 @@ $(() => {
           <img src="${item.picture_url}">
         </div>
       </article>`);
-    item.is_available ? $($itemHTML).children('div.item-info').append(`<form class="view-item-btn" action="/api/items/${item.id}" method="GET">
-    <input type="hidden" name="item-id" value="${item.id}">
+    item.is_available ? $($itemHTML).children('div.item-info').append(`<form class="view-item-btn">
+    <input type="hidden" name="itemId" value="${item.id}">
     <button type="submit" class="add-btn">Add to Order</button>
     </form>`) : $($itemHTML).children('div.item-info').append(`<span class="unavailable">Item is unavailable</span>`);
     $app.append($itemHTML[0]);
@@ -43,8 +43,11 @@ $(() => {
 
   $('body').on('submit', '.view-item-btn', function(event) {
     event.preventDefault();
-    const itemId = $(this[0])[0].value; // Gets the value of the hidden input which is the item ID.
-    console.log(itemId);
+    const data = $(this).serialize()
+    console.log(data);
+    addToCart(data).fail((xhr, status, err)=>{
+      console.log(err);
+    });
   });
 });
 

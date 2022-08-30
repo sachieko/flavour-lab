@@ -5,6 +5,7 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -24,6 +25,7 @@ app.use(
 );
 app.use('/images', express.static('public/images'));
 app.use(express.static('public'));
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -33,6 +35,7 @@ const userApiRoutes = require('./routes/users-api');
 const itemApiRoutes = require('./routes/items-api');
 const itemsRoutes = require('./routes/items');
 const smsApiRoutes = require('./routes/sms-api');
+const cartApiRoutes = require('./routes/cart-api');
 const usersRoutes = require('./routes/users');
 
 // Mount all resource routes
@@ -43,6 +46,7 @@ app.use('/api/users', userApiRoutes); // remove this later so we aren't spilling
 app.use('/items', itemsRoutes);
 app.use('/users', usersRoutes);
 app.use('/api/sms', smsApiRoutes);
+app.use('/api/cart', cartApiRoutes);
 
 // Note: mount other resources here, using the same pattern above
 

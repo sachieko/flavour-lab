@@ -35,3 +35,15 @@ const getDetailsForOrder = (order) => {
 
 exports.getDetailsForOrder = getDetailsForOrder;
 
+const insertOrder = (order) => {
+  return db.query(`
+  INSERT INTO orders (name, phone, note, tax, tip, discount)
+  VALUES ($1, $2, $3, $4, $5, $6)
+  RETURNING *`,
+  [order.name, order.phone, order.note, order.tax, order.tip, order.discount])
+    .then(data => {
+      return data.rows[0];
+    });
+};
+
+exports.insertOrder = insertOrder;
