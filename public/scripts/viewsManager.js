@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 $(() => {
 
-  const $main = $('#main-content');
+  const $main = $('.main-content');
 
   window.viewsManager = {};
 

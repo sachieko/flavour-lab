@@ -8,7 +8,7 @@ $(() => {
     </header>`
   );
   window.$navBar = $navBar;
-  $navBar.appendTo('#main-content');
+  $navBar.prependTo('body');
   $('body').on('click', 'header img', function() {
     viewsManager.show('app');
   });
