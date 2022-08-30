@@ -20,12 +20,11 @@
     margin-bottom: 1em;
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 
-      .item-info {
-        margin: 0.5em;
+    .item-info {
+      margin: 0.5em;
 
-        p {
-          padding-bottom: 0.7em;
-        }
+      p {
+        padding-bottom: 0.7em;
 
         .item-desc {
           color: $secondary-color;
@@ -53,14 +52,15 @@
           color: $primary-color;
         }
       }
-
-      img {
-        width: 8.5em;
-        height: 8.5em;
-        background-size: cover;
-        margin: 0.5em;
-        border-radius: 2px;
-      }
     }
   }
+  img {
+    width: 8.5em;
+    height: 8.5em;
+    background-size: cover;
+    margin: 0.5em;
+    border-radius: 2px;
+  }
+}
+
 
