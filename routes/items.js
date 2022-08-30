@@ -1,11 +1,13 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
+const itemQueries = require('../db/queries/items');
 
+// GET menu /items/
 router.get('/', (req, res) => {
-  const items = router.get('../api/items', (request, response) => {
-    return response;
-  });
-  res.render(items);
+  itemQueries.getItems()
+    .then(items => {
+      res.json(items);
+    });
 });
 
 module.exports = router;
