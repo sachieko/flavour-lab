@@ -38,11 +38,11 @@ $(() => {
     getCart().then(cart => {
       viewsManager.show('checkout');
       const $checkoutItem = $checkoutPage.find('#checkoutItems');
-      for (const product of cart){
+      for (const product of cart) {
         $checkoutItem.append(
           `<tr>
             <td>${product.item.name}</td>
-            <td>$${product.item.price} x ${product.count} = $${product.item.price*product.count}</td>
+            <td>$${product.item.price} x ${product.count} = $${product.item.price * product.count}</td>
             <td>
               <form class=removeItem>
                 <input type="hidden" name="id" value="${product.item.id}"></input>
@@ -52,7 +52,7 @@ $(() => {
           </tr>`);
       }
       $checkoutItem.append($checkoutItem);
-    })
+    });
   });
 });
 /*

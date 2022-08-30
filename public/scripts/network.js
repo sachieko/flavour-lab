@@ -13,14 +13,14 @@ const sendText = function(data) {
 const getCart = function() {
   let url = "/api/cart";
   return $.get(url);
-}
+};
 
 const addToCart = function(data) {
   let url = "/api/cart";
   return $.post(url, data);
-}
+};
 
 const removeFromCart = function(data) {
   let url = "/api/cart/delete";
   return $.post(url, data);
-}
+};

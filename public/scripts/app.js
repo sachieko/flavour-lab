@@ -43,7 +43,7 @@ $(() => {
 
   $('body').on('submit', '.view-item-btn', function(event) {
     event.preventDefault();
-    const data = $(this).serialize()
+    const data = $(this).serialize();
     console.log(data);
     addToCart(data).fail((xhr, status, err)=>{
       console.log(err);
