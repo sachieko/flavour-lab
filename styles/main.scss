@@ -5,13 +5,13 @@
 
    @import '_variables';
 
-   .menu {
+#menu {
     display: flex;
     flex-direction: column;
     padding-top: 125px;
     margin: 1.5em 0.8em 0 0.8em;
 
-    article {
+  article {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -25,17 +25,16 @@
 
         p {
           padding-bottom: 0.7em;
-        }
 
-        .item-desc {
+      .item-desc {
           color: $secondary-color;
         }
 
-        .item-price {
+      .item-price {
           font-weight: bold;
         }
 
-        button {
+      button {
           background-color: $btn-background-color;
           color: $btn-color ;
           border-radius: 6px;
@@ -48,7 +47,7 @@
           cursor: pointer;
         }
 
-        button:hover {
+      button:hover {
           background-color: $nav-background-color;
           color: $primary-color ;
         }
@@ -63,3 +62,4 @@
       }
     }
   }
+}
