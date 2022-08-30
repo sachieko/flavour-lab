@@ -13,8 +13,7 @@ const items = require('../db/queries/items');
 router.post('/', (req, res) => {
   console.log('got here');
   const cart = req.cookies.cart;
-  if (!cart){
-    console.log('gotta have a cart baby');
+  if (!cart) {
     return res.status(400).end();
   }
 
@@ -24,47 +23,44 @@ router.post('/', (req, res) => {
   const tax = req.body.tax;
   const tip = req.body.tip;
   console.log(name, phone, note, tax, tip);
-  const orderArguments = {name, phone, note, tax, tip}
+  const orderArguments = {name, phone, note, tax, tip};
 
   orders.insertOrder(orderArguments)
-  .then(order => {
-    console.log('new order', order);
-    const parsed = JSON.parse(cart);
-    const queries = [];
-    for (const itemId in parsed){ //parsed[id] is count
-      const orderDetailArgs = {
-        order_id: order.id,
-        item_id: Number(itemId),
-        quantity: parsed[itemId],
-        price: 10
+    .then(order => {
+      const parsed = JSON.parse(cart);
+      const queries = [];
+      for (const itemId in parsed) { //parsed[id] is count
+        const orderDetailArgs = {
+          order_id: order.id,
+          item_id: Number(itemId),
+          quantity: parsed[itemId],
+          price: 10
+        };
+        queries.push(orderDetails.insertOrderDetails(orderDetailArgs));
       }
-      queries.push(orderDetails.insertOrderDetails(orderDetailArgs));
-    }
-    Promise.all(queries)
-    .then((allOrderDetails) => {
-      console.log('linked with all items');
-      items.getItemsByOrderId(order.id)
-      .then(items => {
-        console.log('all order items', items);
-        const date = new Date();
-        const twiml = new MessagingResponse();
-        client.messages
-          .create({
-            body: `Hello ${name}, ${date}`,
-            messagingServiceSid: smsServiceSID,
-            to: phone
-          })
-          .then(message => {
-            //console.log(message.sid)
-          })
-          .done();
-
-        //res.writeHead(200, {'Content-Type': 'text/xml'});
-        //res.end(twiml.toString());
-        res.send(items);
-      });
-    })
-  });
+      Promise.all(queries)
+        .then((allOrderDetails) => {
+          items.getItemsByOrderId(order.id)
+            .then(items => {
+              console.log('all order items', items);
+              const date = new Date();
+              const twiml = new MessagingResponse();
+              client.messages
+                .create({
+                  body: `Hello ${name}, ${date}`,
+                  messagingServiceSid: smsServiceSID,
+                  to: phone
+                })
+                .then(message => {
+                  //console.log(message.sid)
+                })
+                .done();
+              //res.writeHead(200, {'Content-Type': 'text/xml'});
+              //res.end(twiml.toString());
+              res.send(items);
+            });
+        });
+    });
 });
 
 module.exports = router;
