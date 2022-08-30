@@ -39,7 +39,7 @@ const insertOrder = (order) => {
   return db.query(`
   INSERT INTO orders (name, phone, note, tax, tip, discount)
   VALUES ($1, $2, $3, $4, $5, $6)
-  RETURNING *`,
+  RETURNING *;`,
   [order.name, order.phone, order.note, order.tax, order.tip, order.discount])
     .then(data => {
       return data.rows[0];
