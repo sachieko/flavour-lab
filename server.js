@@ -5,6 +5,7 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -24,20 +25,24 @@ app.use(
 );
 app.use('/images', express.static('public/images'));
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
 const usersRoutes = require('./routes/users');
 const itemApiRoutes = require('./routes/items-api');
+const itemsRoutes = require('./routes/items');
 const smsApiRoutes = require('./routes/sms-api');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/api/users', userApiRoutes);
-app.use('/users', usersRoutes);
 app.use('/api/items', itemApiRoutes);
+app.use('/api/users', userApiRoutes); // remove this later so we aren't spilling user info into a get request.
+app.use('/users', usersRoutes);
+app.use('/items', itemsRoutes);
 app.use('/api/sms', smsApiRoutes);
 
 // Note: mount other resources here, using the same pattern above
