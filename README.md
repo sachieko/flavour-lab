@@ -1,5 +1,6 @@
-LHL Node Skeleton
+Flavour-Labs: A food ordering app.
 =========
+Collaborators: [Sylvielcq](https://github.com/sylvielcq), [anthonycampbell](https://github.com/anthonycampbell), [Sachieko](https://github.com/sachieko)
 
 ## Flavour-Labs Entity Relationship Diagram
 

@@ -5,60 +5,61 @@
 
    @import '_variables';
 
-   .menu {
+#menu {
     display: flex;
     flex-direction: column;
     margin: 1.5em 0.8em 0 0.8em;
 
-    article {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      max-width: 100%;
-      min-width: 250px;
-      margin-bottom: 1em;
-      box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  article {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 100%;
+    min-width: 250px;
+    margin-bottom: 1em;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 
-      .item-info {
-        margin: 0.5em;
+    .item-info {
+      margin: 0.5em;
 
-        p {
-          padding-bottom: 0.7em;
-        }
-
-        .item-desc {
-          color: $secondary-color;
-        }
-
-        .item-price {
-          font-weight: bold;
-        }
-
-        button {
-          background-color: $btn-background-color;
-          color: $btn-color ;
-          border-radius: 6px;
-          border-width: 0;
-          font-size: 95%;
-          width: 8em;
-          padding-top: 0.5vh;
-          padding-bottom: 0.5vh;
-          margin-bottom: 1vh;
-          cursor: pointer;
-        }
-
-        button:hover {
-          background-color: $nav-background-color;
-          color: $primary-color ;
-        }
+      p {
+        padding-bottom: 0.7em;
       }
 
-      img {
-        width: 8.5em;
-        height: 8.5em;
-        background-size: cover;
-        margin: 0.5em;
-        border-radius: 2px;
+      .item-desc {
+        color: $secondary-color;
+      }
+
+      .item-price {
+        font-weight: bold;
+      }
+
+      button {
+        background-color: $btn-background-color;
+        color: $btn-color ;
+        border-radius: 6px;
+        border-width: 0;
+        font-size: 95%;
+        width: 8em;
+        padding-top: 0.5vh;
+        padding-bottom: 0.5vh;
+        margin-bottom: 1vh;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: $nav-background-color;
+        color: $primary-color ;
       }
     }
+
+    img {
+      width: 8.5em;
+      height: 8.5em;
+      background-size: cover;
+      margin: 0.5em;
+      border-radius: 2px;
+    }
   }
+}
+
