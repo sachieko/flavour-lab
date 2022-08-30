@@ -10,18 +10,19 @@ nav {
   background-color: $primary-color;
   // background-color: $nav-background-color;
   background-image: $background-image;
-  display: flex;
-  height: 80px;
-  width: 100vw;
   color: $primary-color;
-  padding: 1.5em;
+  display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  padding: 1.5em;
   z-index: 1;
   position: fixed;
 
   .logo {
     font-family: $secondary-font;
-    font-size: $logo-size;
+    font-size: 7vw;
     font-weight: 500;
     // text-shadow: 2px 2px 0px #FFFFFF,
     //              4px 4px 0px #abaaaa,
@@ -69,3 +70,4 @@ nav {
 
   }
 }
+
