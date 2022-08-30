@@ -1,9 +1,9 @@
 const express = require('express');
 const router  = express.Router();
-const userQueries = require('../db/queries/items');
+const itemQueries = require('../db/queries/items');
 
 router.get('/', (req, res) => {
-  userQueries.getItems()
+  itemQueries.getItems()
     .then(items => {
       res.json(items);
     })
@@ -12,6 +12,12 @@ router.get('/', (req, res) => {
         .status(500)
         .json({ error: err.message });
     });
+});
+
+router.get('/:id', (req, res) => {
+  itemQueries.getItemById(req.params.id)
+    .then(item => console.log(item));
+  res.end();
 });
 
 module.exports = router;
