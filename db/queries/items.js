@@ -12,16 +12,29 @@ const getItems = () => {
 
 exports.getItems =  getItems;
 
-const getItemById = (item) => {
+const getItemById = (id) => {
   return db.query(`
   SELECT categories.name, items.* FROM items
   JOIN categories ON category_id = categories.id
-  WHERE items.id = #1
-  ORDER BY categories.id;`, [item.id])
+  WHERE items.id = $1
+  ORDER BY categories.id;`, [id])
     .then(data => {
       return data.rows[0];
     });
 };
 
 exports.getItemById =  getItemById;
+
+const getItemsByOrderId = (id) => {
+  return db.query(`
+  SELECT items.*, order_details.quantity
+  FROM items
+  JOIN order_details ON items.id = order_details.item_id
+  WHERE order_details.order_id = $1;`, [id])
+    .then(data => {
+      return data.rows;
+    });
+};
+
+exports.getItemsByOrderId =  getItemsByOrderId;
 
