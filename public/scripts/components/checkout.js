@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 $(() => {
   const $checkoutPage = $(
-  `<div id="checkoutPage">
+    `<div id="checkoutPage">
     <table id="checkoutItems">
       <tr>
         <th>Name</th>
@@ -22,11 +22,10 @@ $(() => {
 
   window.$checkoutPage = $checkoutPage;
 
-  $('body').on('submit', '.removeItem', function(event){
+  $('body').on('submit', '.removeItem', function(event) {
     event.preventDefault();
     const data = $(this).serialize();
-    console.log(data);
-    removeFromCart(data).then( (res) => {
+    removeFromCart(data).then(res => {
       $('body').find('header #navCheckoutButton').trigger('click');
     });
   });
@@ -35,8 +34,7 @@ $(() => {
     event.preventDefault();
     const data = $(this).serialize();
     sendText(data).then((order)=>{
-      console.log(order);
-      for (const product of order){
+      for (const product of order) {
         $myOrders.append(
           `<tr>
             <td>${product.name}</td>
