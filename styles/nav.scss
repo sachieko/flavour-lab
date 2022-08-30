@@ -1,0 +1,25 @@
+/* ==========================================================================
+   NAVIGATION BAR
+   ========================================================================== */
+
+
+   @import '_variables';
+
+
+nav {
+  display: flex;
+  height: 80px;
+  width: 100vw;
+  background-color: $nav-background-color;
+  color: $primary-color;
+  padding: 1.5em;
+  justify-content: space-between;
+  z-index: 1;
+  position: fixed;
+
+  .logo {
+    font-family: $secondary-font;
+    font-size: $logo-size;
+    font-weight: 600;
+  }
+}

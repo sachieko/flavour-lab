@@ -1,6 +1,38 @@
-// See: https://sass-lang.com/
+/* ==========================================================================
+   GLOBAL LAYOUT
+   ========================================================================== */
+
+
+   @import '_variables';
+
 
 body,
 html {
   margin: 0;
+}
+
+body {
+  background: $primary-background-color;
+  display: flex;
+  flex-direction: column;
+  font-size: $text-size;
+  font-family: $primary-font;
+  // font-weight: 500;
+
+  h2 {
+    font-size: $h2-size;
+    font-weight: bold;
+    margin-bottom: 18px;
+  }
+
+  h5 {
+    font-size: $h5-size;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+}
+
+/* Desktop and larger styles */
+@media only screen and (min-width: 1024px) {
+
 }
