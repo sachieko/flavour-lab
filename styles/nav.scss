@@ -7,19 +7,74 @@
 
 
 nav {
-  display: flex;
-  height: 80px;
-  width: 100vw;
-  background-color: $nav-background-color;
+  background-color: $primary-color;
+  // background-color: $nav-background-color;
+  background-image: $background-image;
   color: $primary-color;
-  padding: 1.5em;
+  display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  padding: 1.5em;
   z-index: 1;
   position: fixed;
 
   .logo {
     font-family: $secondary-font;
-    font-size: $logo-size;
-    font-weight: 600;
+    font-size: 7vw;
+    font-weight: 500;
+    // text-shadow: 2px 2px 0px #FFFFFF,
+    //              4px 4px 0px #abaaaa,
+    //              5px 5px 0px #abaaaa,
+    //              6px 6px 0px #abaaaa,
+    //              7px 7px 0px #abaaaa;
+    // color: #FFFFFF;
+    // text-shadow:
+    //   0 0 3px #fff,
+    //   0 0 8px #fff,
+    //   0 0 20px #fff,
+    //   0 0 42px #f7dd47,
+    //   0 0 82px #f7dd47,
+    //   0 0 92px #f7dd47,
+    //   0 0 102px #f7dd47,
+    //   0 0 151px #f7dd47;
+
+    // color: #f4eeeb;
+    // text-shadow:
+    //   0 0 3px #fcccb3,
+    //   0 0 8px #fcccb3,
+    //   0 0 20px #fcccb3,
+    //   0 0 42px #f7dd47,
+    //   0 0 82px #f7dd47,
+    //   0 0 92px #f7dd47,
+    //   0 0 102px #f7dd47;
+    //   // 0 0 151px #fc7025;
+
+    color: #f7f2ef;
+    text-shadow:
+      0 0 3px #fcccb3,
+      0 0 8px #fcccb3,
+      0 0 20px #fcccb3,
+      0 0 42px #fc7025,
+      0 0 82px #fc7025,
+      0 0 92px #fc7025,
+      0 0 102px #fc7025,
+      // 0 0 151px #fc7025;
+
+    // color: #000000;
+    // text-shadow:
+    //   0 0 3px #fff,
+    //   0 0 8px #fff,
+    //   0 0 20px #fff;
+
+  }
+}
+
+/* Tablets */
+@media only screen and (min-width: 768px) {
+
+  nav .logo {
+    font-size: 40px;
   }
 }
