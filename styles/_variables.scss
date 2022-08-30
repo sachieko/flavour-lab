@@ -3,22 +3,26 @@
    ========================================================================== */
 
 /* Fonts */
-// $primary-font:
-// $secondary-font:
+$primary-font: 'Montserrat', sans-serif;
+$secondary-font: 'Heebo', sans-serif;
 
 /* Fonts sizes*/
-$text-size: 14px;
+$text-size: 12px;
+$logo-size: 2.5em;
+$h2-size: 1.7em;
+$h5-size: 1.1em;
 
 
 /* Font colors */
 $primary-color: #000000;
-// $secondary-color: #FFFFFF;
+$secondary-color: #565656;
+$btn-color: #FFFFFF;
 
 /* Backgrounds */
 // $background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
 $primary-background-color: #FFFFFF;
 $nav-background-color: #f7dd47;
-// $header-background-color: #a8dadc;
+$btn-background-color: #000000;
 
 
 /* Buttons */

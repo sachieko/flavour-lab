@@ -16,4 +16,10 @@ nav {
   justify-content: space-between;
   z-index: 1;
   position: fixed;
+
+  .logo {
+    font-family: $secondary-font;
+    font-size: $logo-size;
+    font-weight: 600;
+  }
 }
