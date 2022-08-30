@@ -33,33 +33,34 @@
         .item-price {
           font-weight: bold;
         }
+      }
 
-        button {
-          background-color: $btn-background-color;
-          color: $btn-color;
-          border-radius: 6px;
-          border-width: 0;
-          font-size: 95%;
-          width: 8em;
-          padding-top: 0.5vh;
-          padding-bottom: 0.5vh;
-          margin-bottom: 1vh;
-          cursor: pointer;
-        }
+      button {
+        background-color: $btn-background-color;
+        color: $btn-color;
+        border-radius: 6px;
+        border-width: 0;
+        font-size: 95%;
+        width: 8em;
+        padding-top: 0.5vh;
+        padding-bottom: 0.5vh;
+        margin-bottom: 1vh;
+        cursor: pointer;
+      }
 
-        button:hover {
-          background-color: $nav-background-color;
-          color: $primary-color;
-        }
+      button:hover {
+        background-color: $nav-background-color;
+        color: $primary-color;
       }
     }
-  }
-  img {
-    width: 8.5em;
-    height: 8.5em;
-    background-size: cover;
-    margin: 0.5em;
-    border-radius: 2px;
+
+    img {
+      width: 8.5em;
+      height: 8.5em;
+      background-size: cover;
+      margin: 0.5em;
+      border-radius: 2px;
+    }
   }
 }
 
