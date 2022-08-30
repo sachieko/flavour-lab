@@ -7,6 +7,31 @@
 
 
    header {
-    display: flex;
     padding-top: 90px;
+    width: 100%;
+    margin: 0.8em 0.8em 0.8em 0.8em;
+    position: fixed;
+
+    div{
+      display: flex;
+      justify-content: center;
+
+      a {
+        text-transform: uppercase;
+        color: $primary-color
+        font-size: $h5-size;
+        font-weight: bold;
+        margin-left: 1vw;
+        margin-right: 3vw;
+      }
+
+      a:link {
+        color: $primary-color
+      }
+
+      a:hover {
+        cursor: pointer;
+      }
+    }
+
    }
