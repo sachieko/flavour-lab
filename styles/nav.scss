@@ -7,10 +7,11 @@
 
 
 nav {
+  background-color: $nav-background-color;
+  background-image: $background-image;
   display: flex;
   height: 80px;
   width: 100vw;
-  background-color: $nav-background-color;
   color: $primary-color;
   padding: 1.5em;
   justify-content: space-between;
@@ -21,5 +22,7 @@ nav {
     font-family: $secondary-font;
     font-size: $logo-size;
     font-weight: 600;
+    text-shadow: 2px 2px 0px #dad9d9,
+                 4px 4px 0px #757474;
   }
 }
