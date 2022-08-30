@@ -55,25 +55,3 @@ $(() => {
     });
   });
 });
-/*
-<!-- Top nav bar (fixed) -->
-  <nav>
-    <span class="logo">Flavour Labs</span>
-    <div class="cart">
-
-    </div>
-  </nav>
-
-  <!-- Header menu links (fixed) -->
-  <header class="menu-links">
-    <div>
-      <a href="/" class="menu-link">Appetizers</a>
-      <a href="/" class="menu-link">Salads</a>
-      <a href="/" class="menu-link">Potato</a>
-      <a href="/" class="menu-link">Mains</a>
-      <a href="/" class="menu-link">Desserts</a>
-      <a href="/" class="menu-link">Drinks</a>
-      <a href="/" class="menu-link">Sauces</a>
-    </div>
-  </header>
-  */
