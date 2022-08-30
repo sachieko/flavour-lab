@@ -6,10 +6,10 @@
    @import '_variables';
 
 #menu {
-    display: flex;
-    flex-direction: column;
-    padding-top: 125px;
-    margin: 1.5em 0.8em 0 0.8em;
+  display: flex;
+  flex-direction: column;
+  padding-top: 125px;
+  margin: 1.5em 0.8em 0 0.8em;
 
   article {
     display: flex;
@@ -25,6 +25,7 @@
 
         p {
           padding-bottom: 0.7em;
+        }
 
         .item-desc {
           color: $secondary-color;
@@ -36,7 +37,7 @@
 
         button {
           background-color: $btn-background-color;
-          color: $btn-color ;
+          color: $btn-color;
           border-radius: 6px;
           border-width: 0;
           font-size: 95%;
@@ -49,7 +50,7 @@
 
         button:hover {
           background-color: $nav-background-color;
-          color: $primary-color ;
+          color: $primary-color;
         }
       }
 
@@ -62,5 +63,4 @@
       }
     }
   }
-}
 
