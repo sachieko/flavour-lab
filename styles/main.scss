@@ -12,13 +12,13 @@
     margin: 1.5em 0.8em 0 0.8em;
 
   article {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      max-width: 100%;
-      min-width: 250px;
-      margin-bottom: 1em;
-      box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 100%;
+    min-width: 250px;
+    margin-bottom: 1em;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 
       .item-info {
         margin: 0.5em;
@@ -26,15 +26,15 @@
         p {
           padding-bottom: 0.7em;
 
-      .item-desc {
+        .item-desc {
           color: $secondary-color;
         }
 
-      .item-price {
+        .item-price {
           font-weight: bold;
         }
 
-      button {
+        button {
           background-color: $btn-background-color;
           color: $btn-color ;
           border-radius: 6px;
@@ -47,7 +47,7 @@
           cursor: pointer;
         }
 
-      button:hover {
+        button:hover {
           background-color: $nav-background-color;
           color: $primary-color ;
         }
@@ -63,3 +63,4 @@
     }
   }
 }
+
