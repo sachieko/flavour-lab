@@ -15,6 +15,8 @@ $(() => {
 
   $('body').on('click', 'header #navOrdersButton', function() {
     getOrder().then((order) => {
+      console.log(order);
+      viewsManager.show('orders');
       $myOrders.find('#orderDetails').append(`
         <p>Name on Order: ${order.info.name}</p>
         <p>Phone on Order: ${order.info.phone}</p>
@@ -23,14 +25,15 @@ $(() => {
         <p>ETA: ${order.info.estimated_time}</p>
         <p>Completed at: ${order.info.completed_time}</p>
       `);
-      $myOrders.find('#checkoutItems').append(
+      $myOrders.find('#orderPageCheckoutItems').append(
         `<tr><th>Name</th><th>Price</th></tr>`);
       for (const item of order.items){
-        $myOrders.find('#checkoutItems').append(
+        $myOrders.find('#orderPageCheckoutItems').append(
           `<tr><td>${item.name}</td><td>$${item.price}</td></tr>`);
       }
+    }).catch(err => {
+      console.log(err);
     });
-    viewsManager.show('orders');
   });
 
   $('body').on('click', 'header #navCheckoutButton', function() {

@@ -34,14 +34,7 @@ $(() => {
     event.preventDefault();
     const data = $(this).serialize();
     sendText(data).then((res)=>{
-      for (const product of res.items){
-        $myOrders.append(
-          `<tr>
-            <td>${product.name}</td>
-            <td>$${product.price}</td>
-          </tr>`);
-      }
-      viewsManager.show('orders');
+      $('header #navOrdersButton').trigger('click');
     });
   });
 

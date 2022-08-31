@@ -7,7 +7,7 @@ $(() => {
       <div id="orderDetails">
       </div>
       <h5>Receipt:</h5>
-      <table id="checkoutItems">
+      <table id="orderPageCheckoutItems">
       </table>
     </div>`
   );

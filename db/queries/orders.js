@@ -47,3 +47,30 @@ const insertOrder = (order) => {
 };
 
 exports.insertOrder = insertOrder;
+
+const updateField = (field, id, estimate=null) => {
+  let text = 'UPDATE orders SET ';
+  const args =[];
+  if (field === 'Start'){
+    text += 'started_time'
+  } else if (field === 'Estimate'){
+    text += 'estimated_time';
+  } else if (field === 'Complete'){
+    text += 'completed_time';
+  }
+  text += `= NOW() `;
+  if (estimate){
+    args.push(estimate);
+    text += `+ $1::int * INTERVAL '1 min' `
+  }
+  args.push(Number(id));
+  text += `WHERE orders.id = $${args.length} RETURNING *;`
+  console.log(args);
+  console.log(text);
+  return db.query(text, args)
+  .then(data => {
+    return data.rows[0];
+  });
+};
+
+exports.updateField = updateField;

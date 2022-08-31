@@ -90,12 +90,30 @@ router.post('/customer', (req, res) => {
 });
 
 router.post('/restaurant', (req, res) => {
-  console.log(req.body.Body);
+  const args = req.body.Body.split(' ');
+  const cmd = args[0];
+  const id = args[1];
+  const estimate = args[2];
   const twiml = new MessagingResponse();
-  twiml.message('Guy Fieri says scrumptious.');
-  res.writeHead(200, {'Content-Type': 'text/xml'});
-  res.end(twiml.toString());
-
+  if (cmd !== 'Start' && cmd !== 'Estimate' && cmd !== 'Complete'){
+    twiml.message(
+      `Oops. The optional commands are Start 'orderId', Estimate 'OrderId' 'minutes', or Complete 'orderId'`
+    );
+    res.writeHead(200, {'Content-Type': 'text/xml'});
+    return res.end(twiml.toString());
+  }
+  orders.updateField(cmd, id, estimate)
+  .then((updatedOrder) => {
+    twiml.message(`Updated order ${updatedOrder.id}`);
+    res.writeHead(200, {'Content-Type': 'text/xml'});
+    return res.end(twiml.toString());
+  })
+  .catch((err) => {
+    console.log(err);
+    twiml.message(`oops wrong something went wrong. We got ${cmd}, ${id}, ${estimate}`);
+    res.writeHead(200, {'Content-Type': 'text/xml'});
+    return res.end(twiml.toString());
+  })
 });
 
 module.exports = router;
