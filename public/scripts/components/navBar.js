@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 $(() => {
-  const $navBar = $(
+  const $navBar = $( // Currently categories are hard coded, refactor to build categories from db!
     `
       <nav>
       <div>
@@ -16,9 +16,8 @@ $(() => {
       </nav>
       <header class="menu-links">
       <div>
-        <a href="#AppetizersSpot" class="menu-link">Appetizers</a>
+        <a href="#StartersSpot" class="menu-link">Starters</a>
         <a href="#SaladsSpot" class="menu-link">Salads</a>
-        <a href="#PotatoSpot" class="menu-link">Potato</a>
         <a href="#MainsSpot" class="menu-link">Mains</a>
         <a href="#DessertsSpot" class="menu-link">Desserts</a>
         <a href="#DrinksSpot" class="menu-link">Drinks</a>
