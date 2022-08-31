@@ -42,9 +42,7 @@ $(() => {
   $('body').on('submit', '#checkoutForm', function(event) {
     event.preventDefault();
     const order = makeFormObject($(this).serializeArray()); // serialize Array output: [{ name:formname, value: formvalue }...]
-    console.log('data from form:', order);
     getCart().then(orderDetails => {
-      console.log('cart: ', orderDetails);
       addOrder(order)
         .then(response => {
           window.viewsManager.show('orders');
