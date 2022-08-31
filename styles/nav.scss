@@ -71,6 +71,34 @@ nav {
   }
 }
 
+.menu-links {
+  padding-top: 8em;
+  width: 100%;
+  margin-left: 2em;
+  position: fixed;
+
+  div{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  a {
+    text-transform: uppercase;
+    font-size: $h5-size;
+    font-weight: bold;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+
+    &:link {
+      color: $btn-color;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
 /* Tablets */
 @media only screen and (min-width: 768px) {
 
@@ -88,6 +116,7 @@ nav {
   div{
     display: flex;
     justify-content: center;
+    margin-right: 0.5vw;
   }
   a {
     text-transform: uppercase;

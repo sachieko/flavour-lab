@@ -4,7 +4,7 @@ $(() => {
     `
       <nav>
       <div>
-      <img style="width:50px" src="../../images/fieri.png" />
+      <img style="width:4.5em" src="../../images/fieri.png" />
       <span class="logo">Flavour Labs</span>
       </div>
       <div>
