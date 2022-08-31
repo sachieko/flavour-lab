@@ -3,11 +3,13 @@ $(() => {
   const $navBar = $(
     `
       <nav>
-      <img style="width:4.5em" src="../../images/fieri.png" />
+      <div>
+      <img src="../../images/fieri.png" />
       <div>
       <span class="logo">Flavour </span><span class="logo">Labs</span>
       </div>
-      <div>
+      </div>
+      <div class="nav-buttons">
       <button id="navOrdersButton">Orders</button>
       <button type="button" id="cart-btn"><i class="fa fa-shopping-cart"> Cart</i></button>
       </div>
