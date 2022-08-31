@@ -5,9 +5,9 @@ const getItems = function() {
   return $.get(url);
 };
 
-const sendText = function(data) {
+const sendText = function() {
   let url = "/api/sms/customer";
-  return $.post(url, data);
+  return $.get(url);
 };
 
 const getCart = function() {
@@ -19,13 +19,29 @@ const addToCart = function(data) {
   let url = "/api/cart";
   return $.post(url, data);
 };
+// <<<<<<< HEAD
+// =======
+
+const addOrder = function(order) {
+  let url = "/api/orders";
+  return $.post(url, order);
+};
+
+const addOrderDetails = function(details) {
+  let url = `/api/orders/${details.order_id}`;
+  return $.post(url, details);
+};
+//>>>>>>> main
 
 const removeFromCart = function(data) {
   let url = "/api/cart/delete";
   return $.post(url, data);
 };
+//<<<<<<< HEAD
 
 const getOrder = function() {
   let url = "/api/orders";
   return $.get(url);
 };
+//=======
+// >>>>>>> main

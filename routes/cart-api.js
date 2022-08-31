@@ -9,12 +9,12 @@ router.get('/', (req, res) => {
   }
   const parsed = JSON.parse(cart);
   const queries = [];
-  for (const id in parsed){
+  for (const id in parsed) {
     queries.push(items.getItemById(id).then((item) => {
       return {
         count: parsed[id],
         item: item
-       }
+      };
     }));
   }
   Promise.all(queries).then((items) => {

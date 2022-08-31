@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable camelcase */
 const express = require('express');
 require('dotenv').config();
 const router  = express.Router();
@@ -10,14 +12,36 @@ const orders = require('../db/queries/orders');
 const orderDetails = require('../db/queries/order_details');
 const items = require('../db/queries/items');
 
-function scrubData(data, val){
-  if (!data){
-    data = val;
-  }
-  return data;
+const sendMsg = function(msg, phone){
+  client.messages.create({
+    body: msg,
+    messagingServiceSid: smsServiceSID,
+    to: phone
+  })
+  .then(message => {
+    //console.log(message.sid)
+  })
+  .done();
 }
 
-router.post('/customer', (req, res) => {
+router.get('/customer', (req, res) => {
+  console.log('it is over here');
+  console.log(req.cookies.orderId);
+  const orderId = req.cookies.orderId;
+  if (!orderId){
+    return res.status(400).end();
+  }
+  orders.getOrderById(orderId)
+  .then((order) =>{
+    const customerMsg = `Hello ${order.name}. The restaurant has received your order`;
+    const restaurantMsg = `New order id: ${order.id} from ${order.name} with phone ${order.phone}`;
+    sendMsg(customerMsg, order.phone);
+    sendMsg(restaurantMsg, process.env.RESTAURANT_PHONE);
+    res.end();
+  })
+});
+
+/*router.post('/customer', (req, res) => {
   const cart = req.cookies.cart;
   const name = req.body.name;
   const phone = req.body.phone;
@@ -35,17 +59,16 @@ router.post('/customer', (req, res) => {
   }
   const orderArguments = {name, phone, note, tax, tip, discount}
   orders.insertOrder(orderArguments)
-  .then(order => {
-    console.log('new order', order);
-    const parsed = JSON.parse(cart);
-    const queries = [];
-    for (const itemId in parsed){ //parsed[id] is count
-      const orderDetailArgs = {
-        order_id: order.id,
-        item_id: Number(itemId),
-        quantity: parsed[itemId],
-        price: 10
-      }
+    .then(order => {
+      const parsed = JSON.parse(cart); // {"7":1,"9":1,"31":1,"32":2,"35":1}
+      const queries = [];
+      for (const itemId in parsed) { //parsed[id] is count
+        const orderDetailArgs = {
+          order_id: order.id,
+          item_id: Number(itemId),
+          quantity: parsed[itemId],
+          price: 10
+        };
       queries.push(orderDetails.insertOrderDetails(orderDetailArgs));
     }
     Promise.all(queries)
@@ -54,40 +77,13 @@ router.post('/customer', (req, res) => {
       items.getItemsByOrderId(order.id)
       .then(items => {
         console.log('all order items', items);
-        const twiml = new MessagingResponse();
-        client.messages
-          .create({
-            body:
-            `Hello ${name}. The restaurant has received your order`,
-            messagingServiceSid: smsServiceSID,
-            to: phone
-          })
-          .then(message => {
-            //console.log(message.sid)
-          })
-          .done();
-
-        client.messages
-          .create({
-            body: `
-            New order id: ${order.id} from ${order.name} with phone ${order.phone}`,
-            messagingServiceSid: smsServiceSID,
-            to: process.env.RESTAURANT_PHONE
-          })
-          .then(message => {
-            //console.log(message.sid)
-          })
-          .done();
-
-        //res.writeHead(200, {'Content-Type': 'text/xml'});
-        //res.end(twiml.toString());
         res.clearCookie('cart');
         res.cookie('orderId', order.id);
         res.send({order, items});
       });
     })
   });
-});
+});*/
 
 router.post('/restaurant', (req, res) => {
   const args = req.body.Body.split(' ');

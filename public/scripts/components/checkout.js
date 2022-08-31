@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 $(() => {
   const $checkoutPage = $(
-  `<div id="checkoutPage">
+    `<div id="checkoutPage">
     <table id="checkoutItems">
       <tr>
         <th>Name</th>
@@ -22,20 +23,28 @@ $(() => {
 
   window.$checkoutPage = $checkoutPage;
 
-  $('body').on('submit', '.removeItem', function(event){
+  $('body').on('submit', '.removeItem', function(event) {
     event.preventDefault();
     const data = $(this).serialize();
-    removeFromCart(data).then( (res) => {
-      $('body').find('header #navCheckoutButton').trigger('click');
+    removeFromCart(data).then(res => {
+      $('body').find('nav #cart-btn').trigger('click');
     });
   });
 
-  $checkoutPage.on('submit', '#checkoutForm', function(event) {
+  const makeFormObject = function(array) {
+    const returnObj = {};
+    for (const keyValuePair of array) {
+      returnObj[keyValuePair.name] = keyValuePair.value;
+    }
+    return returnObj;
+  };
+
+  $('body').on('submit', '#checkoutForm', function(event) {
     event.preventDefault();
     const data = $(this).serialize();
-    sendText(data).then((res)=>{
-      $('header #navOrdersButton').trigger('click');
+    addOrder(data).then((order)=>{
+      $navBar.find('#pages').find('#navOrdersButton').trigger('click');
+      sendText().catch((err) => {console.log(err);});
     });
   });
-
 });
