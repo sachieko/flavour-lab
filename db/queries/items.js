@@ -25,6 +25,19 @@ const getItemById = (id) => {
 
 exports.getItemById =  getItemById;
 
+const getAllItemsFromCart = (cart) => {
+  const itemQueries = [];
+  for (const id in cart) {
+    itemQueries.push(getItemById(id));
+  }
+  return Promise.all(itemQueries)
+    .then(items => {
+      return items;
+    });
+};
+
+exports.getAllItemsFromCart =  getAllItemsFromCart;
+
 const getItemsByOrderId = (id) => {
   return db.query(`
   SELECT items.*, order_details.quantity

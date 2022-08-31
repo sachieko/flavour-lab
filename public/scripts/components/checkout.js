@@ -41,15 +41,12 @@ $(() => {
 
   $('body').on('submit', '#checkoutForm', function(event) {
     event.preventDefault();
-    const order = makeFormObject($(this).serializeArray()); // serialize Array output: [{ name:formname, value: formvalue }...]
-    getCart().then(orderDetails => {
-      addOrder(order)
-        .then(response => {
-          window.viewsManager.show('orders');
-        })
-        .catch(err => {
-          console.log(err.message);
-        });
+    const data = $(this).serialize();
+    addOrder(data).then((order)=>{
+      $navBar.find('div').find('#navOrdersButton').trigger('click');
+      sendText().catch((err) => {
+        console.log(err);
+      });
     });
   });
 });
