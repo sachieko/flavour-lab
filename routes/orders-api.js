@@ -1,42 +1,35 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
-const express = require('express');
 require('dotenv').config();
-const router  = express.Router();
 const accountSid = process.env.TWILIO_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const smsServiceSID = process.env.SMS_SERVICE_SID;
 const client = require('twilio')(accountSid, authToken);
+const express = require('express');
+const router = express.Router();
+const items = require('../db/queries/items');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const orders = require('../db/queries/orders');
 const orderDetails = require('../db/queries/order_details');
-const items = require('../db/queries/items');
 
 router.post('/', (req, res) => {
-  const cart = req.cookies.cart;
-  if (!cart) {
-    return res.status(400).end();
-  }
-
-  const name = req.body.name;
-  const phone = req.body.phone;
-  const note = req.body.note;
-  const tax = req.body.tax;
-  const tip = req.body.tip;
-  const orderArguments = {name, phone, note, tax, tip};
-
-  orders.insertOrder(orderArguments)
+  const cart = JSON.parse(req.cookies.cart);
+  const order = req.body;
+  orders.insertOrder(order)
     .then(order => {
-      const parsed = JSON.parse(cart); // {"7":1,"9":1,"31":1,"32":2,"35":1}
       const queries = [];
-      for (const itemId in parsed) { //parsed[id] is count
-        const orderDetailArgs = {
-          order_id: order.id,
-          item_id: Number(itemId),
-          quantity: parsed[itemId],
-          price: 10
-        };
-        queries.push(orderDetails.insertOrderDetails(orderDetailArgs));
+      for (const itemId in cart) {
+        items.getItemById(itemId)
+          .then(item => {
+            const detailObj = {};
+            detailObj.order_id = Number(order.id);
+            detailObj.item_id = Number(item.id);
+            detailObj.quantity = Number(cart[itemId]);
+            detailObj.price = item.price;
+            detailObj.note = null;
+            queries.push(orderDetails.insertOrderDetails(detailObj));
+          })
+          .catch(err => console.log(err.message));
       }
       Promise.all(queries)
         .then((allOrderDetails) => {
@@ -46,9 +39,9 @@ router.post('/', (req, res) => {
               const twiml = new MessagingResponse();
               client.messages
                 .create({
-                  body: `Hello ${name}, ${date}`,
+                  body: `Hello ${order.name}, your order was submitted at: ${date}`,
                   messagingServiceSid: smsServiceSID,
-                  to: phone
+                  to: order.phone
                 })
                 .then(message => {
                   //console.log(message.sid)
@@ -59,7 +52,17 @@ router.post('/', (req, res) => {
               res.send(items);
             });
         });
-    });
+    })
+    .catch(err => console.log(err.message));
+});
+
+router.get('/:id', (req, res) => {
+  const id = req.params.id;
+  orders.getDetailsForOrderById(id)
+    .then(details => {
+      console.log(details);
+    })
+    .catch(err => console.log(err.message));
 });
 
 module.exports = router;

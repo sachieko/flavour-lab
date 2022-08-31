@@ -2,7 +2,7 @@
 /* eslint-disable no-undef */
 $(() => {
   const $myOrders = $(
-    `<div id="myOrders" style="background-color: blue">
+    `<div id="myOrders">
       <table id="checkoutItems">
         <tr>
           <th>Name</th>

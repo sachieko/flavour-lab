@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 $(() => {
   const $checkoutPage = $(
-  `<div id="checkoutPage">
+    `<div id="checkoutPage">
     <table id="checkoutItems">
       <tr>
         <th>Name</th>
@@ -22,29 +23,35 @@ $(() => {
 
   window.$checkoutPage = $checkoutPage;
 
-  $('body').on('submit', '.removeItem', function(event){
+  $('body').on('submit', '.removeItem', function(event) {
     event.preventDefault();
     const data = $(this).serialize();
-    console.log(data);
-    removeFromCart(data).then( (res) => {
-      $('body').find('header #navCheckoutButton').trigger('click');
+    removeFromCart(data).then(res => {
+      $('body').find('nav #cart-btn').trigger('click');
     });
   });
 
-  $checkoutPage.on('submit', '#checkoutForm', function(event) {
+  const makeFormObject = function(array) {
+    const returnObj = {};
+    for (const keyValuePair of array) {
+      returnObj[keyValuePair.name] = keyValuePair.value;
+    }
+    return returnObj;
+  };
+
+  $('body').on('submit', '#checkoutForm', function(event) {
     event.preventDefault();
-    const data = $(this).serialize();
-    sendText(data).then((order)=>{
-      console.log(order);
-      for (const product of order){
-        $myOrders.append(
-          `<tr>
-            <td>${product.name}</td>
-            <td>$${product.price}</td>
-          </tr>`);
-      }
-      viewsManager.show('orders');
+    const order = makeFormObject($(this).serializeArray()); // serialize Array output: [{ name:formname, value: formvalue }...]
+    console.log('data from form:', order);
+    getCart().then(orderDetails => {
+      console.log('cart: ', orderDetails);
+      addOrder(order)
+        .then(response => {
+          window.viewsManager.show('orders');
+        })
+        .catch(err => {
+          console.log(err.message);
+        });
     });
   });
-
 });

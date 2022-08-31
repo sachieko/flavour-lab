@@ -16,8 +16,10 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   itemQueries.getItemById(req.params.id)
-    .then(item => console.log(item));
-  res.end();
+    .then(item => res.json(item))
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
 });
 
 module.exports = router;
