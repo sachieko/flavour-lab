@@ -6,8 +6,19 @@ $(() => {
   `);
   window.$app = $app;
 
+  /* CREATE CATEGORY TITLE FUNCTION
+     Called within the createMenuElement function.
+  */
+  const createCategoryTitle = function(item) {
+    if ($app.find(`#${item.category}`).length !== 0) {              // If a title for this category already exists,
+      return;                                                       // do nothing.
+    }
+    $app.append(`<h2 id="${item.category}">${item.category}</h2>`); // Else, create a category title.
+  }
+
   const createMenuElement = function(menuItem) {
     const item = menuItem;
+    createCategoryTitle(item);
     const $itemHTML = $(`
     <article class="menu-item ${item.category}">
         <div class="item-info">
