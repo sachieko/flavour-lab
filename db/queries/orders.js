@@ -24,16 +24,16 @@ const getOrderById = (Id) => {
 
 exports.getOrderById = getOrderById;
 
-const getDetailsForOrder = (order) => {
+const getDetailsForOrderById = (id) => {
   return db.query(`
   SELECT * FROM order_details
-  WHERE order_id = $1;`, [order.id])
+  WHERE order_id = $1;`, [id])
     .then(data => {
       return data.rows;
     });
 };
 
-exports.getDetailsForOrder = getDetailsForOrder;
+exports.getDetailsForOrderById = getDetailsForOrderById;
 
 const insertOrder = (order) => {
   return db.query(`
