@@ -78,3 +78,31 @@ nav {
     font-size: 40px;
   }
 }
+
+.menu-links {
+  padding-top: 8em;
+  width: 100%;
+  margin: 0;
+  position: fixed;
+
+  div{
+    display: flex;
+    justify-content: center;
+  }
+  a {
+    text-transform: uppercase;
+    font-size: $h5-size;
+    font-weight: bold;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+
+    &:link {
+      color: $btn-color;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
