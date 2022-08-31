@@ -39,3 +39,8 @@ const getOrder = function() {
   let url = "/api/orders";
   return $.get(url);
 };
+
+const adminLogin = function(data) {
+  let url = "/api/users";
+  return $.post(url, data);
+};

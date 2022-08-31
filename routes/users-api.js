@@ -9,16 +9,23 @@ const express = require('express');
 const router  = express.Router();
 const userQueries = require('../db/queries/users');
 
-router.get('/', (req, res) => {
-  userQueries.getUsers()
-    .then(users => {
-      res.json(users);
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+router.post('/', (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  userQueries.getUserByEmail(email)
+  .then(admin => {
+    if (admin.password === password){
+      res.cookie('chef', true);
+      return res.end();
+    }
+    //wrong pass home
+    res.status(400).end();
+  })
+  .catch(err => {
+    // gotta have employee email bro
+    return res.status(400).end();
+  })
+
 });
 
 module.exports = router;
