@@ -8,6 +8,7 @@ $(() => {
       <span class="logo">Flavour </span><span class="logo">Labs</span>
       </div>
       <div>
+      <button id="restaurantLogin">Restaurant Login</button>
       <button id="navOrdersButton">Orders</button>
       <button type="button" id="cart-btn"><i class="fa fa-shopping-cart"> Cart</i></button>
       </div>
@@ -29,6 +30,13 @@ $(() => {
 
   $('body').on('click', 'nav, header', function() {
     viewsManager.show('app');
+  });
+
+  $('body').on('click', 'nav #restaurantLogin', function() {
+    // set timeout because every click of nav or header will cause views manager to show app
+    setTimeout(() => {
+      viewsManager.show('restaurantLogin');
+    }, 10);
   });
 
   $('body').on('click', 'nav #navOrdersButton', function() {

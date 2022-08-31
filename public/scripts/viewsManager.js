@@ -9,6 +9,7 @@ $(() => {
     $app.detach();
     $checkoutPage.detach();
     $myOrders.detach();
+    $restaurantLogin.detach()
 
     switch (item) {
     case item = 'app':
@@ -22,6 +23,9 @@ $(() => {
       $myOrders.find('#orderPageCheckoutItems').empty();
       $myOrders.find('#orderDetails').empty();
       $myOrders.appendTo($main);
+      break;
+    case item = 'restaurantLogin':
+      $restaurantLogin.appendTo($main);
       break;
     }
   };
