@@ -43,7 +43,7 @@ $(() => {
     event.preventDefault();
     const data = $(this).serialize();
     addOrder(data).then((order)=>{
-      $navBar.find('#pages').find('#navOrdersButton').trigger('click');
+      $navBar.find('div').find('#navOrdersButton').trigger('click');
       sendText().catch((err) => {
         console.log(err);
       });

@@ -7,7 +7,7 @@ $(() => {
       <img style="width:50px" src="../../images/fieri.png" />
       <span class="logo">Flavour Labs</span>
       </div>
-      <div id='pages'>
+      <div>
       <button id="navOrdersButton">Orders</button>
       <button type="button" id="cart-btn"><i class="fa fa-shopping-cart"> Cart</i></button>
       </div>
