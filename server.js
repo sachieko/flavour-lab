@@ -38,10 +38,6 @@ const smsApiRoutes = require('./routes/sms-api');
 const cartApiRoutes = require('./routes/cart-api');
 const usersRoutes = require('./routes/users');
 const ordersApiRoutes = require('./routes/orders-api');
-// <<<<<<< HEAD
-// =======
-
-// >>>>>>> main
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own

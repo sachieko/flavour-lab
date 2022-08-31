@@ -16,10 +16,6 @@ const sendMsg = function(msg, phone) {
     messagingServiceSid: smsServiceSID,
     to: phone
   })
-    .then(message => {
-    //console.log(message.sid)
-    })
-    .done();
 };
 
 router.get('/customer', (req, res) => {
