@@ -22,7 +22,9 @@ $(() => {
     item.is_available ? $($itemHTML).children('div.item-info').append(`<form class="view-item-btn">
     <input type="hidden" name="itemId" value="${item.id}">
     <button type="submit" class="add-btn">Add to Order</button>
-    </form>`) : $($itemHTML).children('div.item-info').append(`<span class="unavailable">Item is unavailable</span>`);
+    </form>`) : $($itemHTML).children('div.item-info').append(`
+    <span class="unavailable">Item is unavailable</span>
+    `);
     $app.append($itemHTML[0]);
   };
 
