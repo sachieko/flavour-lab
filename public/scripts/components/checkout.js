@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 $(() => {
   const $checkoutPage = $(
@@ -38,23 +39,15 @@ $(() => {
     return returnObj;
   };
 
-  $('body').on('submit', '#checkoutForm', function(event) { // click for testing purposes, submit for actual
+  $('body').on('submit', '#checkoutForm', function(event) {
     event.preventDefault();
     const order = makeFormObject($(this).serializeArray()); // serialize Array output: [{ name:formname, value: formvalue }...]
     console.log('data from form:', order);
     getCart().then(orderDetails => {
       console.log('cart: ', orderDetails);
       addOrder(order)
-        .then(orderId => {
-          for (const orderDetail of orderDetails) {
-            const detailObj = {};
-            detailObj.order_id = Number(orderId);
-            detailObj.item_id = orderDetail.item.id;
-            detailObj.quantity = orderDetail.count;
-            detailObj.price = orderDetail.item.price;
-            detailObj.note = orderDetail.item.note;
-            addOrderDetails(detailObj);
-          }
+        .then(response => {
+          window.viewsManager.show('orders');
         })
         .catch(err => {
           console.log(err.message);
