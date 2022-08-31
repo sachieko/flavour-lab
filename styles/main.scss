@@ -9,15 +9,20 @@
   display: flex;
   flex-direction: column;
   padding-top: 12em;
-  margin: 1.5em 0.8em 0 0.8em;
+  width: 100%;
+
+  .anchor {
+    position: relative;
+    top: -11em;
+  }
 
   article {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     max-width: 100%;
-    min-width: 250px;
     margin-bottom: 1em;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 
     .item-info {
@@ -29,10 +34,12 @@
 
       .item-desc {
         color: $secondary-color;
+        font-size: small;
       }
 
       .item-price {
         font-weight: bold;
+        font-size: small;
       }
 
       button {
@@ -41,7 +48,7 @@
         border-radius: 6px;
         border-width: 0;
         font-size: 95%;
-        width: 8em;
+        width: 40vw;
         padding-top: 0.5vh;
         padding-bottom: 0.5vh;
         margin-bottom: 1vh;
@@ -55,8 +62,8 @@
     }
 
     img {
-      width: 8.5em;
-      height: 8.5em;
+      width: 25vw;
+      height: 25vw;
       background-size: cover;
       margin: 0.5em;
       border-radius: 2px;
@@ -70,22 +77,38 @@
   padding-top: 12em;
   margin: 1.5em 0.8em 0 0.8em;
 }
+/* For very small screens */
+@media only screen and (max-width: 365px) {
 
+#menu {
+  article {
+
+    display: flex;
+    flex-direction: row;
+
+  }
+}}
 /* Tablets */
 @media only screen and (min-width: 768px) {
 
-  #menu {
-    flex-direction: row;
+#menu {
+
+  .item-container {
     flex-wrap: wrap;
-    max-width: 100%;
   }
 
-  #menu article {
-    min-width: 49%;
-    max-width: 49%;
-    margin-left: 0.4vw;
-    margin-right: 0.4vw;
-  }
+  article {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
 
-}
+    img {
+      width: 25vw;
+      height: 25vw;
+      background-size: cover;
+      margin: 0.5em;
+      border-radius: 2px;
+    }
+  }
+}}
 
