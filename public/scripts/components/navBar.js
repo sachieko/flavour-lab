@@ -26,12 +26,32 @@ $(() => {
   );
   window.$navBar = $navBar;
   $navBar.prependTo('body');
+
   $('body').on('click', 'nav', function() {
     viewsManager.show('app');
   });
 
   $('body').on('click', 'nav #navOrdersButton', function() {
-    viewsManager.show('orders');
+    getOrder().then((order) => {
+      viewsManager.show('orders');
+      $myOrders.find('#orderDetails').append(`
+        <p>Name on Order: ${order.info.name}</p>
+        <p>Phone on Order: ${order.info.phone}</p>
+        <p>Date Submitted: ${order.info.submit_time}</p>
+        <p>Started Order at: ${order.info.started_time}</p>
+        <p>ETA: ${order.info.estimated_time}</p>
+        <p>Completed at: ${order.info.completed_time}</p>
+      `);
+      $myOrders.find('#orderPageCheckoutItems').append(
+        `<tr><th>Name</th><th>Price</th></tr>`);
+      for (const item of order.items) {
+        $myOrders.find('#orderPageCheckoutItems').append(
+          `<tr><td>${item.name}</td><td>$${item.price}</td></tr>`);
+      }
+    }).catch(err => {
+      console.log(err);
+      viewsManager.show('orders');
+    });
   });
 
   $('body').on('click', 'nav #cart-btn', function() {

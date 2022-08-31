@@ -5,9 +5,9 @@ const getItems = function() {
   return $.get(url);
 };
 
-const sendText = function(data) {
-  let url = "/api/sms";
-  return $.post(url, data);
+const sendText = function() {
+  let url = "/api/sms/customer";
+  return $.get(url);
 };
 
 const getCart = function() {
@@ -33,4 +33,9 @@ const addOrderDetails = function(details) {
 const removeFromCart = function(data) {
   let url = "/api/cart/delete";
   return $.post(url, data);
+};
+
+const getOrder = function() {
+  let url = "/api/orders";
+  return $.get(url);
 };
