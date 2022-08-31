@@ -3,9 +3,9 @@ $(() => {
   const $navBar = $(
     `
       <nav>
-      <div>
       <img style="width:4.5em" src="../../images/fieri.png" />
-      <span class="logo">Flavour Labs</span>
+      <div>
+      <span class="logo">Flavour </span><span class="logo">Labs</span>
       </div>
       <div>
       <button id="navOrdersButton">Orders</button>
@@ -14,19 +14,19 @@ $(() => {
       </nav>
       <header class="menu-links">
       <div>
-        <a href="#Appetizers" class="menu-link">Appetizers</a>
-        <a href="#Salads" class="menu-link">Salads</a>
-        <a href="#Potato" class="menu-link">Potato</a>
-        <a href="#Mains" class="menu-link">Mains</a>
-        <a href="#Desserts" class="menu-link">Desserts</a>
-        <a href="#Drinks" class="menu-link">Drinks</a>
-        <a href="#Sauces" class="menu-link">Sauces</a>
+        <a href="#AppetizersSpot" class="menu-link">Appetizers</a>
+        <a href="#SaladsSpot" class="menu-link">Salads</a>
+        <a href="#PotatoSpot" class="menu-link">Potato</a>
+        <a href="#MainsSpot" class="menu-link">Mains</a>
+        <a href="#DessertsSpot" class="menu-link">Desserts</a>
+        <a href="#DrinksSpot" class="menu-link">Drinks</a>
+        <a href="#SaucesSpot" class="menu-link">Sauces</a>
       </div>
     </header>`
   );
   window.$navBar = $navBar;
   $navBar.prependTo('body');
-  $('body').on('click', 'header img', function() {
+  $('body').on('click', 'nav', function() {
     viewsManager.show('app');
   });
 
