@@ -74,3 +74,15 @@ const updateField = (field, id, estimate=null) => {
 };
 
 exports.updateField = updateField;
+
+const addPrepTime = function(minutes, id) {
+  return db.query(`
+  SELECT submit_time + ($1 * interval '1 minute') AS estimated_time
+  FROM orders
+  WHERE id = $2;`, [Number(minutes), id])
+    .then(data => {
+      return data.rows;
+    });
+};
+
+exports.addPrepTime = addPrepTime;
