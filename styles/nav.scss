@@ -63,6 +63,19 @@ nav div:nth-child(1) div {
     width: 7em;
     color: $btn-color;
     background-color: $btn-background-color;
+
+    &:hover {
+      color: #FFFFFF;
+      text-shadow:
+      0 0 3px #fcccb3,
+      0 0 8px #fcccb3,
+      0 0 20px #fcccb3,
+      0 0 42px #fc7025,
+      0 0 82px #fc7025,
+      0 0 92px #fc7025,
+      0 0 102px #fc7025;
+      cursor: pointer;
+    }
   }
 }
 
