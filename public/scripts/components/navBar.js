@@ -27,7 +27,7 @@ $(() => {
   window.$navBar = $navBar;
   $navBar.prependTo('body');
 
-  $('body').on('click', 'nav', function() {
+  $('body').on('click', 'nav, header', function() {
     viewsManager.show('app');
   });
 
