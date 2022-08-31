@@ -7,7 +7,7 @@
 
 
 nav {
-  background-color: $primary-color;
+  background-color: $header-background-color;
   background-image: $background-image;
   color: $primary-color;
   display: flex;
@@ -19,20 +19,20 @@ nav {
   position: fixed;
   width: inherit;
 
-  div:nth-child(3) {
+  div {
     display: flex;
-    flex-wrap: wrap;
-    button {
-      width: 7em;
-      color: $btn-color;
-      background-color: $btn-background-color;
-    }
+    align-items: center;
   }
+
+  img {
+    width: 4.5em;
+  }
+
   .logo {
     font-family: $secondary-font;
-    font-size: x-large;
+    font-size: 2em;
     font-weight: bold;
-
+    padding: 0.2em;
 
     color: #f7f2ef;
     text-shadow:
@@ -42,12 +42,45 @@ nav {
       0 0 42px #fc7025,
       0 0 82px #fc7025,
       0 0 92px #fc7025,
-      0 0 102px #fc7025
+      0 0 102px #fc7025;
+  }
+}
+
+nav div:nth-child(1) div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  float: right;
+  button {
+    justify-self: end;
+    margin: 0.5em;
+    width: 7em;
+    color: $btn-color;
+    background-color: $btn-background-color;
+
+    &:hover {
+      color: #FFFFFF;
+      text-shadow:
+      0 0 3px #fcccb3,
+      0 0 8px #fcccb3,
+      0 0 20px #fcccb3,
+      0 0 42px #fc7025,
+      0 0 82px #fc7025,
+      0 0 92px #fc7025,
+      0 0 102px #fc7025;
+      cursor: pointer;
+    }
   }
 }
 
 .menu-links {
-  background-color: $primary-color;
+  background-color: $header-background-color;
   background-image: $background-image;
   padding-top: 8em;
   position: fixed;
@@ -74,13 +107,50 @@ nav {
     }
 
     &:hover {
-      color: $nav-background-color;
+      color: #f7f2ef;
+      text-shadow:
+      0 0 3px #fcccb3,
+      0 0 8px #fcccb3,
+      0 0 20px #fcccb3,
+      0 0 42px #fc7025,
+      0 0 82px #fc7025,
+      0 0 92px #fc7025,
+      0 0 102px #fc7025;
       cursor: pointer;
+    }
+  }
+}
+@media only screen and (max-width: 320px) {
+  nav .logo {
+    font-size: 1.25em;
+  }
+
+  nav div:nth-child(1) div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  nav img {
+width: 3em;
+  }
+
+  .nav-buttons {
+    button {
+      width: 5em;
+      color: $btn-color;
+      background-color: $btn-background-color;
     }
   }
 }
 
 /* Tablets */
 @media only screen and (min-width: 768px) {
+
+  nav .logo {
+    font-weight: 500;
+    font-size: 2.5em;
+  }
+
 
 }
