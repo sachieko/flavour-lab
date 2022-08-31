@@ -19,6 +19,8 @@ $(() => {
       $checkoutPage.appendTo($main);
       break;
     case item = 'orders':
+      $myOrders.find('#checkoutItems').empty();
+      $myOrders.find('#orderDetails').empty();
       $myOrders.appendTo($main);
       break;
     }

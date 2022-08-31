@@ -25,7 +25,6 @@ $(() => {
   $('body').on('submit', '.removeItem', function(event){
     event.preventDefault();
     const data = $(this).serialize();
-    console.log(data);
     removeFromCart(data).then( (res) => {
       $('body').find('header #navCheckoutButton').trigger('click');
     });
@@ -34,9 +33,8 @@ $(() => {
   $checkoutPage.on('submit', '#checkoutForm', function(event) {
     event.preventDefault();
     const data = $(this).serialize();
-    sendText(data).then((order)=>{
-      console.log(order);
-      for (const product of order){
+    sendText(data).then((res)=>{
+      for (const product of res.items){
         $myOrders.append(
           `<tr>
             <td>${product.name}</td>

@@ -10,22 +10,30 @@ const orders = require('../db/queries/orders');
 const orderDetails = require('../db/queries/order_details');
 const items = require('../db/queries/items');
 
-router.post('/', (req, res) => {
-  console.log('got here');
+function scrubData(data, val){
+  if (!data){
+    data = val;
+  }
+  return data;
+}
+
+router.post('/customer', (req, res) => {
   const cart = req.cookies.cart;
+  const name = req.body.name;
+  const phone = req.body.phone;
+  const note = scrubData(req.body.note, '');
+  const tax = scrubData(req.body.tax, 0);
+  const tip = scrubData(req.body.tip, 0);
+  const discount = scrubData(req.body.discount, 0);
   if (!cart){
     console.log('gotta have a cart baby');
     return res.status(400).end();
   }
-
-  const name = req.body.name;
-  const phone = req.body.phone;
-  const note = req.body.note;
-  const tax = req.body.tax;
-  const tip = req.body.tip;
-  console.log(name, phone, note, tax, tip);
-  const orderArguments = {name, phone, note, tax, tip}
-
+  if (!name || !phone){
+    console.log('missing contact info');
+    return res.status(400).end();
+  }
+  const orderArguments = {name, phone, note, tax, tip, discount}
   orders.insertOrder(orderArguments)
   .then(order => {
     console.log('new order', order);
@@ -46,11 +54,11 @@ router.post('/', (req, res) => {
       items.getItemsByOrderId(order.id)
       .then(items => {
         console.log('all order items', items);
-        const date = new Date();
         const twiml = new MessagingResponse();
         client.messages
           .create({
-            body: `Hello ${name}, ${date}`,
+            body:
+            `Hello ${name}. The restaurant has received your order`,
             messagingServiceSid: smsServiceSID,
             to: phone
           })
@@ -59,12 +67,35 @@ router.post('/', (req, res) => {
           })
           .done();
 
+        client.messages
+          .create({
+            body: `
+            New order id: ${order.id} from ${order.name} with phone ${order.phone}`,
+            messagingServiceSid: smsServiceSID,
+            to: process.env.RESTAURANT_PHONE
+          })
+          .then(message => {
+            //console.log(message.sid)
+          })
+          .done();
+
         //res.writeHead(200, {'Content-Type': 'text/xml'});
         //res.end(twiml.toString());
-        res.send(items);
+        res.clearCookie('cart');
+        res.cookie('orderId', order.id);
+        res.send({order, items});
       });
     })
   });
+});
+
+router.post('/restaurant', (req, res) => {
+  console.log(req.body.Body);
+  const twiml = new MessagingResponse();
+  twiml.message('Guy Fieri says scrumptious.');
+  res.writeHead(200, {'Content-Type': 'text/xml'});
+  res.end(twiml.toString());
+
 });
 
 module.exports = router;

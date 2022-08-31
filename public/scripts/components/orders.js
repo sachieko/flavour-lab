@@ -2,12 +2,12 @@
 /* eslint-disable no-undef */
 $(() => {
   const $myOrders = $(
-    `<div id="myOrders" style="background-color: blue">
+    `<div id="myOrders"">
+      <h5>Order Detail:</h5>
+      <div id="orderDetails">
+      </div>
+      <h5>Receipt:</h5>
       <table id="checkoutItems">
-        <tr>
-          <th>Name</th>
-          <th>Price</th>
-        </tr>
       </table>
     </div>`
   );
