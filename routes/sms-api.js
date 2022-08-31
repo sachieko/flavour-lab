@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable camelcase */
 const express = require('express');
 require('dotenv').config();
 const router  = express.Router();
@@ -25,7 +27,7 @@ router.post('/', (req, res) => {
 
   orders.insertOrder(orderArguments)
     .then(order => {
-      const parsed = JSON.parse(cart);
+      const parsed = JSON.parse(cart); // {"7":1,"9":1,"31":1,"32":2,"35":1}
       const queries = [];
       for (const itemId in parsed) { //parsed[id] is count
         const orderDetailArgs = {
