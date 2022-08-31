@@ -44,7 +44,9 @@ $(() => {
     const data = $(this).serialize();
     addOrder(data).then((order)=>{
       $navBar.find('#pages').find('#navOrdersButton').trigger('click');
-      sendText().catch((err) => {console.log(err);});
+      sendText().catch((err) => {
+        console.log(err);
+      });
     });
   });
 });

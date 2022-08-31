@@ -26,15 +26,15 @@ const getItemById = (id) => {
 exports.getItemById =  getItemById;
 
 const getAllItemsFromCart = (cart) => {
-  const itemQueries = []
-  for (const id in cart){
-    itemQueries.push(getItemById(id))
+  const itemQueries = [];
+  for (const id in cart) {
+    itemQueries.push(getItemById(id));
   }
   return Promise.all(itemQueries)
-  .then(items => {
-    return items;
-  });
-}
+    .then(items => {
+      return items;
+    });
+};
 
 exports.getAllItemsFromCart =  getAllItemsFromCart;
 

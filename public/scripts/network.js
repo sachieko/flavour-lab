@@ -19,8 +19,6 @@ const addToCart = function(data) {
   let url = "/api/cart";
   return $.post(url, data);
 };
-// <<<<<<< HEAD
-// =======
 
 const addOrder = function(order) {
   let url = "/api/orders";
@@ -31,17 +29,13 @@ const addOrderDetails = function(details) {
   let url = `/api/orders/${details.order_id}`;
   return $.post(url, details);
 };
-//>>>>>>> main
 
 const removeFromCart = function(data) {
   let url = "/api/cart/delete";
   return $.post(url, data);
 };
-//<<<<<<< HEAD
 
 const getOrder = function() {
   let url = "/api/orders";
   return $.get(url);
 };
-//=======
-// >>>>>>> main
