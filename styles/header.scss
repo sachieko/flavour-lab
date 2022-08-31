@@ -14,6 +14,10 @@
     background-color: $primary-color;
     position: fixed;
 
+    .menu-links {
+      color: $btn-color;
+    }
+
     div{
       display: flex;
       justify-content: center;
