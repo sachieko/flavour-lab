@@ -14,7 +14,7 @@ $(() => {
       return;                                                       // do nothing.
     }
     $app.append(`<h2 id="${item.category}">${item.category}</h2>`); // Else, create a category title.
-  }
+  };
 
   const createMenuElement = function(menuItem) {
     const item = menuItem;
