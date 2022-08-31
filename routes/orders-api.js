@@ -48,17 +48,17 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const cart = JSON.parse(req.cookies.cart);
   const name = req.body.name;
   const phone = req.body.phone;
   const note = scrubData(req.body.note, '');
   const tax = scrubData(req.body.tax, 0);
   const tip = scrubData(req.body.tip, 0);
   const discount = scrubData(req.body.discount, 0);
-  if (!cart || !name || !phone){
+  if (!req.cookies.cart || !name || !phone){
     console.log('gotta have a cart name and phone ');
     return res.status(400).end();
   }
+  const cart = JSON.parse(req.cookies.cart);
   const orderArguments = {name, phone, note, tax, tip, discount}
   Promise.all([
     itemQueries.getAllItemsFromCart(cart),
