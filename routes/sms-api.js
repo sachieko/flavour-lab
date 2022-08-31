@@ -11,7 +11,6 @@ const orderDetails = require('../db/queries/order_details');
 const items = require('../db/queries/items');
 
 router.post('/', (req, res) => {
-  console.log('got here');
   const cart = req.cookies.cart;
   if (!cart) {
     return res.status(400).end();
@@ -22,7 +21,6 @@ router.post('/', (req, res) => {
   const note = req.body.note;
   const tax = req.body.tax;
   const tip = req.body.tip;
-  console.log(name, phone, note, tax, tip);
   const orderArguments = {name, phone, note, tax, tip};
 
   orders.insertOrder(orderArguments)
@@ -42,7 +40,6 @@ router.post('/', (req, res) => {
         .then((allOrderDetails) => {
           items.getItemsByOrderId(order.id)
             .then(items => {
-              console.log('all order items', items);
               const date = new Date();
               const twiml = new MessagingResponse();
               client.messages
