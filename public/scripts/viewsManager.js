@@ -9,7 +9,9 @@ $(() => {
     $app.detach();
     $checkoutPage.detach();
     $myOrders.detach();
-
+    $restaurantLogin.detach();
+    $restaurantLogin.detach();
+    $adminOrderPage.detach();
     switch (item) {
     case item = 'app':
       $app.appendTo($main);
@@ -22,6 +24,31 @@ $(() => {
       $myOrders.find('#orderPageCheckoutItems').empty();
       $myOrders.find('#orderDetails').empty();
       $myOrders.appendTo($main);
+      break;
+    case item = 'restaurantLogin':
+      $restaurantLogin.appendTo($main);
+      break;
+    case item = 'adminOrders':
+      getAdminOrders()
+      .then(orders => {
+        $navBar.detach();
+        $adminNav.prependTo('body');
+        const $orderTable = $adminOrderPage.find('#customerOrders');
+        $orderTable.append(`<tr><th>Name</th><th>Submitted</th></tr>`);
+        for (const order of orders){
+          $orderTable.append(
+            `<tr>
+              <td>${order.name}</td>
+              <td>${order.submit_time}</td>
+            </tr>`
+          );
+        }
+        $adminOrderPage.appendTo($main);
+      })
+      .catch(res => {
+        //youre a fake admin, poser
+        $app.appendTo($main);
+      });
       break;
     }
   };
