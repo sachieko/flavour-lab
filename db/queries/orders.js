@@ -84,3 +84,13 @@ const addPrepTime = function(minutes, id) {
 };
 
 exports.addPrepTime = addPrepTime;
+
+const getAllOrders = function() {
+  return db.query(
+    `SELECT * FROM orders`, [])
+  .then(allOrders => {
+    return allOrders.rows;
+  });
+}
+
+exports.getAllOrders = getAllOrders;

@@ -40,7 +40,22 @@ const getOrder = function() {
   return $.get(url);
 };
 
+const isAdmin = function() {
+  let url = "/api/users";
+  return $.get(url);
+};
+
 const adminLogin = function(data) {
   let url = "/api/users";
   return $.post(url, data);
+};
+
+const adminLogout = function() {
+  let url = "/api/users/logout";
+  return $.get(url);
+};
+
+getAdminOrders = function() {
+  let url = "/api/users/orders";
+  return $.get(url);
 };

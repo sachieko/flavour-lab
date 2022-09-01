@@ -14,7 +14,7 @@ $(() => {
     const data = $(this).serialize();
     adminLogin(data)
     .then(res => {
-      console.log(res);
+      viewsManager.show('adminOrders');
     })
     .catch(err => {
       console.log('you tryna hack admin?', err);
