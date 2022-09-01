@@ -55,7 +55,7 @@ nav div:nth-child(1) div {
 .nav-buttons {
   display: flex;
   flex-wrap: wrap;
-  justify-content: end;
+  justify-content: space-between;
   float: right;
   button {
     justify-self: end;
@@ -200,6 +200,18 @@ width: 3em;
     font-size: 1.50em;
   }
 
+  .nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    float: right;
 
+    button {
+      width: 9em;
+      height: 3em;
+      -webkit-box-shadow: 0 0 12px 0px #FFFFFF;
+      box-shadow: 0 0 12px 0px #FFFFFF;
+    }
+  }
 }
 
