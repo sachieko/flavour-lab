@@ -7,7 +7,7 @@
 
 
 nav {
-  background-color: $primary-color;
+  background-color: $header-background-color;
   background-image: $background-image;
   color: $primary-color;
   display: flex;
@@ -19,20 +19,20 @@ nav {
   position: fixed;
   width: inherit;
 
-  div:nth-child(3) {
+  div {
     display: flex;
-    flex-wrap: wrap;
-    button {
-      width: 7em;
-      color: $btn-color;
-      background-color: $btn-background-color;
-    }
+    align-items: center;
   }
+
+  img {
+    width: 4.5em;
+  }
+
   .logo {
     font-family: $secondary-font;
-    font-size: x-large;
+    font-size: 2em;
     font-weight: bold;
-
+    padding: 0.2em;
 
     color: #f7f2ef;
     text-shadow:
@@ -42,12 +42,76 @@ nav {
       0 0 42px #fc7025,
       0 0 82px #fc7025,
       0 0 92px #fc7025,
-      0 0 102px #fc7025
+      0 0 102px #fc7025;
+  }
+}
+
+nav div:nth-child(1) div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  float: right;
+  button {
+    background-color: $btn-background-color;
+    color: $btn-color;
+    border-radius: 6px;
+    border-width: 0;
+    font-size: 95%;
+    width: 7em;
+    margin: 1em;
+    cursor: pointer;
+    -webkit-box-shadow: 0 0 12px 0px #FFFFFF;
+    box-shadow: 0 0 12px 0px #FFFFFF;
+
+    &:hover {
+      color: #FFFFFF;
+      text-shadow:
+      0 0 3px #fcccb3,
+      0 0 15px #fcccb3,
+      0 0 25px #fc7025,
+      0 0 32px #fc7025,
+      0 0 40px #fc7025,
+      0 0 50px #fc7025;
+      box-shadow:
+      0 0 3px #fcccb3,
+      0 0 15px #fcccb3,
+      0 0 25px #fc7025,
+      0 0 32px #fc7025,
+      0 0 40px #fc7025,
+      0 0 50px #fc7025;
+      cursor: pointer;
+    }
+
+    &:focus {
+      color: #FFFFFF;
+      text-shadow:
+      0 0 3px #fcccb3,
+      0 0 15px #fcccb3,
+      0 0 25px #fc7025,
+      0 0 32px #fc7025,
+      0 0 40px #fc7025,
+      0 0 50px #fc7025;
+      box-shadow:
+      0 0 3px #fcccb3,
+      0 0 15px #fcccb3,
+      0 0 25px #fc7025,
+      0 0 32px #fc7025,
+      0 0 40px #fc7025,
+      0 0 50px #fc7025;
+    }
+
+
   }
 }
 
 .menu-links {
-  background-color: $primary-color;
+  background-color: $header-background-color;
   background-image: $background-image;
   padding-top: 8em;
   position: fixed;
@@ -73,9 +137,39 @@ nav {
       color: $btn-color;
     }
 
-    &:hover {
-      color: $nav-background-color;
+    &:hover:not(:focus) {
+      color: #f7f2ef;
+      text-shadow:
+      0 0 3px #fcccb3,
+      0 -2px 8px #fcccb3,
+      0 -5px 20px #fcccb3,
+      0 -12px 42px #fc7025,
+      0 -16px 82px #fc7025,
+      0 -20px 92px #fc7025,
+      0 -26px 102px #fc7025;
       cursor: pointer;
+    }
+  }
+}
+/* Small phones (Galaxy fold etc) */
+@media only screen and (max-width: 320px) {
+  nav .logo {
+    font-size: 1.25em;
+  }
+
+  nav div:nth-child(1) div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  nav img {
+width: 3em;
+  }
+
+  .nav-buttons {
+    button {
+      width: 5em;
     }
   }
 }
@@ -83,4 +177,60 @@ nav {
 /* Tablets */
 @media only screen and (min-width: 768px) {
 
+  nav .logo {
+    font-weight: 500;
+    font-size: 3em;
+  }
+
+  .menu-links a {
+    font-size: 1.25em;
+  }
+
+
 }
+
+/* Desktops */
+@media only screen and (min-width: 1080px) {
+
+  nav .logo {
+    font-weight: 500;
+    font-size: 3.5em;
+  }
+
+  .menu-links a {
+    font-size: 1.50em;
+  }
+
+  .nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    float: right;
+
+    button {
+      font-weight: bold;
+      width: 9em;
+      height: 3em;
+
+      &:focus {
+        color: #FFFFFF;
+        text-shadow:
+        0 0 3px #fcccb3,
+        0 0 8px #fcccb3,
+        0 0 20px #fcccb3,
+        0 0 42px #fc7025,
+        0 0 82px #fc7025,
+        0 0 92px #fc7025,
+        0 0 102px #fc7025;
+        box-shadow: 0 0 3px #fcccb3,
+        0 0 8px #fcccb3,
+        0 0 20px #fcccb3,
+        0 0 42px #fc7025,
+        0 0 82px #fc7025,
+        0 0 92px #fc7025,
+        0 0 102px #fc7025;
+      }
+    }
+  }
+}
+

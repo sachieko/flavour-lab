@@ -1,9 +1,8 @@
 -- Categories table seeds
 INSERT INTO categories (name)
 VALUES
-('Appetizers'),
+('Starters'),
 ('Salads'),
-('Potato'),
 ('Mains'),
 ('Desserts'),
 ('Drinks'),

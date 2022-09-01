@@ -1,13 +1,15 @@
 /* eslint-disable no-undef */
 $(() => {
-  const $navBar = $(
+  const $navBar = $( // Currently categories are hard coded, refactor to build categories from db!
     `
       <nav>
-      <img style="width:4.5em" src="../../images/fieri.png" />
+      <div>
+      <img src="../../images/fieri.png" />
       <div>
       <span class="logo">Flavour </span><span class="logo">Labs</span>
       </div>
-      <div>
+      </div>
+      <div class="nav-buttons">
       <button id="restaurantLogin">Restaurant Login</button>
       <button id="navOrdersButton">Orders</button>
       <button type="button" id="cart-btn"><i class="fa fa-shopping-cart"> Cart</i></button>
@@ -15,9 +17,8 @@ $(() => {
       </nav>
       <header class="menu-links">
       <div>
-        <a href="#AppetizersSpot" class="menu-link">Appetizers</a>
+        <a href="#StartersSpot" class="menu-link">Starters</a>
         <a href="#SaladsSpot" class="menu-link">Salads</a>
-        <a href="#PotatoSpot" class="menu-link">Potato</a>
         <a href="#MainsSpot" class="menu-link">Mains</a>
         <a href="#DessertsSpot" class="menu-link">Desserts</a>
         <a href="#DrinksSpot" class="menu-link">Drinks</a>
