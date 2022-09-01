@@ -43,12 +43,10 @@ router.post('/restaurant', (req, res) => {
     args = req.body.Body.split(' ');
   }
   if (isAdmin){
-    console.log(req.body);
     args = [req.body.cmd];
     args.push(req.body.id);
     req.body.est ? args.push(req.body.est) : null;
   }
-  console.log(args);
   const cmd = args[0];
   const id = args[1];
   const estimate = args[2];
