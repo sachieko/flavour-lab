@@ -59,3 +59,18 @@ getAdminOrders = function() {
   let url = "/api/users/orders";
   return $.get(url);
 };
+
+adminStartOrder = function(data) {
+  let url = "/api/sms/restaurant";
+  return $.post(url, data);
+};
+
+adminEstimateOrder = function(data) {
+  let url = "/api/sms/restaurant";
+  return $.post(url, data);
+};
+
+adminCompleteOrder = function(data) {
+  let url = "/api/sms/restaurant";
+  return $.post(url, data);
+};
