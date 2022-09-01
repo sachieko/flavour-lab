@@ -4,6 +4,12 @@ HELPER FUNCTIONS IN HERE, THESE WILL LOAD BEFORE OUR JQUERY FUNCTIONS AND YOU CA
 */
 const buildCartElement = function (cart) { // Passed in as a callback function anywhere you expect a cart back
   const $checkoutItem = $('#checkoutItems').empty();
+  $checkoutItem.append(`
+    <tr>
+      <th>Grub</th>
+      <th>Total Price</th>
+    </tr>
+  `);
   for (const product of cart) {
     $checkoutItem.append(`
       <tr>
