@@ -15,13 +15,30 @@ $(() => {
       </tr>
       </table>
     <form id="checkoutForm">
-    Name: <input type="text" name="name"></input></br>
-    Phone: <input type="text" name="phone"></input></br>
-      Special Instructions: <textarea name="note"></textarea></br>
-      Tax: <input type="text" name="tax"></input></br>
-      Tip: <input type="number" name="tip"></input></br>
-      Discount Code: <input type="text" name="discount"></input></br>
+    <table id="checkoutTable">
+    <tr>
+      <th></th>
+    <tr>
+      <td>Name: </td><td><input type="text" name="name"></input></td>
+    </tr>
+    <tr>
+      <td>Phone: </td><td><input type="text" name="phone"></input></td>
+    </tr>
+    <tr>
+      <td>Special Instructions: </td><td><textarea name="note"></textarea></td>
+    </tr>
+    <tr>
+      <td>Tax:</td><td> <input type="text" name="tax"></input></td>
+    </tr>
+    <tr>
+      <td>Tip: </td><td><input type="number" name="tip"></input></td>
+    </tr>
+    <tr>
+      <td>Discount Code: </td><td><input type="text" name="discount"></input></td>
+    </tr>
+      </table>
       <button class="primary-btn">Checkout</button>
+
       </form>
       </div>
       </div>
