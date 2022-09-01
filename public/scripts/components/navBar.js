@@ -2,7 +2,7 @@
 $(() => {
   const $navBar = $( // Currently categories are hard coded, refactor to build categories from db!
     `
-      <nav>
+      <nav class="user-nav">
       <div>
       <img src="../../images/fieri.png" />
       <div>
@@ -28,15 +28,12 @@ $(() => {
   );
   window.$navBar = $navBar;
 
-  $('body').on('click', 'nav, header', function() {
+  $('body').on('click', '.user-nav img, .user-nav span', function() {
     viewsManager.show('app');
   });
 
   $('body').on('click', 'nav #restaurantLogin', function() {
-    // set timeout because every click of nav or header will cause views manager to show app
-    setTimeout(() => {
-      viewsManager.show('restaurantLogin');
-    }, 10);
+    viewsManager.show('restaurantLogin');
   });
 
   $('body').on('click', 'nav #navOrdersButton', function() {
@@ -57,7 +54,7 @@ $(() => {
           `<tr><td>${item.name}</td><td>$${item.price}</td></tr>`);
       }
     }).catch(err => {
-      console.log(err);
+      console.log(err.message);
       viewsManager.show('orders');
     });
   });

@@ -15,7 +15,7 @@ const sendMsg = function(msg, phone) {
     body: msg,
     messagingServiceSid: smsServiceSID,
     to: phone
-  })
+  });
 };
 
 router.get('/customer', (req, res) => {

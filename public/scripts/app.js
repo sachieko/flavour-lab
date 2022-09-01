@@ -55,14 +55,14 @@ $(() => {
       });
   };
   isAdmin()
-  .then(theyAreAdmin => {
-    $adminNav.prependTo('body');
-    viewsManager.show('adminOrders');
-  })
-  .catch(notAdmin => {
-    $navBar.prependTo('body');
-    renderMenu();
-  });
+    .then(theyAreAdmin => {
+      $adminNav.prependTo('body');
+      viewsManager.show('adminOrders');
+    })
+    .catch(notAdmin => {
+      $navBar.prependTo('body');
+      renderMenu();
+    });
 
   $('body').on('submit', '.view-item-btn', function(event) {
     event.preventDefault();

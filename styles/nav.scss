@@ -182,6 +182,19 @@ width: 3em;
     font-size: 3em;
   }
 
+  .nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    float: right;
+
+    button {
+      font-weight: bold;
+      width: 7em;
+      height: 2.5em;
+    }
+  }
+
   .menu-links a {
     font-size: 1.25em;
   }

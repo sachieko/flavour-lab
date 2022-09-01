@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 $(() => {
   const $restaurantLogin = $(
     `<form id="restaurantLoginForm"">
@@ -13,11 +14,11 @@ $(() => {
     event.preventDefault();
     const data = $(this).serialize();
     adminLogin(data)
-    .then(res => {
-      viewsManager.show('adminOrders');
-    })
-    .catch(err => {
-      console.log('you tryna hack admin?', err);
-    });
+      .then(res => {
+        viewsManager.show('adminOrders');
+      })
+      .catch(err => {
+        console.log('you tryna hack admin?', err);
+      });
   });
 });
