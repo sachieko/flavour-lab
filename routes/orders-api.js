@@ -66,11 +66,12 @@ router.post('/', (req, res) => {
         detailObj.note = null;
         detailQueries.push(orderDetails.insertOrderDetails(detailObj));
       }
-      orderQueries.insertTaxForOrderId(order.id);
       Promise.all(detailQueries)
         .then((allOrderDetails) => {
+          const orderId = allOrderDetails[0].order_id;
+          orderQueries.insertTaxForOrderId(orderId);
           res.clearCookie('cart');
-          res.cookie('orderId', order.id);
+          res.cookie('orderId', orderId);
           res.send(order);
         })
         .catch(err => console.log(err));
