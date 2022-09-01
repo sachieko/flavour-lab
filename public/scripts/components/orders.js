@@ -20,21 +20,26 @@ $(() => {
     if (completedTime === null)
       if (eta === null) {
         $myOrders.find('#order-status').append(`
-          <p class="bold">Order #${order.info.id} was placed!</p></br>
-          <p class="bold">Estimated pick-up time: <span class="red">pending confirmation from Flavour Labs...</span></p></br>
-          <p class="small">Please check your phone for SMS updates from the restaurant, or stay on this page for status updates.</p>
+          <div id="notCompleted">
+            <p class="bold">Order #${order.info.id} was placed!</p></br>
+            <p class="bold">Estimated pick-up time: <span class="red">pending confirmation from Flavour Labs...</span></p></br>
+            <p class="small">Please check your phone for SMS updates from the restaurant, or stay on this page for status updates.</p>
+          </div>
         `);
       }
       if (eta !== null) {
         const formattedETA = eta.slice(11,16);
         $myOrders.find('#order-status').append(`
-          <p class="bold">Order #${order.info.id} was <span class="red">confirmed!</span></p></br>
-          <p class="bold">Estimated pick-up time: <span class="red">${formattedETA}</span></p></br>
-          <p class="small">Please check your phone for SMS updates from the restaurant, or stay on this page for status updates.</p>
+          <div id="notCompleted">
+            <p class="bold">Order #${order.info.id} was <span class="red">confirmed!</span></p></br>
+            <p class="bold">Estimated pick-up time: <span class="red">${formattedETA}</span></p></br>
+            <p class="small">Please check your phone for SMS updates from the restaurant, or stay on this page for status updates.</p>
+          </div>
         `);
       }
     if (completedTime !== null) {
       const formattedCompletedTime = completedTime.slice(11,16);
+      $myOrders.find('#notCompleted').hide();
       $myOrders.find('#order-status').append(`
         <p class="bold">Order #${order.info.id} <span class="red">is ready for pick-up!</span></p></br>
         <p class="bold">Your order was completed at: ${formattedCompletedTime}</p></br>
@@ -42,19 +47,13 @@ $(() => {
     }
   };
 
-
-  // const insertOrderCompleted = function(order) {
-  //   const completedTime = order.info.completed_time;
-  //   if (completedTime === null) {
-  //     return;
-  //   }
-  //   if (completedTime !== null) {
-  //     $myOrders.find('#order-status').append(`
-  //       <p class="bold">Order #${order.info.id} <span class="red">is ready for pick-up!</span></p></br>
-  //       <p class="bold">Your order was completed at: ${order.info.completed_time}</p></br>
-  //     `);
-  //   }
-  // };
+  const calcSubtotal = function(order) {
+    let subtotal = 0;
+    for (const item of order.items) {
+      subtotal += item.quantity*item.price;
+    }
+    return Math.round(subtotal*100)/100;
+  };
 
 
   $('body').on('click', 'nav #navOrdersButton', function() {
@@ -68,7 +67,6 @@ $(() => {
           `);
 
           insertETA(order);
-          // insertOrderCompleted(order);
 
           $myOrders.find('#pick-up-details').append(`
             <div class="m-top1">
@@ -110,20 +108,22 @@ $(() => {
             `);
           }
 
+          const subtotal = calcSubtotal(order);
+
           $myOrders.find('#orderPageCheckoutItems').append(`
             <div class="m-top2 "id="separator1"></div>
             <div class="m-top2" id="order-totals">
               <div class="flex small">
                 <p class="align1">Subtotal</p>
-                <p>$00.00</p>
+                <p>$${subtotal}</p>
               </div>
               <div class="flex small">
                 <p class="align1">Taxes</p>
-                <p>$00.00</p>
+                <p>$${order.info.tax}</p>
               </div>
               <div class="flex small">
                 <p class="align1">Tip</p>
-                <p>$00.00</p>
+                <p>$${order.info.tip}</p>
               </div>
               <div class="flex" id="total">
                 <p class="align2">TOTAL</p>
