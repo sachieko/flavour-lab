@@ -8,15 +8,15 @@ $(() => {
 
   window.viewsManager.show = function(item) {
     $app.detach();
-    $checkoutPage.detach();
+    if (item === 'restaurantLogin' || item === 'adminOrders') {
+      $checkoutPage.detach();
+    }
     $myOrders.detach();
-    $restaurantLogin.detach();
     $restaurantLogin.detach();
     $adminOrderPage.detach();
     switch (item) {
     case item = 'app':
       $app.appendTo($main);
-      $checkoutPage.find('#checkoutItems').empty();
       $checkoutPage.appendTo($main);
       break;
     // case item = 'checkout':

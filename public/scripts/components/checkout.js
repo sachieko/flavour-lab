@@ -27,23 +27,21 @@ $(() => {
     const data = $(this).serialize();
     removeFromCart(data).then(res => {
       getCart().then(cart => {
-        viewsManager.show('app');
-        // viewsManager.show('checkout');
-        const $checkoutItem = $checkoutPage.find('#checkoutItems');
+        const $checkoutItem = $('#checkoutItems').empty();
         for (const product of cart) {
           $checkoutItem.append(
             `<tr>
               <td>${product.item.name}</td>
               <td>$${product.item.price} x ${product.count} = $${product.item.price * product.count}</td>
               <td>
-                <form class="removeItem">
-                  <input type="hidden" name="id" value="${product.item.id}"></input>
-                  <button>Remove</button>
-                </form>
-              </td>
+              <form class="removeItem">
+                <input type="hidden" name="id" value="${product.item.id}"></input>
+                <button class="primary-btn">Remove</button>
+              </form>
+            </td>
             </tr>`);
         }
-        $checkoutItem.append($checkoutItem);
+        $('#checkoutItems').append($checkoutItem);
       });
     });
   });

@@ -28,7 +28,7 @@ $(() => {
   );
   window.$navBar = $navBar;
 
-  $('body').on('click', '.user-nav img, .user-nav span, .menu-links', function() {
+  $('body').on('click', '.user-nav img, .user-nav span', function() {
     // viewsManager.show('checkout');
     viewsManager.show('app');
   });
@@ -64,21 +64,21 @@ $(() => {
     getCart().then(cart => {
       viewsManager.show('app');
       // viewsManager.show('checkout');
-      const $checkoutItem = $checkoutPage.find('#checkoutItems');
+      const $checkoutItem = $('#checkoutItems').empty();
       for (const product of cart) {
         $checkoutItem.append(
           `<tr>
             <td>${product.item.name}</td>
             <td>$${product.item.price} x ${product.count} = $${product.item.price * product.count}</td>
             <td>
-              <form class="removeItem">
-                <input type="hidden" name="id" value="${product.item.id}"></input>
-                <button class="primary-btn">Remove</button>
-              </form>
+            <form class="removeItem">
+              <input type="hidden" name="id" value="${product.item.id}"></input>
+              <button class="primary-btn">Remove</button>
+            </form>
             </td>
           </tr>`);
       }
-      $checkoutItem.append($checkoutItem);
+      $('#checkoutItems').append($checkoutItem);
       $('#checkoutPage').css('display', 'flex');
       $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
     });

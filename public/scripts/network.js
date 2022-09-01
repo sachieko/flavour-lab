@@ -12,7 +12,8 @@ const sendText = function() {
 
 const getCart = function() {
   let url = "/api/cart";
-  return $.get(url);
+  return $.get(url, () => {
+  });
 };
 
 const addToCart = function(data) {

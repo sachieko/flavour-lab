@@ -68,9 +68,29 @@ $(() => {
   $('body').on('submit', '.view-item-btn', function(event) {
     event.preventDefault();
     const data = $(this).serialize();
-    addToCart(data).fail((xhr, status, err)=>{
-      console.log(err);
-    });
+    addToCart(data)
+      .done(() => {
+        getCart().then(cart => {
+          const $checkoutItem = $('#checkoutItems').empty();
+          for (const product of cart) {
+            $checkoutItem.append(
+              `<tr>
+              <td>${product.item.name}</td>
+              <td>$${product.item.price} x ${product.count} = $${product.item.price * product.count}</td>
+              <td>
+              <form class="removeItem">
+                <input type="hidden" name="id" value="${product.item.id}"></input>
+                <button class="primary-btn">Remove</button>
+              </form>
+              </td>
+              </tr>`);
+          }
+          $('#checkoutItems').append($checkoutItem);
+        });
+      })
+      .fail((xhr, status, err)=>{
+        console.log(err);
+      });
   });
 });
 

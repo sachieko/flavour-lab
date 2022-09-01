@@ -42,15 +42,14 @@ router.post('/', (req, res) => {
   const name = req.body.name;
   const phone = req.body.phone;
   const note = scrubData(req.body.note, '');
-  const tax = scrubData(req.body.tax, 0);
+  const tax = scrubData(req.body.tax, 0); // THIS IS SILLY, you do not ask how much tax someone wishes to pay it's calculated automatically. REFACTOR :^)
   const tip = scrubData(req.body.tip, 0);
-  const discount = scrubData(req.body.discount, 0);
+  // const discount = scrubData(req.body.discount, 0); // This value is calculated later and on behalf of the user, not an entered value.
   if (!req.cookies.cart || !name || !phone) {
-    //console.log('gotta have a cart name and phone ');
     return res.status(400).end();
   }
   const cart = JSON.parse(req.cookies.cart);
-  const orderArguments = {name, phone, note, tax, tip, discount};
+  const orderArguments = {name, phone, note, tip};
   Promise.all([
     itemQueries.getAllItemsFromCart(cart),
     orderQueries.insertOrder(orderArguments)])
@@ -67,6 +66,7 @@ router.post('/', (req, res) => {
         detailObj.note = null;
         detailQueries.push(orderDetails.insertOrderDetails(detailObj));
       }
+      orderQueries.insertTaxForOrderId(order.id);
       Promise.all(detailQueries)
         .then((allOrderDetails) => {
           res.clearCookie('cart');
