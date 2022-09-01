@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
   key ? parsed[item] = key + 1 : parsed[item] = 1;
   const jsonCart = JSON.stringify(parsed);
   res.cookie('cart', jsonCart);
-  res.end();
+  res.send(jsonCart);
 });
 
 router.post('/delete', (req, res) => {
@@ -47,8 +47,12 @@ router.post('/delete', (req, res) => {
   const parsed = JSON.parse(cart);
   parsed[item] - 1 > 0 ? parsed[item] = parsed[item] - 1 : delete parsed[item];
   const jsonCart = JSON.stringify(parsed);
+  if (jsonCart === '{}') {
+    res.clearCookie('cart');
+    return res.send('{}');
+  }
   res.cookie('cart', jsonCart);
-  res.end();
+  res.send(jsonCart);
 });
 
 
