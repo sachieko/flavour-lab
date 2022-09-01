@@ -29,7 +29,6 @@ $(() => {
   window.$navBar = $navBar;
 
   $('body').on('click', '.user-nav img, .user-nav span', function() {
-    // viewsManager.show('checkout');
     viewsManager.show('app');
   });
 
@@ -63,7 +62,6 @@ $(() => {
   $('body').on('click', 'nav #cart-btn', function() {
     getCart().then(cart => {
       viewsManager.show('app');
-      // viewsManager.show('checkout');
       const $checkoutItem = $('#checkoutItems').empty();
       for (const product of cart) {
         $checkoutItem.append(

@@ -19,11 +19,6 @@ $(() => {
       $app.appendTo($main);
       $checkoutPage.appendTo($main);
       break;
-    // case item = 'checkout':
-    //   $app.appendTo($main);
-    //   $checkoutPage.find('#checkoutItems').empty();
-    //   $checkoutPage.appendTo($main);
-      // break;
     case item = 'orders':
       $myOrders.find('#orderPageCheckoutItems').empty();
       $myOrders.find('#orderDetails').empty();

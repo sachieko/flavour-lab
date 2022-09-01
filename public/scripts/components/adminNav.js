@@ -22,7 +22,7 @@ $(() => {
         viewsManager.show('app');
       })
       .catch(err => {
-      //cant loggout if youre not logged in chief
+      //cant loggout if you're not logged in chief
         console.log(err);
       });
   });
