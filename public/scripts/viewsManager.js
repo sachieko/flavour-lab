@@ -7,9 +7,6 @@ $(() => {
   window.viewsManager = {};
   window.viewsManager.show = function(item) {
     $app.detach();
-    if (item === 'restaurantLogin' || item === 'adminOrders') {
-      $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
-    }
     if (!$('#checkoutPage').length) {
       $checkoutPage.appendTo($main);
     }

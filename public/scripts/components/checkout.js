@@ -9,10 +9,6 @@ $(() => {
       <div>
       <h2>Your Order</h2>
       <table id="checkoutItems">
-      <tr>
-        <th>Grub</th>
-        <th>Price</th>
-      </tr>
       </table>
     <form id="checkoutForm">
     <table id="checkoutTable">

@@ -30,15 +30,24 @@ $(() => {
   window.$navBar = $navBar;
 
   $('body').on('click', '.user-nav img, .user-nav span', function() {
+    if ($(window).width() < 767 && $('#checkoutPage').hasClass('slide-in')) {
+      $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
+    }
     viewsManager.show('app');
   });
 
   $('body').on('click', 'nav #restaurantLogin', function() {
+    if ($(window).width() < 767 && $('#checkoutPage').hasClass('slide-in')) {
+      $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
+    }
     viewsManager.show('restaurantLogin');
   });
 
   $('body').on('click', 'nav #navOrdersButton', function() {
     getOrder().then((order) => {
+      if ($(window).width() < 767 && $('#checkoutPage').hasClass('slide-in')) {
+        $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
+      }
       viewsManager.show('orders');
       $myOrders.find('#orderDetails').append(`
         <p>Name on Order: ${order.info.name}</p>
@@ -70,6 +79,9 @@ $(() => {
 
   $('body').on('click', '.menu-link', function(event) {
     event.preventDefault();
+    if ($(window).width() < 767 && $('#checkoutPage').hasClass('slide-in')) {
+      $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
+    }
     viewsManager.show('app');
     $(`#${$(this)[0].innerHTML}Spot`)[0].scrollIntoView({
       behavior: "smooth"
