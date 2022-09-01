@@ -42,7 +42,6 @@ router.post('/', (req, res) => {
   const name = req.body.name;
   const phone = req.body.phone;
   const note = scrubData(req.body.note, '');
-  const tax = scrubData(req.body.tax, 0); // THIS IS SILLY, you do not ask how much tax someone wishes to pay it's calculated automatically. REFACTOR :^)
   const tip = scrubData(req.body.tip, 0);
   // const discount = scrubData(req.body.discount, 0); // This value is calculated later and on behalf of the user, not an entered value.
   if (!req.cookies.cart || !name || !phone) {
