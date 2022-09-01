@@ -138,12 +138,12 @@ nav div:nth-child(1) div {
       color: #f7f2ef;
       text-shadow:
       0 0 3px #fcccb3,
-      0 0 8px #fcccb3,
-      0 0 20px #fcccb3,
-      0 0 42px #fc7025,
-      0 0 82px #fc7025,
-      0 0 92px #fc7025,
-      0 0 102px #fc7025;
+      0 -2px 8px #fcccb3,
+      0 -5px 20px #fcccb3,
+      0 -12px 42px #fc7025,
+      0 -16px 82px #fc7025,
+      0 -20px 92px #fc7025,
+      0 -26px 102px #fc7025;
       cursor: pointer;
     }
   }
@@ -178,7 +178,7 @@ width: 3em;
 
   nav .logo {
     font-weight: 500;
-    font-size: 2.5em;
+    font-size: 3em;
   }
 
   .menu-links a {
@@ -187,3 +187,19 @@ width: 3em;
 
 
 }
+
+/* Desktops */
+@media only screen and (min-width: 1080px) {
+
+  nav .logo {
+    font-weight: 500;
+    font-size: 3.5em;
+  }
+
+  .menu-links a {
+    font-size: 1.50em;
+  }
+
+
+}
+
