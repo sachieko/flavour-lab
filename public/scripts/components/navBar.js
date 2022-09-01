@@ -51,24 +51,26 @@ $(() => {
       $myOrders.find('#pick-up-details').append(`
         <div class="m-top1">
           <h5>PICK-UP DETAILS</h5>
-          <div class="flex">
+          <div class="flex m-top2">
             <p class="w-13">Order Contact Name:</p>
             <p>${order.info.name}</p>
           </div>
-          <div class="flex">
+          <div class="flex m-top3">
             <p class="w-13">Order Contact Number:</p>
             <p>${order.info.phone}</p>
           </div>
         </div>
-        <div class="m-top1 flex" id="restaurant-details">
-          <div id="restaurant-address">
-            <p>Restaurant Address:<p>
-            <p class="small m-top2">1 Taco Grease street</p>
-            <p class="small">Flavourtown BC GU1 F13R1</p>
+        <div class="m-top1">
+          <div class="flex">
+            <p id="address">Restaurant Address:<p>
+            <div>
+              <p class="small">1 Taco Grease street</p>
+              <p class="small">Flavourtown BC GU1 F13R1</p>
+            </div>
           </div>
-          <div id="restaurant-phone">
-            <p>Restaurant Phone:</p>
-            <p class="small m-top2">000 000 0000</p>
+          <div class="flex m-top3">
+            <p id="phone">Restaurant Phone:</p>
+            <p class="small">000 000 0000</p>
           </div>
         </div>
       `);
@@ -85,26 +87,26 @@ $(() => {
 
       for (const item of order.items) {
         $myOrders.find('#orderPageCheckoutItems').append(`
-          <div class="order-item flex">
+          <div class="order-item flex m-top2">
               <p id="item-name">${item.name}</p>
-              <p id="item-qty">x${item.quantity}</p>
+              <p id="item-qty">x ${item.quantity}</p>
               <p>$${item.price}</p>
           </div>
         `);
       }
 
       $myOrders.find('#orderPageCheckoutItems').append(`
-        <div class="m-top2 "id="separator"></div>
+        <div class="m-top2 "id="separator1"></div>
         <div class="m-top2" id="order-totals">
-          <div class="flex small" id="subtotal">
+          <div class="flex small">
             <p class="align1">Subtotal</p>
             <p>$00.00</p>
           </div>
-          <div class="flex small" id="taxes">
+          <div class="flex small">
             <p class="align1">Taxes</p>
             <p>$00.00</p>
           </div>
-          <div class="flex small" id="tip">
+          <div class="flex small">
             <p class="align1">Tip</p>
             <p>$00.00</p>
           </div>

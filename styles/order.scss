@@ -18,6 +18,10 @@
 }
 
 .m-top2 {
+  margin-top: 0.7em;
+}
+
+.m-top3 {
   margin-top: 0.5em;
 }
 
@@ -39,11 +43,12 @@
   border-bottom: 2px solid #a8a8a8;
 }
 
-#restaurant-details {
+#address {
+  width: 13em;
+}
 
-  #restaurant-address {
+#phone {
     width: 13em;
-  }
 }
 
 #item-name {
@@ -68,7 +73,7 @@
   }
 }
 
-#separator {
+#separator1 {
   border-top: 1px dotted #ccc;
   border-bottom: 1px dotted #ccc;
   width: 26em;
@@ -76,12 +81,23 @@
 
 // Desktops
 @media only screen and (min-width: 1080px) {
+
+  #order-status {
+    border: 0;
+    text-align: center;
+  }
+
   #pick-up-items {
     display: flex;
     justify-content: space-around;
+    margin-top: 1em;
   }
 
   #pick-up-details {
     border: 0;
+  }
+
+  #separator2 {
+    border-right: 2px solid #ccc;
   }
 }

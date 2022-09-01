@@ -6,6 +6,7 @@ $(() => {
       <div id="orderDetails"></div>
       <div id="pick-up-items">
         <div id="pick-up-details"></div>
+        <div id="separator2"></div>
         <div id="orderPageCheckoutItems"></div>
       </div>
     </section>
