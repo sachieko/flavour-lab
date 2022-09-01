@@ -13,7 +13,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 10em;
+  height: 20vh;
   padding: 1.5em;
   z-index: 1;
   position: fixed;
@@ -126,7 +126,8 @@ nav div:nth-child(1) div {
 .menu-links {
   background-color: $header-background-color;
   background-image: $background-image;
-  padding-top: 10em;
+  top: 20vh;
+  height: 6vh;
   position: fixed;
   width: inherit;
 

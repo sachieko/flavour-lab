@@ -73,7 +73,6 @@ $(() => {
       .done(() => {
         getCart().then(cart => {
           buildCartElement(cart);
-          $('#checkoutItems').css('top',$('.menu-links').outerHeight());
         });
       })
       .fail((xhr, status, err)=>{

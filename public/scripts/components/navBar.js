@@ -60,14 +60,23 @@ $(() => {
     });
   });
 
-
-
   $('body').on('click', 'nav #cart-btn', function() {
     getCart().then(cart => {
       viewsManager.show('app');
       buildCartElement(cart);
       $('#checkoutPage').css('display', 'flex');
       $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
+      $('#checkoutItems').css('top', function() {
+        return $('.menu-links').outerHeight();
+      });
     });
+  });
+
+  $('body').on('click', '.menu-link', function(event) {
+    event.preventDefault();
+    $(`#${$(this)[0].innerHTML}Spot`)[0].scrollIntoView({
+      behavior: "smooth"
+    });
+
   });
 });

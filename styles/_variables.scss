@@ -44,21 +44,21 @@ $cart-background-color: #120600;
 /* Animation for sliding cart */
 @keyframes slide-in {
   0% { transform: translateX(100vw); }
-  100% { transform: translateX(75vw); }
+  100% { transform: translateX(10vw); }
 }
 
 @-webkit-keyframes slide-in {
   0% { -webkit-transform: translateX(100vw); }
-  100% { -webkit-transform: translateX(75vw); }
+  100% { -webkit-transform: translateX(10vw); }
 }
 
 @keyframes slide-out {
-  0% { transform: translateX(75vw); }
+  0% { transform: translateX(10vw); }
   100% { transform: translateX(100vw); }
 }
 
 @-webkit-keyframes slide-out {
-  0% { -webkit-transform: translateX(75vw); }
+  0% { -webkit-transform: translateX(10vw); }
   100% { -webkit-transform: translateX(100vw); }
 }
 
