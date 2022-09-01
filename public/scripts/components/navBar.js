@@ -62,14 +62,14 @@ $(() => {
         </div>
         <div class="m-top1">
           <div class="flex">
-            <p id="address">Restaurant Address:<p>
+            <p id="address">Flavour Labs Address:<p>
             <div>
               <p class="small">1 Taco Grease street</p>
               <p class="small">Flavourtown BC GU1 F13R1</p>
             </div>
           </div>
           <div class="flex m-top3">
-            <p id="phone">Restaurant Phone:</p>
+            <p id="phone">Flavour Labs Phone:</p>
             <p class="small">000 000 0000</p>
           </div>
         </div>
