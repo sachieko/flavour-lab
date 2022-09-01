@@ -3,13 +3,16 @@
 $(() => {
 
   const $checkoutPage = $(
-    `<div id="checkoutPage" class="slide-out">
-    <table id="checkoutItems">
-    <tr>
-    <th>Name</th>
-    <th>Price</th>
-    </tr>
-    </table>
+    `
+    <div id="checkoutPage" class="slide-out">
+    <i class="fa-solid fa-angles-right"></i>
+      <div>
+      <table id="checkoutItems">
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+      </tr>
+      </table>
     <form id="checkoutForm">
     Name: <input type="text" name="name"></input></br>
     Phone: <input type="text" name="phone"></input></br>
@@ -19,6 +22,7 @@ $(() => {
       Discount Code: <input type="text" name="discount"></input></br>
       <button class="primary-btn">Checkout</button>
       </form>
+      </div>
       </div>
   `);
 
