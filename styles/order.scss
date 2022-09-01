@@ -37,6 +37,10 @@
   width: 13em;
 }
 
+.hidden {
+  border: 0;
+}
+
 #order-status {
   padding-bottom: 2em;
   border-bottom: 2px solid #a8a8a8;
@@ -105,7 +109,7 @@
     border-right: 2px solid #ccc;
   }
 
-  #separator2 .hidden {
+  #pick-up-items .hidden {
     border: 0;
   }
 }

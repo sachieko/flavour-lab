@@ -32,19 +32,23 @@ $(() => {
           <p class="small">Please check your phone for SMS updates from the restaurant, or stay on this page for status updates.</p>
         `);
       }
-    return;
+    if (completedTime !== null) {
+      return;
+    }
   };
 
 
   const insertOrderCompleted = function(order) {
     const completedTime = order.info.completed_time;
+    if (completedTime === null) {
+      return;
+    }
     if (completedTime !== null) {
       $myOrders.find('#order-status').append(`
         <p class="bold">Order #${order.info.id} <span class="red">is ready for pick-up!</span></p></br>
         <p class="bold">Your order was completed at: ${order.info.completed_time}</p></br>
       `);
     }
-    return;
   };
 
 
