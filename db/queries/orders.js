@@ -94,3 +94,7 @@ const getAllOrders = function() {
 };
 
 exports.getAllOrders = getAllOrders;
+
+const formatEstimatedTime = function(id) {
+ 
+};

@@ -9,6 +9,10 @@
   font-weight: bold;
 }
 
+.red {
+  color: #FF0000;
+}
+
 .small {
   font-size: 0.9em;
 }
@@ -99,5 +103,9 @@
 
   #separator2 {
     border-right: 2px solid #ccc;
+  }
+
+  #separator2 .hidden {
+    border: 0;
   }
 }
