@@ -12,7 +12,7 @@ const orderQueries = require('../db/queries/orders');
 
 router.get('/', (req, res) => {
   const isAdmin = req.cookies.chef;
-  if (!isAdmin){
+  if (!isAdmin) {
     //gotta be logged in bro
     return res.status(400).end();
   }
@@ -23,40 +23,39 @@ router.post('/', (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   userQueries.getUserByEmail(email)
-  .then(admin => {
-    if (admin.password === password){
-      res.cookie('chef', true);
-      return res.end();
-    }
-    //wrong pass home
-    res.status(400).end();
-  })
-  .catch(err => {
+    .then(admin => {
+      if (admin.password === password) {
+        res.cookie('chef', true);
+        return res.end();
+      }
+      //wrong pass homie
+      res.status(400).end();
+    })
+    .catch(err => {
     // gotta have employee email bro
-    return res.status(400).end();
-  })
-
+      return res.status(400).end();
+    });
 });
 
 router.get('/orders', (req, res) => {
   const isAdmin = req.cookies.chef;
-  if (!isAdmin){
+  if (!isAdmin) {
     //gotta be logged in bro
     return res.status(400).end();
   }
   orderQueries.getAllOrders()
-  .then(orders => {
-    res.send(orders);
-  })
-  .catch(err => {
-    // bad query perhaps
-    return res.status(400).end();
-  })
+    .then(orders => {
+      res.send(orders);
+    })
+    .catch(err => {
+      // bad query perhaps
+      return res.status(400).end();
+    });
 });
 
 router.get('/logout', (req, res) => {
   const isAdmin = req.cookies.chef;
-  if (!isAdmin){
+  if (!isAdmin) {
     console.log('not admin');
     //gotta be logged in bro
     return res.status(400).end();

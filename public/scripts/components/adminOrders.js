@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 $(() => {
   const $adminOrderPage = $(
     `<div id="adminOrders"">
@@ -5,6 +6,6 @@ $(() => {
         <table id="customerOrders">
         </table>
     </div>`
-  )
+  );
   window.$adminOrderPage = $adminOrderPage;
 });
