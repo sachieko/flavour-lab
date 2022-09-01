@@ -18,15 +18,14 @@ $primary-color: #000000;
 $secondary-color: #565656;
 $btn-color: #FFFFFF;
 $cart-color: #FFFFFF;
+$nav-hover-color: #f7f2ef;
 
 /* Box Shadows */
 $nav-text-shadow:
-  0 0 3px #fcccb3a9,
-  0 0 15px #fcccb3a9,
-  0 0 25px #fc7025a9,
-  0 0 32px #fc7025a9,
-  0 0 40px #fc7025a9,
-  0 0 50px #fc7025a9;
+  0 0 3px #fcccb3,
+  0 -2px 8px #fcccb3,
+  0 -2px 12px #fc7025,
+  0 -2px 20px #fc7025;
 $logo-text-shadow:
   0 0 3px #fcccb3,
   0 0 8px #fcccb3,
@@ -61,21 +60,21 @@ $cart-background-color: #120600;
 /* Animation for sliding cart */
 @keyframes slide-in {
   0% { transform: translateX(100vw); }
-  100% { transform: translateX(10vw); }
+  100% { transform: translateX(20vw); }
 }
 
 @-webkit-keyframes slide-in {
   0% { -webkit-transform: translateX(100vw); }
-  100% { -webkit-transform: translateX(10vw); }
+  100% { -webkit-transform: translateX(20vw); }
 }
 
 @keyframes slide-out {
-  0% { transform: translateX(10vw); }
+  0% { transform: translateX(20vw); }
   100% { transform: translateX(100vw); }
 }
 
 @-webkit-keyframes slide-out {
-  0% { -webkit-transform: translateX(10vw); }
+  0% { -webkit-transform: translateX(20vw); }
   100% { -webkit-transform: translateX(100vw); }
 }
 

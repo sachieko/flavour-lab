@@ -15,21 +15,49 @@
   color: $cart-color;
   top: 26vh;
   margin-bottom: 1em;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-  width: 90vw;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.18) 0px 4px 8px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 4px 8px;
+  width: 80vw;
   height: 100vh;
   transform: translateX(+100vw);
   -webkit-transform: translateX(+100vw);
   flex-direction: row;
+
+  .primary-btn {
+    background-color: $btn-background-color;
+    color: $btn-color;
+    border-radius: 6px;
+    border-width: 0;
+    font-size: 0.9em;
+    width: 7em;
+    height: 2.5em;
+    margin: 0.3em;
+    cursor: pointer;
+    -webkit-box-shadow: 0 0 8px 0px #FFFFFF;
+    box-shadow: 0 0 8px 0px #FFFFFF;
+
+    &:hover:not(:focus) {
+      color: $nav-hover-color;
+      box-shadow: $nav-text-shadow;
+      cursor: pointer;
+    }
+  }
+  h2 {
+    padding: 1em;
+  }
 
   div {
     flex-direction: column;
     align-content: flex-start;
   }
 
+  th {
+    text-shadow: $logo-text-shadow;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    animation: glowup 2s ease infinite;
+  }
   .fa-angles-right {
-    padding-top: 26vh;
     padding-left: 1vw;
     font-size: 1.5em;
     text-shadow: $logo-text-shadow;

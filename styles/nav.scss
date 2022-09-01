@@ -82,7 +82,7 @@ nav div:nth-child(1) div {
     -webkit-box-shadow: 0 0 8px 0px #FFFFFF;
     box-shadow: 0 0 8px 0px #FFFFFF;
 
-    &:hover {
+    &:hover:not(:focus) {
       color: #FFFFFF;
       text-shadow:
       0 0 3px #fcccb3a9,
@@ -91,13 +91,7 @@ nav div:nth-child(1) div {
       0 0 32px #fc7025a9,
       0 0 40px #fc7025a9,
       0 0 50px #fc7025a9;
-      box-shadow:
-      0 0 3px #fcccb3a9,
-      0 0 15px #fcccb3a9,
-      0 0 25px #fc7025a9,
-      0 0 32px #fc7025a9,
-      0 0 40px #fc7025a9,
-      0 0 50px #fc7025a9;
+      box-shadow: $nav-text-shadow;
       cursor: pointer;
     }
 
@@ -152,12 +146,8 @@ nav div:nth-child(1) div {
     }
 
     &:hover:not(:focus) {
-      color: #f7f2ef;
-      text-shadow:
-      0 0 3px #fcccb3,
-      0 -2px 8px #fcccb3,
-      0 -2px 12px #fc7025,
-      0 -2px 20px #fc7025;
+      color: $nav-hover-color;
+      text-shadow: $nav-text-shadow;
       cursor: pointer;
       animation: glowup 2s ease infinite;
     }
