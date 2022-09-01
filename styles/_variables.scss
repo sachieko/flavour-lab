@@ -17,6 +17,7 @@ $h5-size: 1.0em;
 $primary-color: #000000;
 $secondary-color: #565656;
 $btn-color: #FFFFFF;
+$cart-color: #FFFFFF;
 
 /* Backgrounds */
 $header-background-color: #120600;
@@ -24,6 +25,7 @@ $background-image: url("https://www.transparenttextures.com/patterns/dark-brick-
 $primary-background-color: #FFFFFF;
 $nav-background-color: #f7dd47;
 $btn-background-color: #000000;
+$cart-background-color: #120600;
 
 /* Animation for glowing logo */
 @keyframes glowup {
@@ -39,6 +41,27 @@ $btn-background-color: #000000;
     opacity: 1;
   }
 }
+/* Animation for sliding cart */
+@keyframes slide-in {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(75vw); }
+}
+
+@-webkit-keyframes slide-in {
+  0% { -webkit-transform: translateX(100vw); }
+  100% { -webkit-transform: translateX(75vw); }
+}
+
+@keyframes slide-out {
+  0% { transform: translateX(75vw); }
+  100% { transform: translateX(100vw); }
+}
+
+@-webkit-keyframes slide-out {
+  0% { -webkit-transform: translateX(75vw); }
+  100% { -webkit-transform: translateX(100vw); }
+}
+
 /* Buttons */
 // $nav-btn-color: #e63946;
 // $form-btn-color: #1d3557;

@@ -1,0 +1,49 @@
+/* ==========================================================================
+   CART STYLES Sachieko dark-mode style *cackles*
+   ========================================================================== */
+
+
+ @import '_variables';
+
+
+ #checkoutPage {
+  position: fixed;
+  display: none;
+  font-family: $primary-font;
+  background-color: $cart-background-color;
+  background-image: $background-image;
+  color: $cart-color;
+  top: 22vh;
+  margin-bottom: 1em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  width: 25vw;
+  height: 100vh;
+  transform: translateX(+100vw);
+  -webkit-transform: translateX(+100vw);
+
+  #checkoutForm {
+    padding: 1em;
+  }
+}
+
+.slide-in {
+  animation: slide-in 0.5s forwards;
+  -webkit-animation: slide-in 0.5s forwards;
+}
+
+.slide-out {
+  animation: slide-out 0.5s ease-out;
+  -webkit-animation: slide-out 0.5s ease-out;
+}
+
+
+/* Tablets */
+@media only screen and (min-width: 768px) {
+
+}
+
+  /* Desktops */
+@media only screen and (min-width: 1080px) {
+
+}

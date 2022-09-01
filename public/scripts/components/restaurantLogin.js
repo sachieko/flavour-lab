@@ -5,7 +5,7 @@ $(() => {
     `<form id="restaurantLoginForm"">
         email: <input type="text" name="email"></input></br>
         password: <input type="password" name="password"></input></br>
-        <button>Login</button>
+        <button class="primary-btn">Login</button>
     </form>`
   );
 

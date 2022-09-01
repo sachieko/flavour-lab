@@ -29,6 +29,7 @@ $(() => {
   window.$navBar = $navBar;
 
   $('body').on('click', '.user-nav img, .user-nav span, .menu-links', function() {
+    // viewsManager.show('checkout');
     viewsManager.show('app');
   });
 
@@ -61,7 +62,8 @@ $(() => {
 
   $('body').on('click', 'nav #cart-btn', function() {
     getCart().then(cart => {
-      viewsManager.show('checkout');
+      viewsManager.show('app');
+      // viewsManager.show('checkout');
       const $checkoutItem = $checkoutPage.find('#checkoutItems');
       for (const product of cart) {
         $checkoutItem.append(
@@ -71,12 +73,14 @@ $(() => {
             <td>
               <form class="removeItem">
                 <input type="hidden" name="id" value="${product.item.id}"></input>
-                <button>Remove</button>
+                <button class="primary-btn">Remove</button>
               </form>
             </td>
           </tr>`);
       }
       $checkoutItem.append($checkoutItem);
+      $('#checkoutPage').css('display', 'flex');
+      $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
     });
   });
 });
