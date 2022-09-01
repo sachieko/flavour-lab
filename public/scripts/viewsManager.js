@@ -5,19 +5,21 @@ $(() => {
   const $main = $('.main-content');
 
   window.viewsManager = {};
-
   window.viewsManager.show = function(item) {
     $app.detach();
     if (item === 'restaurantLogin' || item === 'adminOrders') {
-      $checkoutPage.detach();
+      $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
+    }
+    if (!$('#checkoutPage').length) {
+      $checkoutPage.appendTo($main);
     }
     $myOrders.detach();
     $restaurantLogin.detach();
     $adminOrderPage.detach();
+    $checkoutPage.appendTo($main);
     switch (item) {
     case item = 'app':
       $app.appendTo($main);
-      $checkoutPage.appendTo($main);
       break;
     case item = 'orders':
       $myOrders.find('#orderPageCheckoutItems').empty();

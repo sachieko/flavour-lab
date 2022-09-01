@@ -7,9 +7,10 @@ $(() => {
     <div id="checkoutPage" class="slide-out">
     <i class="fa-solid fa-angles-right"></i>
       <div>
+      <h2>Your Order</h2>
       <table id="checkoutItems">
       <tr>
-        <th>Name</th>
+        <th>Grub</th>
         <th>Price</th>
       </tr>
       </table>
@@ -53,5 +54,10 @@ $(() => {
         console.log(err);
       });
     });
+  });
+
+  $('body').on('click', 'i.fa-angles-right', function(event) {
+    event.preventDefault();
+    $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
   });
 });
