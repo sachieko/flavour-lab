@@ -43,11 +43,11 @@ $(() => {
                 <td>${order.submit_time}</td>
                 <td>
                   ${order.completed_time ?
-                  `Completed at ${order.completed_time}` :'Pending'}
+    `Completed at ${order.completed_time}` : 'Pending'}
                 </td>
                 <td>
                   ${order.estimated_time ?
-                  `Expected completion ${order.estimated_time}` :'Awaiting ETA'}
+    `Expected completion ${order.estimated_time}` : 'Awaiting ETA'}
                 </td>
                 <td>
                   ${!order.completed_time ? `
@@ -66,7 +66,7 @@ $(() => {
                     <input type="hidden" value="Complete" name="cmd"/>
                     <input type="hidden" value=${order.id} name="id"/>
                     <button>Complete</button>
-                  </form>`: ''}
+                  </form>` : ''}
                 </td>
               </tr>`
             );
