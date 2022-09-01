@@ -64,12 +64,49 @@ $(() => {
         </div>
       `);
 
-      $myOrders.find('#orderPageCheckoutItems').append(
-        `<tr><th>Name</th><th>Price</th></tr>`);
+      // $myOrders.find('#orderPageCheckoutItems').append(`
+      //   <tr>
+      //     <th>Name</th>
+      //     <th>Qty</th>
+      //     <th>Price</th>
+      //   </tr>
+      // `);
       for (const item of order.items) {
-        $myOrders.find('#orderPageCheckoutItems').append(
-          `<tr><td>${item.name}</td><td>$${item.price}</td></tr>`);
+        $myOrders.find('#orderPageCheckoutItems').append(`
+          <div class="orderItem">
+              <p>${item.name}</p>
+              <p>${item.quantity}</p>
+              <p>$${item.price}</p>
+          </div>
+        `);
       }
+      $myOrders.find('#orderPageCheckoutItems').append(`
+        <div id="separator"></div>
+        <div id="ordertotals">
+          <div id="subtotal">
+            <p>Subtotal</p>
+            <p>$00.00</p>
+          </div>
+          <div id="taxes">
+            <p>Taxes</p>
+            <p>$00.00</p>
+          </div>
+          <div id="tip">
+            <p>Tip</p>
+            <p>$00.00</p>
+          </div>
+          <div id="total">
+            <p>TOTAL</p>
+            <p>$00.00</p>
+          </div>
+        </div>
+        <div id="order-note">
+          <p>Order Note:</p>
+          <p>${order.info.note}</p>
+        </div>
+      `);
+
+
     }).catch(err => {
       console.log(err.message);
       viewsManager.show('orders');
