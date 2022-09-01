@@ -25,7 +25,20 @@ $primary-background-color: #FFFFFF;
 $nav-background-color: #f7dd47;
 $btn-background-color: #000000;
 
+/* Animation for glowing logo */
+@keyframes glowup {
+  0% {
+    opacity: 1;
+  }
 
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
 /* Buttons */
 // $nav-btn-color: #e63946;
 // $form-btn-color: #1d3557;
