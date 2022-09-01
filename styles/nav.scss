@@ -74,8 +74,36 @@ nav div:nth-child(1) div {
       0 0 82px #fc7025,
       0 0 92px #fc7025,
       0 0 102px #fc7025;
+      box-shadow: 0 0 3px #fcccb3,
+      0 0 8px #fcccb3,
+      0 0 20px #fcccb3,
+      0 0 42px #fc7025,
+      0 0 82px #fc7025,
+      0 0 92px #fc7025,
+      0 0 102px #fc7025;
       cursor: pointer;
     }
+
+    &:focus {
+      color: #FFFFFF;
+      text-shadow:
+      0 0 3px #fcccb3,
+      0 0 8px #fcccb3,
+      0 0 20px #fcccb3,
+      0 0 42px #fc7025,
+      0 0 82px #fc7025,
+      0 0 92px #fc7025,
+      0 0 102px #fc7025;
+      box-shadow: 0 0 3px #fcccb3,
+      0 0 8px #fcccb3,
+      0 0 20px #fcccb3,
+      0 0 42px #fc7025,
+      0 0 82px #fc7025,
+      0 0 92px #fc7025,
+      0 0 102px #fc7025;
+    }
+
+
   }
 }
 
@@ -106,7 +134,7 @@ nav div:nth-child(1) div {
       color: $btn-color;
     }
 
-    &:hover {
+    &:hover:not(:focus) {
       color: #f7f2ef;
       text-shadow:
       0 0 3px #fcccb3,
@@ -120,6 +148,7 @@ nav div:nth-child(1) div {
     }
   }
 }
+/* Small phones (Galaxy fold etc) */
 @media only screen and (max-width: 320px) {
   nav .logo {
     font-size: 1.25em;
@@ -150,6 +179,10 @@ width: 3em;
   nav .logo {
     font-weight: 500;
     font-size: 2.5em;
+  }
+
+  .menu-links a {
+    font-size: 1.25em;
   }
 
 
