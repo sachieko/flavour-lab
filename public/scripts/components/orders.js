@@ -21,35 +21,40 @@ $(() => {
       if (eta === null) {
         $myOrders.find('#order-status').append(`
           <p class="bold">Order #${order.info.id} was placed!</p></br>
-          <p class="bold">Estimated pick-up time: pending confirmation from Flavour Labs...</p></br>
+          <p class="bold">Estimated pick-up time: <span class="red">pending confirmation from Flavour Labs...</span></p></br>
           <p class="small">Please check your phone for SMS updates from the restaurant, or stay on this page for status updates.</p>
         `);
       }
       if (eta !== null) {
+        const formattedETA = eta.slice(11,16);
         $myOrders.find('#order-status').append(`
           <p class="bold">Order #${order.info.id} was <span class="red">confirmed!</span></p></br>
-          <p class="bold">Estimated pick-up time: <span class="red">${order.info.estimated_time}</span></p></br>
+          <p class="bold">Estimated pick-up time: <span class="red">${formattedETA}</span></p></br>
           <p class="small">Please check your phone for SMS updates from the restaurant, or stay on this page for status updates.</p>
         `);
       }
     if (completedTime !== null) {
-      return;
-    }
-  };
-
-
-  const insertOrderCompleted = function(order) {
-    const completedTime = order.info.completed_time;
-    if (completedTime === null) {
-      return;
-    }
-    if (completedTime !== null) {
+      const formattedCompletedTime = completedTime.slice(11,16);
       $myOrders.find('#order-status').append(`
         <p class="bold">Order #${order.info.id} <span class="red">is ready for pick-up!</span></p></br>
-        <p class="bold">Your order was completed at: ${order.info.completed_time}</p></br>
+        <p class="bold">Your order was completed at: ${formattedCompletedTime}</p></br>
       `);
     }
   };
+
+
+  // const insertOrderCompleted = function(order) {
+  //   const completedTime = order.info.completed_time;
+  //   if (completedTime === null) {
+  //     return;
+  //   }
+  //   if (completedTime !== null) {
+  //     $myOrders.find('#order-status').append(`
+  //       <p class="bold">Order #${order.info.id} <span class="red">is ready for pick-up!</span></p></br>
+  //       <p class="bold">Your order was completed at: ${order.info.completed_time}</p></br>
+  //     `);
+  //   }
+  // };
 
 
   $('body').on('click', 'nav #navOrdersButton', function() {
@@ -63,7 +68,7 @@ $(() => {
           `);
 
           insertETA(order);
-          insertOrderCompleted(order);
+          // insertOrderCompleted(order);
 
           $myOrders.find('#pick-up-details').append(`
             <div class="m-top1">
@@ -92,6 +97,7 @@ $(() => {
             </div>
           `);
 
+          $myOrders.find('#separator2').removeClass("hidden");
           $myOrders.find('#orderPageCheckoutItems').append(`<h5 class="m-top1">YOUR ORDER</h5>`)
 
           for (const item of order.items) {
