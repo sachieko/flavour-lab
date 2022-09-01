@@ -5,6 +5,83 @@
 
    @import '_variables';
 
+.bold {
+  font-weight: bold;
+}
+
+.small {
+  font-size: 0.9em;
+}
+
+.m-top1 {
+  margin-top: 2em;
+}
+
+.m-top2 {
+  margin-top: 0.5em;
+}
+
+.flex {
+  display: flex;
+}
+
+.w-13 {
+  width: 13em;
+}
+
+#order-status {
+  padding-bottom: 2em;
+  border-bottom: 2px solid #a8a8a8;
+}
+
 #pick-up-details {
-  margin-top: 1em;
+  padding-bottom: 2em;
+  border-bottom: 2px solid #a8a8a8;
+}
+
+#restaurant-details {
+
+  #restaurant-address {
+    width: 13em;
+  }
+}
+
+#item-name {
+  width: 18em;
+}
+
+#item-qty {
+  width: 4em;
+}
+
+#order-totals {
+  .align1 {
+    width: 24.5em;
+  }
+
+  .align2 {
+    width: 22em;
+  }
+
+  #total {
+    margin-top: 0.5em;
+  }
+}
+
+#separator {
+  border-top: 1px dotted #ccc;
+  border-bottom: 1px dotted #ccc;
+  width: 26em;
+}
+
+// Desktops
+@media only screen and (min-width: 1080px) {
+  #pick-up-items {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  #pick-up-details {
+    border: 0;
+  }
 }

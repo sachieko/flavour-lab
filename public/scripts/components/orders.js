@@ -4,8 +4,10 @@ $(() => {
   const $myOrders = $(`
     <section id="myOrders"">
       <div id="orderDetails"></div>
-      <h5>Your Order</h5>
-      <div id="orderPageCheckoutItems"></div>
+      <div id="pick-up-items">
+        <div id="pick-up-details"></div>
+        <div id="orderPageCheckoutItems"></div>
+      </div>
     </section>
   `);
   window.$myOrders = $myOrders;

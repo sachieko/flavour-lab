@@ -41,25 +41,34 @@ $(() => {
       viewsManager.show('orders');
       $myOrders.find('#orderDetails').append(`
         <div id="order-status">
-          <p>Order #${order.info.id} was placed!</p></br>
-          <p>Pick-up time: ${order.info.estimated_time}</p></br>
-          <p>Completion time: ${order.info.completed_time}</p></br>
-          <p>Please check your phone for SMS updates from the restaurant, or stay on this page for status updates.</p>
+          <p class="bold">Order #${order.info.id} was placed!</p></br>
+          <p class="bold">Estimated pick-up time: ${order.info.estimated_time}</p></br>
+          <p class="bold">Completion time: ${order.info.completed_time}</p></br>
+          <p class="small">Please check your phone for SMS updates from the restaurant, or stay on this page for status updates.</p>
         </div>
-        <div id="pick-up-details">
-          <h5>Pick-up Details</h5>
-          <p>Order Contact Name: ${order.info.name}</p>
-          <p>Order Contact Number: ${order.info.phone}</p>
-        </div>
-        <div id="restaurant-details">
-          <div>
-            <p>Restaurant Address:<p>
-            <p>1 Taco Grease street</p>
-            <p>Flavourtown BC GU1 F13R1</p>
+      `);
+
+      $myOrders.find('#pick-up-details').append(`
+        <div class="m-top1">
+          <h5>PICK-UP DETAILS</h5>
+          <div class="flex">
+            <p class="w-13">Order Contact Name:</p>
+            <p>${order.info.name}</p>
           </div>
-          <div>
-            <p>Restaurant Contact Number:</p>
-            <p>000 000 0000</p>
+          <div class="flex">
+            <p class="w-13">Order Contact Number:</p>
+            <p>${order.info.phone}</p>
+          </div>
+        </div>
+        <div class="m-top1 flex" id="restaurant-details">
+          <div id="restaurant-address">
+            <p>Restaurant Address:<p>
+            <p class="small m-top2">1 Taco Grease street</p>
+            <p class="small">Flavourtown BC GU1 F13R1</p>
+          </div>
+          <div id="restaurant-phone">
+            <p>Restaurant Phone:</p>
+            <p class="small m-top2">000 000 0000</p>
           </div>
         </div>
       `);
@@ -71,41 +80,44 @@ $(() => {
       //     <th>Price</th>
       //   </tr>
       // `);
+
+      $myOrders.find('#orderPageCheckoutItems').append(`<h5 class="m-top1">YOUR ORDER</h5>`)
+
       for (const item of order.items) {
         $myOrders.find('#orderPageCheckoutItems').append(`
-          <div class="orderItem">
-              <p>${item.name}</p>
-              <p>${item.quantity}</p>
+          <div class="order-item flex">
+              <p id="item-name">${item.name}</p>
+              <p id="item-qty">x${item.quantity}</p>
               <p>$${item.price}</p>
           </div>
         `);
       }
+
       $myOrders.find('#orderPageCheckoutItems').append(`
-        <div id="separator"></div>
-        <div id="ordertotals">
-          <div id="subtotal">
-            <p>Subtotal</p>
+        <div class="m-top2 "id="separator"></div>
+        <div class="m-top2" id="order-totals">
+          <div class="flex small" id="subtotal">
+            <p class="align1">Subtotal</p>
             <p>$00.00</p>
           </div>
-          <div id="taxes">
-            <p>Taxes</p>
+          <div class="flex small" id="taxes">
+            <p class="align1">Taxes</p>
             <p>$00.00</p>
           </div>
-          <div id="tip">
-            <p>Tip</p>
+          <div class="flex small" id="tip">
+            <p class="align1">Tip</p>
             <p>$00.00</p>
           </div>
-          <div id="total">
-            <p>TOTAL</p>
+          <div class="flex" id="total">
+            <p class="align2">TOTAL</p>
             <p>$00.00</p>
           </div>
         </div>
-        <div id="order-note">
+        <div class="m-top1" id="order-note">
           <p>Order Note:</p>
           <p>${order.info.note}</p>
         </div>
       `);
-
 
     }).catch(err => {
       console.log(err.message);
