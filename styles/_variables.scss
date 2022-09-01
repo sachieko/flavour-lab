@@ -19,6 +19,23 @@ $secondary-color: #565656;
 $btn-color: #FFFFFF;
 $cart-color: #FFFFFF;
 
+/* Box Shadows */
+$nav-text-shadow:
+  0 0 3px #fcccb3a9,
+  0 0 15px #fcccb3a9,
+  0 0 25px #fc7025a9,
+  0 0 32px #fc7025a9,
+  0 0 40px #fc7025a9,
+  0 0 50px #fc7025a9;
+$logo-text-shadow:
+  0 0 3px #fcccb3,
+  0 0 8px #fcccb3,
+  0 0 20px #fcccb3,
+  0 0 42px #fc7025,
+  0 0 82px #fc7025,
+  0 0 92px #fc7025,
+  0 0 102px #fc7025;
+
 /* Backgrounds */
 $header-background-color: #120600;
 $background-image: url("https://www.transparenttextures.com/patterns/dark-brick-wall.png");

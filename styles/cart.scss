@@ -21,6 +21,20 @@
   height: 100vh;
   transform: translateX(+100vw);
   -webkit-transform: translateX(+100vw);
+  flex-direction: row;
+
+  div {
+    flex-direction: column;
+    align-content: flex-start;
+  }
+
+  .fa-angles-right {
+    padding-top: 26vh;
+    padding-left: 1vw;
+    font-size: 1.5em;
+    text-shadow: $logo-text-shadow;
+    animation: glowup 1s ease infinite;
+  }
 
   #checkoutForm {
     padding: 1em;
