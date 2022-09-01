@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 $(() => {
+
   const $app = $(`
   <section id="menu">
   </section>
@@ -71,21 +72,8 @@ $(() => {
     addToCart(data)
       .done(() => {
         getCart().then(cart => {
-          const $checkoutItem = $('#checkoutItems').empty();
-          for (const product of cart) {
-            $checkoutItem.append(
-              `<tr>
-              <td>${product.item.name}</td>
-              <td>$${product.item.price} x ${product.count} = $${product.item.price * product.count}</td>
-              <td>
-              <form class="removeItem">
-                <input type="hidden" name="id" value="${product.item.id}"></input>
-                <button class="primary-btn">Remove</button>
-              </form>
-              </td>
-              </tr>`);
-          }
-          $('#checkoutItems').append($checkoutItem);
+          buildCartElement(cart);
+          $('#checkoutItems').css('top',$('.menu-links').outerHeight());
         });
       })
       .fail((xhr, status, err)=>{

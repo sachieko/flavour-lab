@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 $(() => {
+
   const $navBar = $( // Currently categories are hard coded, refactor to build categories from db!
     `
       <nav class="user-nav">
@@ -59,24 +60,12 @@ $(() => {
     });
   });
 
+
+
   $('body').on('click', 'nav #cart-btn', function() {
     getCart().then(cart => {
       viewsManager.show('app');
-      const $checkoutItem = $('#checkoutItems').empty();
-      for (const product of cart) {
-        $checkoutItem.append(
-          `<tr>
-            <td>${product.item.name}</td>
-            <td>$${product.item.price} x ${product.count} = $${product.item.price * product.count}</td>
-            <td>
-            <form class="removeItem">
-              <input type="hidden" name="id" value="${product.item.id}"></input>
-              <button class="primary-btn">Remove</button>
-            </form>
-            </td>
-          </tr>`);
-      }
-      $('#checkoutItems').append($checkoutItem);
+      buildCartElement(cart);
       $('#checkoutPage').css('display', 'flex');
       $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
     });
