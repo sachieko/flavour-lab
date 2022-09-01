@@ -40,13 +40,30 @@ $(() => {
     getOrder().then((order) => {
       viewsManager.show('orders');
       $myOrders.find('#orderDetails').append(`
-        <p>Name on Order: ${order.info.name}</p>
-        <p>Phone on Order: ${order.info.phone}</p>
-        <p>Date Submitted: ${order.info.submit_time}</p>
-        <p>Started Order at: ${order.info.started_time}</p>
-        <p>ETA: ${order.info.estimated_time}</p>
-        <p>Completed at: ${order.info.completed_time}</p>
+        <div id="order-status">
+          <p>Order #${order.info.id} was placed!</p></br>
+          <p>Pick-up time: ${order.info.estimated_time}</p></br>
+          <p>Completion time: ${order.info.completed_time}</p></br>
+          <p>Please check your phone for SMS updates from the restaurant, or stay on this page for status updates.</p>
+        </div>
+        <div id="pick-up-details">
+          <h5>Pick-up Details</h5>
+          <p>Order Contact Name: ${order.info.name}</p>
+          <p>Order Contact Number: ${order.info.phone}</p>
+        </div>
+        <div id="restaurant-details">
+          <div>
+            <p>Restaurant Address:<p>
+            <p>1 Taco Grease street</p>
+            <p>Flavourtown BC GU1 F13R1</p>
+          </div>
+          <div>
+            <p>Restaurant Contact Number:</p>
+            <p>000 000 0000</p>
+          </div>
+        </div>
       `);
+
       $myOrders.find('#orderPageCheckoutItems').append(
         `<tr><th>Name</th><th>Price</th></tr>`);
       for (const item of order.items) {
