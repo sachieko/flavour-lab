@@ -28,7 +28,7 @@ $(() => {
   );
   window.$navBar = $navBar;
 
-  $('body').on('click', '.user-nav img, .user-nav span', function() {
+  $('body').on('click', '.user-nav img, .user-nav span, .menu-links', function() {
     viewsManager.show('app');
   });
 
