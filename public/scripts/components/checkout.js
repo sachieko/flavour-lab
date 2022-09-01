@@ -43,6 +43,7 @@ $(() => {
     event.preventDefault();
     const data = $(this).serialize();
     addOrder(data).then((order)=>{
+      $('#checkoutForm input').val(''); // reset checkout form on good order
       $navBar.find('div').find('#navOrdersButton').trigger('click');
       sendText().catch((err) => {
         console.log(err);
