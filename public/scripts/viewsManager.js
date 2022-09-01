@@ -16,7 +16,6 @@ $(() => {
     $myOrders.detach();
     $restaurantLogin.detach();
     $adminOrderPage.detach();
-    $checkoutPage.appendTo($main);
     switch (item) {
     case item = 'app':
       $app.appendTo($main);
