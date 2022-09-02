@@ -77,7 +77,21 @@ $(() => {
     event.preventDefault();
     const data = $(this).serialize();
     addToCart(data)
-      .done(() => {
+      .then(stringCart => {
+        const cart = JSON.parse(stringCart);
+        const id = $(this).find('input').val();
+        $(this).replaceWith(`
+      <span class="dynamicCart">
+        <form style="display: inline" class="dynamicRemoveItem">
+          <input type="hidden" name="id" value="${id}">
+          <button>-</button>
+        </form>
+        <span class="dynamicId">${cart[id]}</span>
+        <form style="display: inline" class="dynamicAddItem">
+          <input type="hidden" name="itemId" value="${id}">
+          <button>+</button>
+        </form>
+      </span>`);
         getCart().then(cart => {
           buildCartElement(cart);
         });
@@ -86,7 +100,30 @@ $(() => {
         console.log(err);
       });
   });
-
+  $('body').on('submit', '.view-item-btn', function(event) {
+    event.preventDefault();
+    const data = $(this).serialize();
+    addToCart(data)
+      .then(stringCart => {
+        const cart = JSON.parse(stringCart);
+        const id = $(this).find('input').val();
+        $(this).replaceWith(`
+      <span class="dynamicCart">
+        <form style="display: inline" class="dynamicRemoveItem">
+          <input type="hidden" name="id" value="${id}">
+          <button>-</button>
+        </form>
+        <span class="dynamicId">${cart[id]}</span>
+        <form style="display: inline" class="dynamicAddItem">
+          <input type="hidden" name="itemId" value="${id}">
+          <button>+</button>
+        </form>
+      </span>`);
+      })
+      .fail((xhr, status, err)=>{
+        console.log(err);
+      });
+  });
   $('body').on('submit', '.dynamicRemoveItem', function(event) {
     event.preventDefault();
     const id = $(this).find('input').val();
