@@ -93,26 +93,16 @@ $(() => {
     }
   };
 
-  // Rough javascript calculations for the Subtotal.
-  const calcSubtotal = function(order) {
-    let subtotal = 0;
-    for (const item of order.items) {
-      subtotal += item.quantity * item.price;
-    }
-    return Math.round(subtotal * 100) / 100;
-  };
-
   // Inserts the order's subtotal, taxes, tip and total.
   // Takes in an order object, appends content to the DOM.
   const insertOrderTotals = function(order) {
-    const subtotal = calcSubtotal(order);
 
     $myOrders.find('#orderPageCheckoutItems').append(`
       <div class="m-top2 "id="separator1"></div>
       <div class="m-top2" id="order-totals">
         <div class="flex small">
           <p class="align1">Subtotal</p>
-          <p>$${subtotal}</p>
+          <p>$${order.info.subtotal}</p>
         </div>
         <div class="flex small">
           <p class="align1">Taxes</p>
@@ -124,7 +114,7 @@ $(() => {
         </div>
         <div class="flex" id="total">
           <p class="align2">TOTAL</p>
-          <p>$00.00</p>
+          <p>$${order.info.total}</p>
         </div>
       </div>
       <div class="m-top1" id="order-note">
@@ -138,9 +128,8 @@ $(() => {
   const renderOrder = function(event) {
     getOrder()
       .then((order) => {
-        if ($(window).width() < 767 && $('#checkoutPage').hasClass('slide-in')) {
-          $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
-        }
+        console.log(order);
+        slideCartMax(767);
         viewsManager.show('orders');
 
         if (order) {
@@ -163,7 +152,7 @@ $(() => {
       .catch(err => {
         console.log(err.message);
         viewsManager.show('orders');
-      })
+      });
   };
 
   $('body').on('click', 'nav #navOrdersButton', renderOrder);
