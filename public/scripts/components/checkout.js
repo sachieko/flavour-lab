@@ -28,9 +28,10 @@ $(() => {
     <tr>
       <td>Discount Code: </td><td><input type="text" name="discount"></input></td>
     </tr>
+      <tr>
+      <td><button class="primary-btn">Checkout</button></td>
+      </tr>
       </table>
-      <button class="primary-btn">Checkout</button>
-
       </form>
       </div>
       </div>

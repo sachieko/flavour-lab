@@ -71,6 +71,10 @@
     padding-left: 1em;
     border-spacing: 2px;
     border-collapse: separate;
+    td {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+    }
   }
 
   th {
@@ -136,6 +140,7 @@
 @media only screen and (min-width: 768px) {
   #checkoutPage {
     width: 50vw;
+    top: 19vh;
   }
 }
 

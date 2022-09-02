@@ -102,6 +102,8 @@
 
 #menu {
 
+  padding-top: 20vh;
+
   .item-container {
     display: flex;
     flex-wrap: wrap;
@@ -112,6 +114,11 @@
         width: 7em;
       }
     }
+  }
+
+  .anchor {
+    position: relative;
+    top: -20vh;
   }
 
   article {
