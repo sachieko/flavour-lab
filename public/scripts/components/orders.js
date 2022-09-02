@@ -134,8 +134,8 @@ $(() => {
     `);
   };
 
-
-  $('body').on('click', 'nav #navOrdersButton', function() {
+  // Loads the orders page when clicking on the orders button in the nav bar
+  const renderOrder = function(event) {
     getOrder()
       .then((order) => {
         viewsManager.show('orders');
@@ -160,7 +160,9 @@ $(() => {
       .catch(err => {
         console.log(err.message);
         viewsManager.show('orders');
-      });
-  });
+      })
+  };
+
+  $('body').on('click', 'nav #navOrdersButton', renderOrder);
 
 });
