@@ -137,4 +137,3 @@ const insertTaxForOrderId = function(id) {
 };
 
 exports.insertTaxForOrderId = insertTaxForOrderId;
-
