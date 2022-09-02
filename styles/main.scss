@@ -8,12 +8,12 @@
 #menu {
   display: flex;
   flex-direction: column;
-  padding-top: 12em;
+  padding-top: 27vh;
   width: 100%;
 
   .anchor {
     position: relative;
-    top: -11em;
+    top: -27vh;
   }
 
   article {
@@ -45,23 +45,6 @@
         font-size: small;
       }
 
-      button {
-        background-color: $btn-background-color;
-        color: $btn-color;
-        border-radius: 6px;
-        border-width: 0;
-        font-size: 95%;
-        width: 7em;
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
-        margin-bottom: 1em;
-        cursor: pointer;
-      }
-
-      button:hover {
-        background-color: $nav-background-color;
-        color: $primary-color;
-      }
     }
 
     img {
@@ -74,12 +57,35 @@
   }
 }
 
-#checkoutPage, #myOrders, #restaurantLoginForm {
+.primary-btn, .dynamicRemoveItem button, .dynamicAddItem button {
+  background-color: $btn-background-color;
+  color: $btn-color;
+  border-radius: 6px;
+  border-width: 0;
+  font-size: 95%;
+  width: 7em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+  font-family: $primary-font;
+  cursor: pointer;
+
+
+  &:hover {
+    background-color: $nav-background-color;
+    color: $primary-color;
+  }
+}
+
+#myOrders, #restaurantLoginForm, #adminOrders {
   display: flex;
   flex-direction: column;
-  padding-top: 12em;
+  padding-top: 27vh;
   margin: 1.5em 0.8em 0 0.8em;
 }
+
+
+
 /* For very small screens */
 @media only screen and (max-width: 365px) {
 
@@ -120,3 +126,10 @@
   }
 }}
 
+@media only screen and (min-width: 1080px) {
+  #menu {
+    article {
+      width: 35%;
+    }
+  }
+}
