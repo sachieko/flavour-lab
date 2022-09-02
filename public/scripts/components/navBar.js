@@ -30,16 +30,12 @@ $(() => {
   window.$navBar = $navBar;
 
   $('body').on('click', '.user-nav img, .user-nav span', function() {
-    if ($(window).width() < 767 && $('#checkoutPage').hasClass('slide-in')) {
-      $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
-    }
+    slideCartMax(767);
     viewsManager.show('app');
   });
 
   $('body').on('click', 'nav #restaurantLogin', function() {
-    if ($(window).width() < 767 && $('#checkoutPage').hasClass('slide-in')) {
-      $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
-    }
+    slideCartMax(767);
     viewsManager.show('restaurantLogin');
   });
 
@@ -73,20 +69,19 @@ $(() => {
     getCart().then(cart => {
       buildCartElement(cart);
       $('#checkoutPage').css('display', 'flex');
-      $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
+      slideCart();
+      $('#checkoutPage').animate({
+        scrollTop: 0
+      }, "slow");
     });
   });
 
   $('body').on('click', '.menu-link', function(event) {
     event.preventDefault();
-    if ($(window).width() < 767 && $('#checkoutPage').hasClass('slide-in')) {
-      $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
-    }
+    slideCartMax(767);
     viewsManager.show('app');
     $(`#${$(this)[0].innerHTML}Spot`)[0].scrollIntoView({
       behavior: "smooth"
     });
-
-
   });
 });

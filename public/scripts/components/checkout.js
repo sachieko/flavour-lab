@@ -6,14 +6,13 @@ $(() => {
     `
     <div id="checkoutPage" class="slide-out">
     <i class="fa-solid fa-angles-right"></i>
+    <i class="fa-solid fa-angles-right bottom"></i>
       <div>
       <h2>Your Order</h2>
       <table id="checkoutItems">
       </table>
     <form id="checkoutForm">
     <table id="checkoutTable">
-    <tr>
-      <th></th>
     <tr>
       <td>Name: </td><td><input type="text" name="name"></input></td>
     </tr>
@@ -68,6 +67,7 @@ $(() => {
 
   $('body').on('click', 'i.fa-angles-right', function(event) {
     event.preventDefault();
-    $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
+    slideCart();
   });
+
 });

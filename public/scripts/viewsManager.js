@@ -5,6 +5,7 @@ $(() => {
   const $main = $('.main-content');
 
   window.viewsManager = {};
+
   window.viewsManager.show = function(item) {
     $app.detach();
     if (!$('#checkoutPage').length) {

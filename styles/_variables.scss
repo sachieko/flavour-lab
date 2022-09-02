@@ -83,6 +83,28 @@ $cart-background-color: #120600;
 @media only screen and (min-width: 768px) {
   @keyframes slide-in {
     0% { transform: translateX(100vw); }
+    100% { transform: translateX(50vw); }
+  }
+
+  @-webkit-keyframes slide-in {
+    0% { -webkit-transform: translateX(100vw); }
+    100% { -webkit-transform: translateX(50vw); }
+  }
+
+  @keyframes slide-out {
+    0% { transform: translateX(50vw); }
+    100% { transform: translateX(100vw); }
+  }
+
+  @-webkit-keyframes slide-out {
+    0% { -webkit-transform: translateX(50vw); }
+    100% { -webkit-transform: translateX(100vw); }
+  }
+}
+/* Desktop Animations */
+@media only screen and (min-width: 1080px) {
+  @keyframes slide-in {
+    0% { transform: translateX(100vw); }
     100% { transform: translateX(70vw); }
   }
 
@@ -101,6 +123,7 @@ $cart-background-color: #120600;
     100% { -webkit-transform: translateX(100vw); }
   }
 }
+
 
 /* Buttons */
 // $nav-btn-color: #e63946;

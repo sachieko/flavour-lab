@@ -17,6 +17,7 @@
    border: 1px solid $nav-hover-color;
    -webkit-text-fill-color: $nav-hover-color;
    -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+   box-shadow: 0 0 0px 1000px #000 inset;
    transition: background-color 5000s ease-in-out 0s;
  }
 
@@ -24,7 +25,7 @@
   position: fixed;
   display: none;
   font-family: $primary-font;
-  font-size: 0.7em;
+  font-size: 0.9em;
   background-color: $cart-background-color;
   background-image: $background-image;
   color: $cart-color;
@@ -43,7 +44,7 @@
     color: $btn-color;
     border-radius: 6px;
     border-width: 0;
-    font-size: 0.9em;
+    font-size: 1em;
     width: 7em;
     height: 2.5em;
     margin: 0.3em;
@@ -67,6 +68,7 @@
     align-content: flex-start;
   }
   table {
+    padding-left: 1em;
     border-spacing: 2px;
     border-collapse: separate;
   }
@@ -78,13 +80,21 @@
     animation: glowup 2s ease infinite;
   }
 
-
   .fa-angles-right {
-    padding-left: 3vw;
+    display: flex;
+    padding-left: 1vw;
     padding-top: 1vh;
-    font-size: 2em;
+    font-size: 1.25em;
     text-shadow: $logo-text-shadow;
     animation: glowup 1s ease infinite;
+
+
+  }
+
+  .bottom {
+    position: fixed;
+    align-self: center;
+    left: 0vw;
   }
 
   #checkoutForm {
@@ -94,7 +104,7 @@
 
 #checkoutTable {
   input, textarea {
-    width: 12em;
+    width: 14em;
     color: $cart-color;
     background-color: #696969;
     box-shadow: $nav-btn-shadow;
@@ -104,6 +114,11 @@
 
   input {
     height: 2em;
+  }
+
+  td {
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -117,13 +132,16 @@
   -webkit-animation: slide-out 0.5s ease-out;
 }
 
-
 /* Tablets */
 @media only screen and (min-width: 768px) {
-
+  #checkoutPage {
+    width: 50vw;
+  }
 }
 
   /* Desktops */
 @media only screen and (min-width: 1080px) {
-
+  #checkoutPage {
+    width: 30vw;
+  }
 }

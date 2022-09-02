@@ -38,3 +38,20 @@ const createCategoryTitle = function(item) {
   }
   $app.append(`<div id="${item.category}Spot" class="anchor"></div><h2>${item.category}</h2><div id="${item.category}" class="item-container"></div>`); // Else, create a category title.
 };
+/* Allows sliding ONLY if you're not on desktop */
+// vw is an integer for the max width in pixels you want this to be able to slide out.
+const slideCartMax = function(vw) {
+  if ($(window).width() < vw && $('#checkoutPage').hasClass('slide-in')) {
+    $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
+  }
+};
+// Same as above but only slides cart if above a min resolution.
+const slideCartMin = function(vw) {
+  if ($(window).width() > vw && $('#checkoutPage').hasClass('slide-in')) {
+    $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
+  }
+};
+
+const slideCart = function() {
+  $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
+};
