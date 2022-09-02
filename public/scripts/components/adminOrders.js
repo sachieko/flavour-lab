@@ -15,7 +15,7 @@ $(() => {
         $navBar.detach();
         $adminNav.prependTo('body');
         $adminOrderPage.append(`<div class="customerOrders"></div>`);
-
+        console.log(orders);
         let j = 0;
         const $orderTable = $adminOrderPage.find('.customerOrders').last();
         for (let i = 0; i < orders.length; i = j) {
@@ -24,9 +24,12 @@ $(() => {
           $orderTable.find(".customerOrderBox").last().append(`
             <div class="metaOrderInfo">
               <div class="customerContactInfo">
-                <h5>Contact:</h5>
-                <span>${order.name}</span>
-                <span>${order.phone}</span>
+                <h5>Contact and Totals:</h5>
+                <span class="bold">Customer: </span><span>${order.name}</span>
+                <span class="bold">Phone: </span><span>${order.phone}</span>
+                <span class="bold">Subtotal: </span><span>$${order.subtotal}</span>
+                <span class="bold">Tax: </span><span>$${order.tax}</span>
+                <span class="bold">Total: </span><span>$${order.total}</span>
               </div>
               <div class="orderStatus">
                 <h5>Status:</h5>
