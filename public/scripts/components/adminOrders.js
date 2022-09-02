@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 $(() => {
   const $adminOrderPage = $(`
@@ -15,7 +16,6 @@ $(() => {
         $navBar.detach();
         $adminNav.prependTo('body');
         $adminOrderPage.append(`<div class="customerOrders"></div>`);
-        console.log(orders);
         let j = 0;
         const $orderTable = $adminOrderPage.find('.customerOrders').last();
         for (let i = 0; i < orders.length; i = j) {
