@@ -35,28 +35,33 @@ $(() => {
                 </div>
               </div>
               ${!order.completed_time ?
-    `<div class="timeManagement">
+                `<div class="timeManagement">
                   <h5>Manage Order</h5>
-
+                  <div id="commands">
                   <form class="startOrder">
                     <input type="hidden" value="Start" name="cmd"/>
                     <input type="hidden" value=${order.id} name="id"/>
-                    <button>Start</button>
+                    <button id="btn-start">1.</br>Start Order</button>
                   </form>
                   <form class="estimateOrder">
                     <input type="hidden" value="Estimate" name="cmd"/>
                     <input type="hidden" value=${order.id} name="id"/>
-                    <input type="number" name="est"/>
-                    <button>Estimate</button>
+                    <div id="est-form-btn">
+                    <input type="number" name="est" id="number-input" placeholder="Minutes"/>
+                    <button id="btn-est">2. Estimated Prep Time</button>
+                    </div>
                   </form>
                   <form class="completeOrder">
                     <input type="hidden" value="Complete" name="cmd"/>
                     <input type="hidden" value=${order.id} name="id"/>
-                    <button>Complete</button>
-                  </form>` : ''}
+                    <button id="btn-complete">3. Completed</button>
+                  </form>
+                  </div>
+                </div>` : ''}
+                <div class="toggleItems" id="items-toggle">
+                <h5 class="toggleItems">Order Items</h5>
+                <button type="button" class="toggleItems"><i class="fa-solid fa-arrow-down-wide-short"></i></i></button>
                 </div>
-              <div>
-                <h5 class="toggleItems">Order Items (click me to toggle)</h5>
                 <div class="customerItems">
                 </div>
               </div>`);
@@ -64,8 +69,9 @@ $(() => {
           while (order.id === orders[j].id) {
             $orderTable.find(".customerOrderBox").last().find(".customerItems").append(
               `<div class="customerItem">
-                  <span >${orders[j].item_name}</span>
-                  <span >${orders[j].items_price}</span>
+                  <span id="item-name">${orders[j].item_name}</span>
+                  <span>x ${orders[j].item_quantity}</span>
+                  <span >$${orders[j].item_price}</span>
                 </div>`);
             j++;
             if (j >= orders.length - 1) {

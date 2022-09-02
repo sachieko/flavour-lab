@@ -1,13 +1,33 @@
+/* ==========================================================================
+   LOGIN
+   ========================================================================== */
+
+
+   @import '_variables';
+
+.customerOrders {
+  margin-right: 0.8em;
+}
+
 #adminOrders {
   display: flex;
   flex-direction: column;
-  padding-top: 12em;
+  padding-top: 8em;
   margin: 1.5em 0.8em 0 0.8em;
 
+  h1 {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+
   .customerOrderBox {
-    background-color: lightgoldenrodyellow;
+    background-color: #f2f2f2;
     margin-top: 20px;
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
   }
 
   .metaOrderInfo {
@@ -17,25 +37,98 @@
 
   .timeManagement {
     display: flex;
-    justify-content: space-evenly;
-    background-color: lightgray;
+    flex-direction: column;
+    background-color: #fbcca1;
     padding: 10px;
     margin-top: 10px;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+
+    #commands {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    button {
+      background-color: $btn-background-color;
+      color: $btn-color;
+      border-radius: 6px;
+      border-width: 0;
+      font-size: 80%;
+      width: 7em;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      margin-bottom: 1em;
+      font-family: $primary-font;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $nav-background-color;
+        color: $primary-color;
+      }
+    }
+
+    #btn-start {
+      margin-top: 2.1em;
+    }
+
+    #est-form-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      #number-input {
+        width: 6em;
+      }
+
+      #btn-est {
+        margin-top: 0.3em;
+      }
+    }
+
+    #btn-complete {
+      margin-top: 2.1em;
+    }
+
+  }
+
+  #items-toggle {
+    display: flex;
+    margin-top: 1em;
+    cursor: pointer;
+
+    button {
+      font-size: medium;
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+
+      &:hover {
+        color: red;
+      }
+    }
   }
 
   .customerItems {
     display: none;
+
+    #item-name {
+      width: 20em;
+    }
   }
 
   .customerItem {
     display: flex;
     justify-content: space-between;
   }
+}
 
-  h1 {
-    text-align: center;
-    font-size: 2.5em;
-    font-weight: bold;
-    margin-bottom: 0.5em;
-  }
+// Desktops
+@media only screen and (max-width: 767px) {
+
+  #adminOrders .timeManagement #commands {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 }
