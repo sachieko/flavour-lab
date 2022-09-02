@@ -38,7 +38,7 @@ const createCategoryTitle = function(item) {
   }
   $app.append(`<div id="${item.category}Spot" class="anchor"></div><h2>${item.category}</h2><div id="${item.category}" class="item-container"></div>`); // Else, create a category title.
 };
-/* Allows sliding ONLY if you're not on desktop */
+/* Allows sliding ONLY below max view width */
 // vw is an integer for the max width in pixels you want this to be able to slide out.
 const slideCartMax = function(vw) {
   if ($(window).width() < vw && $('#checkoutPage').hasClass('slide-in')) {

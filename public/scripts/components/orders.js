@@ -137,9 +137,7 @@ $(() => {
   const renderOrder = function(event) {
     getOrder()
       .then((order) => {
-        slideCartMax(767);
         viewsManager.show('orders');
-
         if (order) {
           $myOrders.find('#orderDetails').append(`<div id="order-status"></div>`);
 
