@@ -86,11 +86,20 @@ const addPrepTime = function(minutes, id) {
 exports.addPrepTime = addPrepTime;
 
 const getAllOrders = function() {
-  return db.query(
-    `SELECT * FROM orders`, [])
+  return db.query(`
+    SELECT
+      items.name AS item_name,
+      items.price AS items_price,
+      orders.*
+    FROM orders
+    JOIN order_details ON orders.id=order_details.order_id
+    JOIN items ON items.id=order_details.item_id
+    GROUP BY orders.id, order_details.id, items.id
+    ORDER BY completed_time DESC, submit_time;`, [])
     .then(allOrders => {
       return allOrders.rows;
-    });
+    })
+    .catch(err => console.log(err));
 };
 
 exports.getAllOrders = getAllOrders;

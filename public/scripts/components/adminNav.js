@@ -19,7 +19,7 @@ $(() => {
       .then(res => {
         $adminNav.detach();
         $navBar.prependTo('body');
-        viewsManager.show('app');
+        location.reload();
       })
       .catch(err => {
       //cant loggout if youre not logged in chief
