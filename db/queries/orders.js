@@ -101,10 +101,14 @@ const getAllOrders = function() {
       items.name AS item_name,
       items.price AS item_price,
       order_details.quantity AS item_quantity,
-      orders.*
+      orders.id AS id, orders.note, orders.tax,
+      orders.tip, orders.name, orders.phone, started_time at time zone '+13' as started_time ,
+      estimated_time at time zone '+13' as estimated_time, completed_time at time zone '+13' as completed_time,
+      submit_time at time zone '+13' as submit_time,
+      SUM(order_details.price) AS subtotal, SUM(order_details.price) + orders.tax + orders.tip as total
     FROM orders
-    JOIN order_details ON orders.id=order_details.order_id
-    JOIN items ON items.id=order_details.item_id
+    JOIN order_details ON orders.id = order_details.order_id
+    JOIN items ON items.id = order_details.item_id
     GROUP BY orders.id, order_details.id, items.id
     ORDER BY completed_time DESC, submit_time;`, [])
     .then(allOrders => {

@@ -14,6 +14,11 @@
   flex-direction: column;
   padding-top: 8em;
   margin: 1.5em 0.8em 0 0.8em;
+  font-family: $primary-font;
+
+  h5 {
+    padding-top: 1em;
+  }
 
   h1 {
     text-align: center;
