@@ -18,29 +18,25 @@ $(() => {
   const insertETA = function(order) {
     const completedTime = order.info.completed_time;
     const eta = order.info.estimated_time;
-    if (completedTime === null)               // If the order is not completed
+    if (completedTime === null) {               // If the order is not completed
       if (eta === null) {                         // and if there's no estimated time yet
         $myOrders.find('#order-status').append(`
-          <div id="notCompleted">
             <p class="bold">Order #${order.info.id} was placed!</p></br>
             <p class="bold">Estimated pick-up time: <span class="red">pending confirmation from Flavour Labs...</span></p></br>
             <p class="small">Please check your phone for SMS updates from the restaurant, or stay on this page for status updates.</p>
-          </div>
         `);
       }
       if (eta !== null) {                        // if there's an estimated time
         const formattedETA = eta.slice(11,16);
         $myOrders.find('#order-status').append(`
-          <div id="notCompleted">
             <p class="bold">Order #${order.info.id} was <span class="red">confirmed!</span></p></br>
             <p class="bold">Estimated pick-up time: <span class="red">${formattedETA}</span></p></br>
             <p class="small">Please check your phone for SMS updates from the restaurant, or stay on this page for status updates.</p>
-          </div>
         `);
       }
+    }
     if (completedTime !== null) {           // if the order is completed
       const formattedCompletedTime = completedTime.slice(11,16);
-      $myOrders.find('#notCompleted').hide();
       $myOrders.find('#order-status').append(`
         <p class="bold">Order #${order.info.id} <span class="red">is ready for pick-up!</span></p></br>
         <p class="bold">Your order was completed at: ${formattedCompletedTime}</p></br>
@@ -54,7 +50,7 @@ $(() => {
     if ($myOrders.find('#address').length !== 0) {   // If there's already content in the div #pick-up-details
       return;                                        // do nothing.
     }
-                                                     // Else, add content
+    // Else, add content
     $myOrders.find('#pick-up-details').append(`
       <div class="m-top1">
         <h5>PICK-UP DETAILS</h5>
@@ -101,9 +97,9 @@ $(() => {
   const calcSubtotal = function(order) {
     let subtotal = 0;
     for (const item of order.items) {
-      subtotal += item.quantity*item.price;
+      subtotal += item.quantity * item.price;
     }
-    return Math.round(subtotal*100)/100;
+    return Math.round(subtotal * 100) / 100;
   };
 
   // Inserts the order's subtotal, taxes, tip and total.
@@ -133,7 +129,7 @@ $(() => {
       </div>
       <div class="m-top1" id="order-note">
         <p>Order Note:</p>
-        <p>${order.info.note}</p>
+        <p class="small">${order.info.note}</p>
       </div>
     `);
   };
@@ -151,7 +147,7 @@ $(() => {
           insertPickUpDetails(order);
 
           $myOrders.find('#separator2').removeClass("hidden");
-          $myOrders.find('#orderPageCheckoutItems').append(`<h5 class="m-top1">YOUR ORDER</h5>`)
+          $myOrders.find('#orderPageCheckoutItems').append(`<h5 class="m-top1">YOUR ORDER</h5>`);
 
           insertOrderItems(order);
           insertOrderTotals(order);
