@@ -5,20 +5,35 @@
 
  @import '_variables';
 
+ input:-webkit-autofill,
+ input:-webkit-autofill:hover,
+ input:-webkit-autofill:focus,
+ textarea:-webkit-autofill,
+ textarea:-webkit-autofill:hover,
+ textarea:-webkit-autofill:focus,
+ select:-webkit-autofill,
+ select:-webkit-autofill:hover,
+ select:-webkit-autofill:focus {
+   border: 1px solid $nav-hover-color;
+   -webkit-text-fill-color: $nav-hover-color;
+   -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+   transition: background-color 5000s ease-in-out 0s;
+ }
 
  #checkoutPage {
   position: fixed;
   display: none;
   font-family: $primary-font;
+  font-size: 0.7em;
   background-color: $cart-background-color;
   background-image: $background-image;
   color: $cart-color;
   top: 26vh;
-  margin-bottom: 1em;
+  bottom: 0;
+  overflow-y: scroll;
   -webkit-box-shadow: rgba(0, 0, 0, 0.18) 0px 4px 8px;
   box-shadow: rgba(0, 0, 0, 0.18) 0px 4px 8px;
-  width: 80vw;
-  height: 100vh;
+  width: 100vw;
   transform: translateX(+100vw);
   -webkit-transform: translateX(+100vw);
   flex-direction: row;
@@ -33,8 +48,8 @@
     height: 2.5em;
     margin: 0.3em;
     cursor: pointer;
-    -webkit-box-shadow: 0 0 8px 0px #FFFFFF;
-    box-shadow: 0 0 8px 0px #FFFFFF;
+    -webkit-box-shadow: 0 0 8px 0px $primary-background-color;
+    box-shadow: 0 0 8px 0px $primary-background-color;
 
     &:hover:not(:focus) {
       color: $nav-hover-color;
@@ -44,11 +59,16 @@
   }
   h2 {
     padding: 1em;
+    padding-bottom: 0.2em;
   }
 
   div {
     flex-direction: column;
     align-content: flex-start;
+  }
+  table {
+    border-spacing: 2px;
+    border-collapse: separate;
   }
 
   th {
@@ -57,15 +77,33 @@
     border-radius: 20px;
     animation: glowup 2s ease infinite;
   }
+
+
   .fa-angles-right {
-    padding-left: 1vw;
-    font-size: 1.5em;
+    padding-left: 3vw;
+    padding-top: 1vh;
+    font-size: 2em;
     text-shadow: $logo-text-shadow;
     animation: glowup 1s ease infinite;
   }
 
   #checkoutForm {
     padding: 1em;
+  }
+}
+
+#checkoutTable {
+  input, textarea {
+    width: 12em;
+    color: $cart-color;
+    background-color: #696969;
+    box-shadow: $nav-btn-shadow;
+    border-radius: 5px;
+    margin-top: 1em;
+  }
+
+  input {
+    height: 2em;
   }
 }
 
