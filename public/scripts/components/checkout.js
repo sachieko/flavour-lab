@@ -61,6 +61,7 @@ $(() => {
       $navBar.find('div').find('#navOrdersButton').trigger('click');
       sendText().then(() => {
         $('body nav #cart-btn').trigger('click');
+        $app.find('.dynamicId').replaceWith('<span class="dynamicId">0</span>');
       }).catch((err) => {
         console.log(err);
       });
