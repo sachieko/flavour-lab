@@ -99,7 +99,8 @@ const getAllOrders = function() {
   return db.query(`
     SELECT
       items.name AS item_name,
-      items.price AS items_price,
+      items.price AS item_price,
+      order_details.quantity AS item_quantity,
       orders.*
     FROM orders
     JOIN order_details ON orders.id=order_details.order_id

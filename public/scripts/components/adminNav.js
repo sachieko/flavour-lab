@@ -1,17 +1,20 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 $(() => {
-  $adminNav = $(
-    `<nav class="admin-nav">
-    <img style="width:4.5em" src="../../images/fieri.png" />
-    <div>
-    <span class="logo">Flavour </span><span class="logo">Labs</span>
+  $adminNav = $(`
+    <nav class="admin-nav">
+      <div>
+        <img src="../../images/fieri.png" />
+        <div>
+          <span class="logo">Flavour </span><span class="logo">Labs</span>
+        </div>
+      </div>
+    <div class="nav-buttons">
+      <button id="adminLogout">Logout</button>
     </div>
-    <div>
-    <button id="adminLogout">Logout</button>
-    </div>
-    </nav>`
-  );
+  </nav>
+  `);
+
   window.$adminNav = $adminNav;
 
   $('body').on('click', '.admin-nav #adminLogout', function() {

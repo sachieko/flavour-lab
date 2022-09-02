@@ -3,8 +3,8 @@
 $(() => {
   const $restaurantLogin = $(
     `<form id="restaurantLoginForm"">
-        email: <input type="text" autocomplete="username" name="email"></input></br>
-        password: <input type="password" autocomplete="current-password" name="password"></input></br>
+        Email <input type="text" autocomplete="username" name="email" placeholder="Enter email"></input></br>
+        Password <input type="password" autocomplete="current-password" name="password" placeholder="Enter password"></input></br>
         <button class="primary-btn">Login</button>
     </form>`
   );

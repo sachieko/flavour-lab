@@ -40,10 +40,9 @@ $(() => {
   window.$checkoutPage = $checkoutPage;
   $('body').on('submit', '.removeItem', function(event) {
     event.preventDefault();
-    const data = $(this).serialize();
-    removeFromCart(data).then(res => {
-      getCart().then(buildCartElement);
-    });
+    const updateHomeCartId = $(this).find('input[name="id"]').val();
+    $(`body .dynamicRemoveItem [value='${updateHomeCartId}']`).trigger('submit');
+    getCart().then(buildCartElement);
   });
 
   const makeFormObject = function(array) {
@@ -60,7 +59,9 @@ $(() => {
     addOrder(data).then((order)=>{
       $('#checkoutForm input, #checkoutForm textarea').val(''); // reset checkout form on good order
       $navBar.find('div').find('#navOrdersButton').trigger('click');
-      sendText().catch((err) => {
+      sendText().then(() => {
+        $('body nav #cart-btn').trigger('click');
+      }).catch((err) => {
         console.log(err);
       });
     });

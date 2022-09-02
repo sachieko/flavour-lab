@@ -25,7 +25,7 @@ router.get('/customer', (req, res) => {
   }
   orders.getOrderById(orderId)
     .then((order) =>{
-      const customerMsg = `Hello ${order.name}. The restaurant has received your order`;
+      const customerMsg = `Welcome to Flavour Town ${order.name}. We have received your order.`;
       const restaurantMsg = `New order id: ${order.id} from ${order.name} with phone ${order.phone}`;
       sendMsg(customerMsg, order.phone);
       sendMsg(restaurantMsg, process.env.RESTAURANT_PHONE);
@@ -61,6 +61,12 @@ router.post('/restaurant', (req, res) => {
   orders.updateField(cmd, id, estimate)
     .then((updatedOrder) => {
       twiml.message(`Updated order ${updatedOrder.id}`);
+      if (cmd === 'Estimate') {
+        sendMsg(`Your order from Flavour Labs will be ready in approximately ${estimate} minutes.`, updatedOrder.phone);
+      }
+      if (cmd === 'Complete') {
+        sendMsg(`Your order from Flavour Labs is ready for pickup!`, updatedOrder.phone);
+      }
       res.writeHead(200, {'Content-Type': 'text/xml'});
       return res.end(twiml.toString());
     })
