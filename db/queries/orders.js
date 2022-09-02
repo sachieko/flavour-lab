@@ -14,7 +14,11 @@ exports.getOrdersByUser = getOrdersByUser;
 
 const getOrderById = (Id) => {
   return db.query(`
-  SELECT orders.*, SUM(order_details.price) AS subtotal, SUM(order_details.price) + orders.tax + orders.tip as total FROM orders
+  SELECT orders.id, orders.note, orders.tax,
+  orders.tip, orders.name, orders.phone, started_time at time zone '+13' as started_time ,
+  estimated_time at time zone '+13' as estimated_time, completed_time at time zone '+13' as completed_time,
+  submit_time at time zone '+13' as submit_time,
+  SUM(order_details.price) AS subtotal, SUM(order_details.price) + orders.tax + orders.tip as total FROM orders
   JOIN order_details ON orders.id = order_id
   WHERE orders.id = $1
   GROUP BY orders.id
