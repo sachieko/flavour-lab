@@ -1,0 +1,147 @@
+/* ==========================================================================
+   CART STYLES Sachieko dark-mode style *cackles*
+   ========================================================================== */
+
+
+ @import '_variables';
+
+ input:-webkit-autofill,
+ input:-webkit-autofill:hover,
+ input:-webkit-autofill:focus,
+ textarea:-webkit-autofill,
+ textarea:-webkit-autofill:hover,
+ textarea:-webkit-autofill:focus,
+ select:-webkit-autofill,
+ select:-webkit-autofill:hover,
+ select:-webkit-autofill:focus {
+   border: 1px solid $nav-hover-color;
+   -webkit-text-fill-color: $nav-hover-color;
+   -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+   box-shadow: 0 0 0px 1000px #000 inset;
+   transition: background-color 5000s ease-in-out 0s;
+ }
+
+ #checkoutPage {
+  position: fixed;
+  display: none;
+  font-family: $primary-font;
+  font-size: 0.9em;
+  background-color: $cart-background-color;
+  background-image: $background-image;
+  color: $cart-color;
+  top: 26vh;
+  bottom: 0;
+  overflow-y: scroll;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.18) 0px 4px 8px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 4px 8px;
+  width: 100vw;
+  transform: translateX(+100vw);
+  -webkit-transform: translateX(+100vw);
+  flex-direction: row;
+
+  .primary-btn {
+    background-color: $btn-background-color;
+    color: $btn-color;
+    border-radius: 6px;
+    border-width: 0;
+    font-size: 1em;
+    width: 7em;
+    height: 2.5em;
+    margin: 0.3em;
+    cursor: pointer;
+    -webkit-box-shadow: 0 0 8px 0px $primary-background-color;
+    box-shadow: 0 0 8px 0px $primary-background-color;
+
+    &:hover:not(:focus) {
+      color: $nav-hover-color;
+      box-shadow: $nav-text-shadow;
+      cursor: pointer;
+    }
+  }
+  h2 {
+    padding: 1em;
+    padding-bottom: 0.2em;
+  }
+
+  div {
+    flex-direction: column;
+    align-content: flex-start;
+  }
+  table {
+    padding-left: 1em;
+    border-spacing: 2px;
+    border-collapse: separate;
+  }
+
+  th {
+    text-shadow: $logo-text-shadow;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    animation: glowup 2s ease infinite;
+  }
+
+  .fa-angles-right {
+    display: flex;
+    padding-left: 1vw;
+    padding-top: 1vh;
+    font-size: 1.25em;
+    text-shadow: $logo-text-shadow;
+    animation: glowup 1s ease infinite;
+
+
+  }
+
+  .bottom {
+    position: fixed;
+    align-self: center;
+    left: 0vw;
+  }
+
+  #checkoutForm {
+    padding: 1em;
+  }
+}
+
+#checkoutTable {
+  input, textarea {
+    width: 14em;
+    color: $cart-color;
+    background-color: #696969;
+    box-shadow: $nav-btn-shadow;
+    border-radius: 5px;
+    margin-top: 1em;
+  }
+
+  input {
+    height: 2em;
+  }
+
+  td {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.slide-in {
+  animation: slide-in 0.5s forwards;
+  -webkit-animation: slide-in 0.5s forwards;
+}
+
+.slide-out {
+  animation: slide-out 0.5s ease-out;
+  -webkit-animation: slide-out 0.5s ease-out;
+}
+
+/* Tablets */
+@media only screen and (min-width: 768px) {
+  #checkoutPage {
+    width: 50vw;
+  }
+}
+
+  /* Desktops */
+@media only screen and (min-width: 1080px) {
+  #checkoutPage {
+    width: 30vw;
+  }
+}

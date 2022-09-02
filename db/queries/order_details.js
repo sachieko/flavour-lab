@@ -1,6 +1,6 @@
 const db = require('../connection');
 
-const insertOrderDetails = (details) => {
+const insertOrderDetails = (details) => { // inserting order will not have tax available until details are put in.
   return db.query(`
   INSERT INTO order_details (order_id, item_id, quantity, price, note)
   VALUES ($1, $2, $3, $4, $5)

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /*
  * All routes for User Data are defined here
  * Since this file is loaded in server.js into api/users,

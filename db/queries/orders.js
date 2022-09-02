@@ -37,12 +37,15 @@ exports.getDetailsForOrderById = getDetailsForOrderById;
 
 const insertOrder = (order) => {
   return db.query(`
-  INSERT INTO orders (name, phone, note, tax, tip, discount)
-  VALUES ($1, $2, $3, $4, $5, $6)
+  INSERT INTO orders (name, phone, note, tip)
+  VALUES ($1, $2, $3, $4)
   RETURNING *;`,
-  [order.name, order.phone, order.note, order.tax, order.tip, order.discount])
+  [order.name, order.phone, order.note, order.tip]) // A different function will insert tax/discount after order details are submitted.
     .then(data => {
       return data.rows[0];
+    })
+    .catch(err => {
+      console.log(err.message);
     });
 };
 
@@ -103,3 +106,35 @@ const getAllOrders = function() {
 };
 
 exports.getAllOrders = getAllOrders;
+
+const getTotalPriceById = function(id) {
+  return db.query(
+    `SELECT SUM(price)
+    FROM order_details
+    WHERE order_id = $1
+    ;`, [id])
+    .then(data => {
+      return data.rows[0];
+    });
+};
+
+exports.getTotalPriceById = getTotalPriceById;
+
+const insertTaxForOrderId = function(id) {
+  return db.query(
+    `UPDATE orders
+    SET tax = (SELECT ROUND(SUM(price) * .12, 2)
+    FROM order_details
+    WHERE order_id = $1)
+    WHERE orders.id = $1
+    RETURNING *;`, [id])
+    .then(data => {
+      return data.rows[0];
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
+};
+
+exports.insertTaxForOrderId = insertTaxForOrderId;
+

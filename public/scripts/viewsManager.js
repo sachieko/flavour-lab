@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 $(() => {
 
@@ -7,18 +8,15 @@ $(() => {
 
   window.viewsManager.show = function(item) {
     $app.detach();
-    $checkoutPage.detach();
+    if (!$('#checkoutPage').length) {
+      $checkoutPage.appendTo($main);
+    }
     $myOrders.detach();
-    $restaurantLogin.detach();
     $restaurantLogin.detach();
     $adminOrderPage.detach();
     switch (item) {
     case item = 'app':
       $app.appendTo($main);
-      break;
-    case item = 'checkout':
-      $checkoutPage.find('#checkoutItems').empty();
-      $checkoutPage.appendTo($main);
       break;
     case item = 'orders':
       $myOrders.find('#orderPageCheckoutItems').empty();
