@@ -39,8 +39,25 @@ $(() => {
         for (const menuItem of menuItems) {
           createMenuElement(menuItem);
         }
-        $app.appendTo('body');
-        viewsManager.show('app');
+        getCart()
+          .then(cart => {
+            for (const product of cart) {
+              $app.find(`article form input[value='${product.item.id}']`).parent().replaceWith(`
+            <span class="dynamicCart">
+              <form style="display: inline" class="dynamicRemoveItem">
+                <input type="hidden" name="id" value="${product.item.id}">
+                <button>-</button>
+              </form>
+              <span class="dynamicId">${product.count}</span>
+              <form style="display: inline" class="dynamicAddItem">
+                <input type="hidden" name="itemId" value="${product.item.id}">
+                <button>+</button>
+              </form>
+            </span>`);
+            }
+            $app.appendTo('body');
+            viewsManager.show('app');
+          });
       })
       .catch(err => {
         console.log(err.message);
@@ -68,6 +85,28 @@ $(() => {
       .fail((xhr, status, err)=>{
         console.log(err);
       });
+  });
+
+  $('body').on('submit', '.dynamicRemoveItem', function(event) {
+    event.preventDefault();
+    const id = $(this).find('input').val();
+    const data = $(this).serialize();
+    removeFromCart(data).then((stringCart) => {
+      const cart = JSON.parse(stringCart);
+      $(this).parent().find('.dynamicId').replaceWith(`<span class="dynamicId">${cart[id] ? cart[id] : 0}</span>`);
+      getCart().then(buildCartElement);
+    });
+  });
+
+  $('body').on('submit', '.dynamicAddItem', function(event) {
+    event.preventDefault();
+    const id = $(this).find('input').val();
+    const data = $(this).serialize();
+    addToCart(data).then((stringCart) => {
+      const cart = JSON.parse(stringCart);
+      $(this).parent().find('.dynamicId').replaceWith(`<span class="dynamicId">${cart[id]}</span>`);
+      getCart().then(buildCartElement);
+    });
   });
 });
 

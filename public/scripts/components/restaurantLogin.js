@@ -15,7 +15,7 @@ $(() => {
     event.preventDefault();
     const data = $(this).serialize();
     adminLogin(data)
-      .then(res => {
+      .then(() => {
         viewsManager.show('adminOrders');
       })
       .catch(err => {

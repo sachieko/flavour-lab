@@ -34,7 +34,19 @@ router.get('/customer', (req, res) => {
 });
 
 router.post('/restaurant', (req, res) => {
-  const args = req.body.Body.split(' ');
+  const isAdmin = req.cookies.chef;
+  if (!isAdmin && req.body.From !== process.env.RESTAURANT_PHONE) {
+    return res.status(400).end();
+  }
+  let args;
+  if (req.body.From === process.env.RESTAURANT_PHONE) {
+    args = req.body.Body.split(' ');
+  }
+  if (isAdmin) {
+    args = [req.body.cmd];
+    args.push(req.body.id);
+    req.body.est ? args.push(req.body.est) : null;
+  }
   const cmd = args[0];
   const id = args[1];
   const estimate = args[2];
