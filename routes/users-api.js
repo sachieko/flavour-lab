@@ -5,11 +5,13 @@
  *   these routes are mounted onto /api/users
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
-
 const express = require('express');
 const router  = express.Router();
 const userQueries = require('../db/queries/users');
 const orderQueries = require('../db/queries/orders');
+const bcrypt = require('bcryptjs');
+
+// bcrypt.hashSync(req.body.password, 10); <- to Hash new passwords.
 
 router.get('/', (req, res) => {
   const isAdmin = req.cookies.chef;
@@ -25,7 +27,7 @@ router.post('/', (req, res) => {
   const password = req.body.password;
   userQueries.getUserByEmail(email)
     .then(admin => {
-      if (admin.password === password) {
+      if (bcrypt.compareSync(password, admin.password)) {
         res.cookie('chef', true);
         return res.end();
       }

@@ -52,7 +52,7 @@ $(() => {
     });
   });
 
-  $('body').on('click', '.menu-link', function(event) {
+  $('body').on('click', '.menu-link', function(event) { // Scroll to specific menu section on header click
     event.preventDefault();
     slideCartMax(767);
     viewsManager.show('app');
