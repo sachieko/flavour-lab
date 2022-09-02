@@ -44,13 +44,18 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const name = req.body.name;
-  const phone = req.body.phone;
+  const rawPhone = req.body.phone;
   const note = scrubData(req.body.note, '');
   const tip = scrubData(req.body.tip, 0);
   // const discount = scrubData(req.body.discount, 0); // This value is calculated later and on behalf of the user, not an entered value.
-  if (!req.cookies.cart || !name || !phone) {
-    return res.status(400).end();
+  if (!req.cookies.cart ||
+     !name ||
+     isNaN(Number(rawPhone)) ||
+     rawPhone.length !== 10 ||
+     isNaN(Number(tip))) {
+    return res.status(418).end();
   }
+  const phone = '+1' + rawPhone;
   const cart = JSON.parse(req.cookies.cart);
   const orderArguments = {name, phone, note, tip};
   Promise.all([
