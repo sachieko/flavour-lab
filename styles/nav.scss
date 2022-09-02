@@ -155,6 +155,7 @@ nav div:nth-child(1) div {
 }
 /* Small phones (Galaxy fold etc) */
 @media only screen and (max-width: 320px) {
+
   nav .logo {
     font-size: 1.25em;
   }
@@ -184,6 +185,10 @@ nav div:nth-child(1) div {
 /* Tablets */
 @media only screen and (min-width: 768px) {
 
+  nav {
+    height: 15vh;
+  }
+
   nav .logo {
     font-weight: 500;
     font-size: 3em;
@@ -202,8 +207,12 @@ nav div:nth-child(1) div {
     }
   }
 
-  .menu-links a {
-    font-size: 1.25em;
+  .menu-links {
+    height: 4vh;
+    top: 15vh;
+    a {
+      font-size: 1em;
+    }
   }
 
 
@@ -215,10 +224,6 @@ nav div:nth-child(1) div {
   nav .logo {
     font-weight: 500;
     font-size: 3.5em;
-  }
-
-  .menu-links a {
-    font-size: 1.50em;
   }
 
   .nav-buttons {
