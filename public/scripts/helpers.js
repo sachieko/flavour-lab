@@ -17,7 +17,7 @@ const buildCartElement = function(cart) { // Passed in as a callback function an
     $checkoutItem.append(`
       <tr>
         <td>${product.item.name}</td>
-        <td>$${product.item.price} x ${product.count} = $${product.item.price * product.count}</td>
+        <td>$${product.item.price} x ${product.count} = $${Math.round(product.item.price * product.count * 100) / 100}</td>
         <td>
         <form class="removeItem">
           <input type="hidden" name="id" value="${product.item.id}"></input>
