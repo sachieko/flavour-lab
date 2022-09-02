@@ -26,8 +26,8 @@ router.get('/', (req, res) => {
   ])
     .then(queries => {
       let thirtyLater = queries[0].completed_time;
-      if (queries[0].completed_time){
-        thirtyLater = new Date(queries[0].completed_time.getTime() + 30*6000);
+      if (queries[0].completed_time) {
+        thirtyLater = new Date(queries[0].completed_time.getTime() + 30 * 6000);
       }
       if (thirtyLater < orderPoll && queries[0].completed_time) {
         res.clearCookie('orderId');
