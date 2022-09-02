@@ -13,12 +13,13 @@ $(() => {
   `);
   window.$myOrders = $myOrders;
 
-
+  // Inserts the order status, depending on the updates sent by the restaurant.
+  // Takes in a order object, appends content to the DOM.
   const insertETA = function(order) {
     const completedTime = order.info.completed_time;
     const eta = order.info.estimated_time;
-    if (completedTime === null)
-      if (eta === null) {
+    if (completedTime === null)               // If the order is not completed
+      if (eta === null) {                         // and if there's no estimated time yet
         $myOrders.find('#order-status').append(`
           <div id="notCompleted">
             <p class="bold">Order #${order.info.id} was placed!</p></br>
@@ -27,7 +28,7 @@ $(() => {
           </div>
         `);
       }
-      if (eta !== null) {
+      if (eta !== null) {                        // if there's an estimated time
         const formattedETA = eta.slice(11,16);
         $myOrders.find('#order-status').append(`
           <div id="notCompleted">
@@ -37,7 +38,7 @@ $(() => {
           </div>
         `);
       }
-    if (completedTime !== null) {
+    if (completedTime !== null) {           // if the order is completed
       const formattedCompletedTime = completedTime.slice(11,16);
       $myOrders.find('#notCompleted').hide();
       $myOrders.find('#order-status').append(`
@@ -47,12 +48,94 @@ $(() => {
     }
   };
 
+  // Inserts the pick-up details.
+  // Takes in an order object, appends content to the DOM.
+  const insertPickUpDetails = function(order) {
+    if ($myOrders.find('#address').length !== 0) {   // If there's already content in the div #pick-up-details
+      return;                                        // do nothing.
+    }
+                                                     // Else, add content
+    $myOrders.find('#pick-up-details').append(`
+      <div class="m-top1">
+        <h5>PICK-UP DETAILS</h5>
+        <div class="flex m-top2">
+          <p class="w-13">Order Contact Name:</p>
+          <p>${order.info.name}</p>
+        </div>
+        <div class="flex m-top3">
+          <p class="w-13">Order Contact Number:</p>
+          <p>${order.info.phone}</p>
+        </div>
+      </div>
+      <div class="m-top1">
+        <div class="flex">
+          <p id="address">Flavour Labs Address:<p>
+          <div>
+            <p class="small">1 Taco Grease street</p>
+            <p class="small">Flavourtown BC GU1 F13R1</p>
+          </div>
+        </div>
+        <div class="flex m-top3">
+          <p id="phone">Flavour Labs Phone:</p>
+          <p class="small">000 000 0000</p>
+        </div>
+      </div>
+    `);
+  };
+
+  // Inserts the items that were ordered
+  // Takes in an order object, appends content to the DOM.
+  const insertOrderItems = function(order) {
+    for (const item of order.items) {
+      $myOrders.find('#orderPageCheckoutItems').append(`
+        <div class="order-item flex m-top2">
+            <p id="item-name">${item.name}</p>
+            <p id="item-qty">x ${item.quantity}</p>
+            <p>$${item.price}</p>
+        </div>
+      `);
+    }
+  };
+
+  // Rough javascript calculations for the Subtotal.
   const calcSubtotal = function(order) {
     let subtotal = 0;
     for (const item of order.items) {
       subtotal += item.quantity*item.price;
     }
     return Math.round(subtotal*100)/100;
+  };
+
+  // Inserts the order's subtotal, taxes, tip and total.
+  // Takes in an order object, appends content to the DOM.
+  const insertOrderTotals = function(order) {
+    const subtotal = calcSubtotal(order);
+
+    $myOrders.find('#orderPageCheckoutItems').append(`
+      <div class="m-top2 "id="separator1"></div>
+      <div class="m-top2" id="order-totals">
+        <div class="flex small">
+          <p class="align1">Subtotal</p>
+          <p>$${subtotal}</p>
+        </div>
+        <div class="flex small">
+          <p class="align1">Taxes</p>
+          <p>$${order.info.tax}</p>
+        </div>
+        <div class="flex small">
+          <p class="align1">Tip</p>
+          <p>$${order.info.tip}</p>
+        </div>
+        <div class="flex" id="total">
+          <p class="align2">TOTAL</p>
+          <p>$00.00</p>
+        </div>
+      </div>
+      <div class="m-top1" id="order-note">
+        <p>Order Note:</p>
+        <p>${order.info.note}</p>
+      </div>
+    `);
   };
 
 
@@ -62,87 +145,21 @@ $(() => {
         viewsManager.show('orders');
 
         if (order) {
-          $myOrders.find('#orderDetails').append(`
-            <div id="order-status"></div>
-          `);
+          $myOrders.find('#orderDetails').append(`<div id="order-status"></div>`);
 
           insertETA(order);
-
-          $myOrders.find('#pick-up-details').append(`
-            <div class="m-top1">
-              <h5>PICK-UP DETAILS</h5>
-              <div class="flex m-top2">
-                <p class="w-13">Order Contact Name:</p>
-                <p>${order.info.name}</p>
-              </div>
-              <div class="flex m-top3">
-                <p class="w-13">Order Contact Number:</p>
-                <p>${order.info.phone}</p>
-              </div>
-            </div>
-            <div class="m-top1">
-              <div class="flex">
-                <p id="address">Flavour Labs Address:<p>
-                <div>
-                  <p class="small">1 Taco Grease street</p>
-                  <p class="small">Flavourtown BC GU1 F13R1</p>
-                </div>
-              </div>
-              <div class="flex m-top3">
-                <p id="phone">Flavour Labs Phone:</p>
-                <p class="small">000 000 0000</p>
-              </div>
-            </div>
-          `);
+          insertPickUpDetails(order);
 
           $myOrders.find('#separator2').removeClass("hidden");
           $myOrders.find('#orderPageCheckoutItems').append(`<h5 class="m-top1">YOUR ORDER</h5>`)
 
-          for (const item of order.items) {
-            $myOrders.find('#orderPageCheckoutItems').append(`
-              <div class="order-item flex m-top2">
-                  <p id="item-name">${item.name}</p>
-                  <p id="item-qty">x ${item.quantity}</p>
-                  <p>$${item.price}</p>
-              </div>
-            `);
-          }
-
-          const subtotal = calcSubtotal(order);
-
-          $myOrders.find('#orderPageCheckoutItems').append(`
-            <div class="m-top2 "id="separator1"></div>
-            <div class="m-top2" id="order-totals">
-              <div class="flex small">
-                <p class="align1">Subtotal</p>
-                <p>$${subtotal}</p>
-              </div>
-              <div class="flex small">
-                <p class="align1">Taxes</p>
-                <p>$${order.info.tax}</p>
-              </div>
-              <div class="flex small">
-                <p class="align1">Tip</p>
-                <p>$${order.info.tip}</p>
-              </div>
-              <div class="flex" id="total">
-                <p class="align2">TOTAL</p>
-                <p>$00.00</p>
-              </div>
-            </div>
-            <div class="m-top1" id="order-note">
-              <p>Order Note:</p>
-              <p>${order.info.note}</p>
-            </div>
-          `);
+          insertOrderItems(order);
+          insertOrderTotals(order);
 
         } else {
-          $myOrders.find('#orderDetails').append(`
-            <p class="bold">What are you waiting for? Go order some potatoes!</p>
-          `);
+          $myOrders.find('#orderDetails').append(`<p class="bold">What are you waiting for? Go order some potatoes!</p>`);
           $myOrders.find('#separator2').addClass("hidden");
         }
-
       })
       .catch(err => {
         console.log(err.message);
