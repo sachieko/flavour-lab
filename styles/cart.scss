@@ -35,8 +35,8 @@
   -webkit-box-shadow: rgba(0, 0, 0, 0.18) 0px 4px 8px;
   box-shadow: rgba(0, 0, 0, 0.18) 0px 4px 8px;
   width: 100vw;
-  transform: translateX(+100vw);
-  -webkit-transform: translateX(+100vw);
+  transform: translateX(+96vw);
+  -webkit-transform: translateX(+96vw);
   flex-direction: row;
 
   .primary-btn {
@@ -141,6 +141,8 @@
   #checkoutPage {
     width: 50vw;
     top: 19vh;
+    transform: translateX(+97vw);
+    -webkit-transform: translateX(+97vw);
   }
 }
 

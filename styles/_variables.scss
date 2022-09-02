@@ -60,67 +60,67 @@ $cart-background-color: #120600;
 }
 /* Animation for sliding cart */
 @keyframes slide-in {
-  0% { transform: translateX(100vw); }
+  0% { transform: translateX(96vw); }
   100% { transform: translateX(0vw); }
 }
 
 @-webkit-keyframes slide-in {
-  0% { -webkit-transform: translateX(100vw); }
+  0% { -webkit-transform: translateX(96vw); }
   100% { -webkit-transform: translateX(0vw); }
 }
 
 @keyframes slide-out {
   0% { transform: translateX(0vw); }
-  100% { transform: translateX(100vw); }
+  100% { transform: translateX(96vw); }
 }
 
 @-webkit-keyframes slide-out {
   0% { -webkit-transform: translateX(0vw); }
-  100% { -webkit-transform: translateX(100vw); }
+  100% { -webkit-transform: translateX(96vw); }
 }
 
 /* Tablets */
 @media only screen and (min-width: 768px) {
   @keyframes slide-in {
-    0% { transform: translateX(100vw); }
+    0% { transform: translateX(97vw); }
     100% { transform: translateX(50vw); }
   }
 
   @-webkit-keyframes slide-in {
-    0% { -webkit-transform: translateX(100vw); }
+    0% { -webkit-transform: translateX(97vw); }
     100% { -webkit-transform: translateX(50vw); }
   }
 
   @keyframes slide-out {
     0% { transform: translateX(50vw); }
-    100% { transform: translateX(100vw); }
+    100% { transform: translateX(97); }
   }
 
   @-webkit-keyframes slide-out {
     0% { -webkit-transform: translateX(50vw); }
-    100% { -webkit-transform: translateX(100vw); }
+    100% { -webkit-transform: translateX(97); }
   }
 }
 /* Desktop Animations */
 @media only screen and (min-width: 1080px) {
   @keyframes slide-in {
-    0% { transform: translateX(100vw); }
+    0% { transform: translateX(97vw); }
     100% { transform: translateX(70vw); }
   }
 
   @-webkit-keyframes slide-in {
-    0% { -webkit-transform: translateX(100vw); }
+    0% { -webkit-transform: translateX(97vw); }
     100% { -webkit-transform: translateX(70vw); }
   }
 
   @keyframes slide-out {
     0% { transform: translateX(70vw); }
-    100% { transform: translateX(100vw); }
+    100% { transform: translateX(97vw); }
   }
 
   @-webkit-keyframes slide-out {
     0% { -webkit-transform: translateX(70vw); }
-    100% { -webkit-transform: translateX(100vw); }
+    100% { -webkit-transform: translateX(97vw); }
   }
 }
 
