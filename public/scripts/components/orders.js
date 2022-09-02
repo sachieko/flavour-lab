@@ -19,15 +19,24 @@ $(() => {
     const completedTime = order.info.completed_time;
     const eta = order.info.estimated_time;
     if (completedTime === null) {               // If the order is not completed
-      if (eta === null) {                         // and if there's no estimated time yet
+      if (eta === null && order.info.started_time === null) {                         // and if there's no estimated time yet
         $myOrders.find('#order-status').append(`
             <p class="bold">Order #${order.info.id} was placed!</p></br>
             <p class="bold">Estimated pick-up time: <span class="red">pending confirmation from Flavour Labs...</span></p></br>
             <p class="small">Please check your phone for SMS updates from the restaurant, or stay on this page for status updates.</p>
         `);
       }
-      if (eta !== null) {                        // if there's an estimated time
+      if (eta !== null && order.info.started_time !== null) {                        // if there's an estimated time
         const formattedETA = eta.slice(11,16);
+        $myOrders.find('#order-status').append(`
+            <p class="bold">Order #${order.info.id} was <span class="red">confirmed!</span></p></br>
+            <p class="bold">Estimated pick-up time: <span class="red">${formattedETA}</span></p></br>
+            <p class="small">Please check your phone for SMS updates from the restaurant, or stay on this page for status updates.</p>
+        `);
+      }
+      if (eta !== null && order.info.started_time) {                        // if there's an estimated time
+        const formattedETA = eta.slice(11,16);
+        const startTime = order.info.started_time.slice(11, 16);
         $myOrders.find('#order-status').append(`
             <p class="bold">Order #${order.info.id} was <span class="red">confirmed!</span></p></br>
             <p class="bold">Estimated pick-up time: <span class="red">${formattedETA}</span></p></br>
