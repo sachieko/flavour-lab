@@ -24,10 +24,7 @@ $(() => {
       <td>Special Instructions: </td><td><textarea name="note"></textarea></td>
     </tr>
     <tr>
-      <td>Tax:</td><td> <input type="text" name="tax"></input></td>
-    </tr>
-    <tr>
-      <td>Tip: </td><td><input type="number" name="tip"></input></td>
+      <td>Tip: </td><td><input type="text" name="tip"></input></td>
     </tr>
     <tr>
       <td>Discount Code: </td><td><input type="text" name="discount"></input></td>
@@ -61,7 +58,7 @@ $(() => {
     event.preventDefault();
     const data = $(this).serialize();
     addOrder(data).then((order)=>{
-      $('#checkoutForm input').val(''); // reset checkout form on good order
+      $('#checkoutForm input, #checkoutForm textarea').val(''); // reset checkout form on good order
       $navBar.find('div').find('#navOrdersButton').trigger('click');
       sendText().catch((err) => {
         console.log(err);
