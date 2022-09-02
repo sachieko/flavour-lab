@@ -71,6 +71,10 @@
     padding-left: 1em;
     border-spacing: 2px;
     border-collapse: separate;
+    td {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+    }
   }
 
   th {
