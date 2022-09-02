@@ -46,15 +46,13 @@ router.post('/', (req, res) => {
   const name = req.body.name;
   const phone = req.body.phone;
   const note = scrubData(req.body.note, '');
-  const tax = scrubData(req.body.tax, 0);
   const tip = scrubData(req.body.tip, 0);
-  const discount = scrubData(req.body.discount, 0);
+  // const discount = scrubData(req.body.discount, 0); // This value is calculated later and on behalf of the user, not an entered value.
   if (!req.cookies.cart || !name || !phone) {
-    //console.log('gotta have a cart name and phone ');
     return res.status(400).end();
   }
   const cart = JSON.parse(req.cookies.cart);
-  const orderArguments = {name, phone, note, tax, tip, discount};
+  const orderArguments = {name, phone, note, tip};
   Promise.all([
     itemQueries.getAllItemsFromCart(cart),
     orderQueries.insertOrder(orderArguments)])
@@ -73,8 +71,10 @@ router.post('/', (req, res) => {
       }
       Promise.all(detailQueries)
         .then((allOrderDetails) => {
+          const orderId = allOrderDetails[0].order_id;
+          orderQueries.insertTaxForOrderId(orderId);
           res.clearCookie('cart');
-          res.cookie('orderId', order.id);
+          res.cookie('orderId', orderId);
           res.send(order);
         })
         .catch(err => console.log(err));

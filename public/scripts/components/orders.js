@@ -138,6 +138,9 @@ $(() => {
   const renderOrder = function(event) {
     getOrder()
       .then((order) => {
+        if ($(window).width() < 767 && $('#checkoutPage').hasClass('slide-in')) {
+          $('#checkoutPage').toggleClass('slide-out').toggleClass('slide-in');
+        }
         viewsManager.show('orders');
 
         if (order) {

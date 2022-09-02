@@ -12,7 +12,8 @@ const sendText = function() {
 
 const getCart = function() {
   let url = "/api/cart";
-  return $.get(url);
+  return $.get(url, () => {
+  });
 };
 
 const addToCart = function(data) {
@@ -55,7 +56,22 @@ const adminLogout = function() {
   return $.get(url);
 };
 
-getAdminOrders = function() {
+const getAdminOrders = function() {
   let url = "/api/users/orders";
   return $.get(url);
+};
+
+const adminStartOrder = function(data) {
+  let url = "/api/sms/restaurant";
+  return $.post(url, data);
+};
+
+const adminEstimateOrder = function(data) {
+  let url = "/api/sms/restaurant";
+  return $.post(url, data);
+};
+
+const adminCompleteOrder = function(data) {
+  let url = "/api/sms/restaurant";
+  return $.post(url, data);
 };

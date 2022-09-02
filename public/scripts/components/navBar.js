@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 $(() => {
+
   const $navBar = $( // Currently categories are hard coded, refactor to build categories from db!
     `
       <nav class="user-nav">
@@ -30,33 +31,33 @@ $(() => {
 
   window.$navBar = $navBar;
 
-  $('body').on('click', '.user-nav img, .user-nav span, .menu-links', function() {
+  $('body').on('click', '.user-nav img, .user-nav span', function() {
+    slideCartMax(767);
     viewsManager.show('app');
   });
 
   $('body').on('click', 'nav #restaurantLogin', function() {
+    slideCartMax(767);
     viewsManager.show('restaurantLogin');
   });
 
-
   $('body').on('click', 'nav #cart-btn', function() {
     getCart().then(cart => {
-      viewsManager.show('checkout');
-      const $checkoutItem = $checkoutPage.find('#checkoutItems');
-      for (const product of cart) {
-        $checkoutItem.append(
-          `<tr>
-            <td>${product.item.name}</td>
-            <td>$${product.item.price} x ${product.count} = $${product.item.price * product.count}</td>
-            <td>
-              <form class="removeItem">
-                <input type="hidden" name="id" value="${product.item.id}"></input>
-                <button>Remove</button>
-              </form>
-            </td>
-          </tr>`);
-      }
-      $checkoutItem.append($checkoutItem);
+      buildCartElement(cart);
+      $('#checkoutPage').css('display', 'flex');
+      slideCart();
+      $('#checkoutPage').animate({
+        scrollTop: 0
+      }, "slow");
+    });
+  });
+
+  $('body').on('click', '.menu-link', function(event) {
+    event.preventDefault();
+    slideCartMax(767);
+    viewsManager.show('app');
+    $(`#${$(this)[0].innerHTML}Spot`)[0].scrollIntoView({
+      behavior: "smooth"
     });
   });
 });
