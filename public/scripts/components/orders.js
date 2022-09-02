@@ -128,7 +128,6 @@ $(() => {
   const renderOrder = function(event) {
     getOrder()
       .then((order) => {
-        console.log(order);
         slideCartMax(767);
         viewsManager.show('orders');
 
