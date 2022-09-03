@@ -6,9 +6,9 @@ Collaborators: [Sylvielcq](https://github.com/sylvielcq), [anthonycampbell](http
 Menu
 ![menu sample](https://i.imgur.com/x9FKvBP.png)
 Ordering
-![order view](https://i.imgur.com/2KnopRL.png)
+![order view](https://i.imgur.com/VRCCRHi.png)
 Restaurant View
-![restaurant view](https://i.imgur.com/VRCCRHi.png)
+![restaurant view](https://i.imgur.com/2KnopRL.png)
 
 
 ## Flavour-Labs Entity Relationship Diagram
